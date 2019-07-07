@@ -11,13 +11,15 @@ beforeEach(() => {
 afterEach(() => env.cleanup(testDb))
 
 test('db.getFoods returns an array of 20 foods', () => {
-  expect.assertions(1)
+  const foods = db.getFoods(testDb)
+  return expect(foods).resolves.toHaveLength(20)
 
-  const expected = 20
-
-  return db.getFoods(testDb)
-    .then(foods => {
-      const actual = foods.length
-      expect(actual).toBe(expected)
-    })
+  // Alternative structure (https://jestjs.io/docs/en/asynchronous.html):
+  // expect.assertions(1)
+  // const expected = 20
+  // return db.getFoods(testDb)
+  //   .then(foods => {
+  //     const actual = foods.length
+  //     expect(actual).toBe(expected)
+  //   })
 })
