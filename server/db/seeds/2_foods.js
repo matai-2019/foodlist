@@ -21,5 +21,13 @@ exports.seed = knex =>
         { name: 'Tofu', food_group_id: 2 },
         { name: 'Lentils', food_group_id: 3 },
         { name: 'Peanut butter', food_group_id: 3 },
-        { name: 'Nuts', food_group_id: 3 }
+        { name: 'Nuts', food_group_id: 3 },
+        { name: 'Oranges', food_group_id: 1 },
+        { name: 'Apples', food_group_id: 1 },
+        { name: 'Corn', food_group_id: 2 },
+        { name: 'Lettuce', food_group_id: 2 },
+        { name: 'Strawberries', food_group_id: 1 },
+        { name: 'Avocados', food_group_id: 1 },
+        { name: 'Oranges', food_group_id: 1 },
+        { name: 'Plum', food_group_id: 1 }
       ]))
