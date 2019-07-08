@@ -1,4 +1,5 @@
-import { GET_FOODS_PENDING,
+import {
+  GET_FOODS_PENDING,
   GET_FOODS_SUCCESS,
   GET_FOODS_ERROR } from './../actions/foods'
 
