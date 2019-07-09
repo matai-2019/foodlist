@@ -25,9 +25,8 @@ exports.seed = knex =>
         { id: 21, food_id: 23, value: 900 },
         { id: 22, food_id: 24, value: 237 },
         { id: 23, food_id: 26, value: 1284 },
-        { id: 24, food_id: 27, value: null },
-        { id: 25, food_id: 28, value: 1612 },
-        { id: 26, food_id: 5, value: null },
-        { id: 27, food_id: 15, value: null },
-        { id: 28, food_id: 21, value: 220 }
+        { id: 24, food_id: 27, value: 1612 },
+        { id: 25, food_id: 5, value: null },
+        { id: 26, food_id: 15, value: null },
+        { id: 27, food_id: 21, value: 220 }
       ]))
