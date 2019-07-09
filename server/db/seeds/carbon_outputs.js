@@ -1,4 +1,4 @@
-exports.seed = knex =>
+exports.seed = (knex) =>
   knex('carbon_outputs').del()
     .then(() =>
       knex('carbon_outputs').insert([

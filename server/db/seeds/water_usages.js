@@ -1,4 +1,4 @@
-exports.seed = knex =>
+exports.seed = (knex) =>
   knex('water_usages').del()
     .then(() =>
       knex('water_usages').insert([
