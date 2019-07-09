@@ -28,7 +28,7 @@ exports.seed = (knex) =>
         { id: 14, name: 'Potatoes', food_group_id: 2 },
         { id: 15, name: 'Beans', food_group_id: 3 },
         { id: 16, name: 'Tomatoes', food_group_id: 1 },
-        { id: 17, name: 'Tofu', food_group_id: 2 },
+        { id: 17, name: 'Tofu', food_group_id: 3 },
         { id: 18, name: 'Lentils', food_group_id: 3 },
         { id: 19, name: 'Peanut Butter', food_group_id: 3 },
         { id: 20, name: 'Nuts', food_group_id: 3 },
