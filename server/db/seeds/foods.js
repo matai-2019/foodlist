@@ -1,5 +1,15 @@
-exports.seed = knex =>
+exports.seed = (knex) =>
   knex('foods').del()
+    .then(() => knex('food_groups').del())
+    .then(() =>
+      knex('food_groups').insert([
+        { id: 1, name: 'Fruits' },
+        { id: 2, name: 'Vegetables' },
+        { id: 3, name: 'Grains, beans, and legumes' },
+        { id: 4, name: 'Fish' },
+        { id: 5, name: 'Meat' },
+        { id: 6, name: 'Animal byproducts' }
+      ]))
     .then(() =>
       knex('foods').insert([
         { id: 1, name: 'Lamb', food_group_id: 5 },
@@ -18,7 +28,7 @@ exports.seed = knex =>
         { id: 14, name: 'Potatoes', food_group_id: 2 },
         { id: 15, name: 'Beans', food_group_id: 3 },
         { id: 16, name: 'Tomatoes', food_group_id: 1 },
-        { id: 17, name: 'Tofu', food_group_id: 2 },
+        { id: 17, name: 'Tofu', food_group_id: 3 },
         { id: 18, name: 'Lentils', food_group_id: 3 },
         { id: 19, name: 'Peanut Butter', food_group_id: 3 },
         { id: 20, name: 'Nuts', food_group_id: 3 },

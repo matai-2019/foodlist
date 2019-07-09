@@ -6,7 +6,7 @@ import Food from './Food'
 
 class FoodList extends React.Component {
   componentDidMount () {
-    this.props.getFood()
+    this.props.getFoods()
   }
 
   render () {
@@ -37,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getFood: () => dispatch(getFoods())
+    getFoods: () => dispatch(getFoods())
   }
 }
 
