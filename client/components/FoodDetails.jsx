@@ -8,7 +8,7 @@ const foodDetails = {
   'water_usage': 52
 }
 
-function FoodDetails () {
+function FoodDetails ({ id }) {
   return (
     <Grid>
       <Container>
@@ -17,6 +17,9 @@ function FoodDetails () {
             <Card.Header>
               {foodDetails.name}
             </Card.Header>
+            <Card.Meta>
+              {id}
+            </Card.Meta>
             <Card.Description>
               <Grid>
                 <Grid.Column>
