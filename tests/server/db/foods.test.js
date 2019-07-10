@@ -23,3 +23,10 @@ test('db.getFoods returns an array of 27 foods', () => {
   //     expect(actual).toBe(expected)
   //   })
 })
+
+test('db.getFood returns a specific food', () => {
+  const food = db.getFood(1, testDb)
+  const expected = { 'category_id': 5, 'id': 1, 'name': 'Lamb' }
+
+  return expect(food).resolves.toEqual(expected)
+})
