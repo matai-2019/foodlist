@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { getFoods } from '../actions/foods'
 import Food from './Food'
 
@@ -17,13 +18,12 @@ class FoodList extends React.Component {
 
     return (
       <>
-    {error && <div>{error}</div>}
-    <ul>
-      {foods.map(food =>
-        <Food key={food.id} food={food} />)}
-    </ul>
-
-    </>
+        {error && <div>{error}</div>}
+        <ul>
+          {foods.map(food =>
+            <Food key={food.id} food={food} />)}
+        </ul>
+      </>
     )
   }
 }
