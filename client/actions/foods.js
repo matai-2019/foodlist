@@ -28,8 +28,7 @@ export function getFoods () {
   return dispatch => {
     dispatch(getFoodsPending())
 
-    request
-      .get('/api/v1/foods')
+    request.get('/api/v1/foods')
       .then(res => dispatch(getFoodsSuccess(res.body)))
       .catch(err => dispatch(getFoodsError(err.message)))
   }
