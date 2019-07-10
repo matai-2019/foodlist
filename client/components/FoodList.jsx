@@ -19,10 +19,8 @@ class FoodList extends React.Component {
     return (
       <>
         {error && <div>{error}</div>}
-        <ul>
-          {foods.map(food =>
-            <Food key={food.id} food={food} />)}
-        </ul>
+        {foods.map(food =>
+          <Food key={food.id} food={food} />)}
       </>
     )
   }

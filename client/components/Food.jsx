@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react'
 export default function Food ({ food: { name } }) {
   return (
     <>
-      <Table singleLine style={{ width: '20vw' }}>
+      <Table singleLine>
         <Table.Header>
           <Table.Row >
             <Table.HeaderCell>{name}</Table.HeaderCell>
