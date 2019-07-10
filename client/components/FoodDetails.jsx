@@ -17,8 +17,8 @@ function FoodDetails ({ id }) {
             <Card.Header>
               {foodDetails.name}
             </Card.Header>
-            <Card.Meta>
-              {id}
+            <Card.Meta hidden>
+              {foodId}
             </Card.Meta>
             <Card.Description>
               <Grid>
