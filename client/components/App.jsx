@@ -12,7 +12,7 @@ export default function App () {
     <Router>
       <>
         <Route path='/' component={TopMenu} />
-        <Container style={{ paddingTop: 75 }}>
+        <Container style={{ marginTop: 75 }}>
           <Switch>
             <Route exact path='/' component={FoodList} />
             <Route component={NoMatch} />
