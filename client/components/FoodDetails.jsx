@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Container, Card, Divider, Statistic } from 'semantic-ui-react'
+import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
 
 const foodDetails = {
   'name': 'Turkey',
@@ -8,11 +8,11 @@ const foodDetails = {
   'water_usage': 52
 }
 
-function FoodDetails ({ id }) {
+function FoodDetails ({ foodId }) {
   return (
     <Grid>
       <Container>
-        <Card>
+        <Card centered>
           <Card.Content>
             <Card.Header>
               {foodDetails.name}
@@ -21,7 +21,7 @@ function FoodDetails ({ id }) {
               {foodId}
             </Card.Meta>
             <Card.Description>
-              <Grid>
+              <Grid columns={2} divided>
                 <Grid.Column>
                   <Statistic>
                     <Icon color='grey' name='cloud' size='huge'/>
@@ -45,7 +45,6 @@ function FoodDetails ({ id }) {
                   </Statistic>
                 </Grid.Column>
               </Grid>
-              <Divider vertical></Divider>
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
