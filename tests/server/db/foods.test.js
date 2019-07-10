@@ -10,9 +10,9 @@ beforeEach(() => {
 
 afterEach(() => env.cleanup(testDb))
 
-test('db.getFoods returns an array of 20 foods', () => {
+test('db.getFoods returns an array of 27 foods', () => {
   const foods = db.getFoods(testDb)
-  return expect(foods).resolves.toHaveLength(20)
+  return expect(foods).resolves.toHaveLength(27)
 
   // Alternative structure (https://jestjs.io/docs/en/asynchronous.html):
   // expect.assertions(1)
