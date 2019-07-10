@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Container, Card, Divider, Statistic, GridColumn } from 'semantic-ui-react'
+import { Grid, Container, Card, Divider, Statistic } from 'semantic-ui-react'
 
 const foodDetails = {
   'name': 'Turkey',
