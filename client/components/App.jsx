@@ -4,15 +4,17 @@ import { Container } from 'semantic-ui-react'
 
 import FoodList from './FoodList'
 import TopMenu from './TopMenu'
+import NoMatch from './NoMatch'
 
 export default function App () {
   return (
     <Router>
       <>
         <Route path='/' component={TopMenu} />
-        <Container style={{ marginTop: 75 }}>
+        <Container style={{ paddingTop: 75 }}>
           <Switch>
             <Route exact path='/' component={FoodList} />
+            <Route component={NoMatch} />
           </Switch>
         </Container>
       </>
