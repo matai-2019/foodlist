@@ -24,6 +24,7 @@ function FoodDetails ({ id }) {
               <Grid>
                 <Grid.Column>
                   <Statistic>
+                    <Icon color='grey' name='cloud' size='huge'/>
                     <Statistic.Value>
                       {foodDetails.carbon_output}
                     </Statistic.Value>
@@ -34,6 +35,7 @@ function FoodDetails ({ id }) {
                 </Grid.Column>
                 <Grid.Column>
                   <Statistic>
+                    <Icon color="blue" name='tint' size='huge'/>
                     <Statistic.Value>
                       {foodDetails.water_usage}
                     </Statistic.Value>
