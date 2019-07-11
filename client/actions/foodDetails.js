@@ -17,10 +17,10 @@ export function getFoodDetailsSuccess (foodDetails) {
   }
 }
 
-export function getFoodDetailsError (message) {
+export function getFoodDetailsError (error) {
   return {
     type: GET_FOOD_DETAILS_ERROR,
-    message
+    error
   }
 }
 
