@@ -17,8 +17,8 @@ export default function App () {
           <Switch>
             <Route exact path="/" component={FoodList} />
             <Route path="/new" component={AddFood} />
-            <Route component={NoMatch} />
             <Route path="/details/:foodId" component={FoodDetails} />
+            <Route component={NoMatch} />
           </Switch>
         </Container>
       </>
