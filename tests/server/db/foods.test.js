@@ -23,3 +23,17 @@ test('db.getFoods returns an array of 27 foods', () => {
   //     expect(actual).toBe(expected)
   //   })
 })
+
+test('db.addFood should add food to db', () => {
+  const food = {
+    name: 'Mungo',
+    category_id: 1,
+    carbon_output: 142,
+    water_usage: 69
+  }
+
+  return db.addFood(food, testDb)
+    .then(foods => {
+      expect(foods[0]).toBe(28)
+    })
+})
