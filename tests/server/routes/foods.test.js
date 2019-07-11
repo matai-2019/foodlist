@@ -6,8 +6,10 @@ jest.mock('../../../server/db/foods', () => ({
     { id: 1, name: 'Lamb' },
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
-  ])
+  ]),
+  addFood: () => Promise.resolve([4]) 
 }))
+
 
 // This line must go after mocking out the database
 const server = require('../../../server/server')
@@ -30,8 +32,9 @@ test('POST adds a new food', () => {
   }
   return request(server)
     .post('/api/v1/foods')
+    .expect(201)
     .send(newFood)
     .then(res => {
-      expect(res.body.id).toBe(28)
+      expect(res.body.id).toBe(4)
     })
-})g
+})

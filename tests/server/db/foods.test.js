@@ -34,6 +34,7 @@ test('db.addFood should add food to db', () => {
 
   return db.addFood(food, testDb)
     .then(foods => {
-      expect(foods[0]).toBe(28)
+      const expected = foods[0]
+      expect(expected).toBe(28)
     })
 })
