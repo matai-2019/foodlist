@@ -36,3 +36,15 @@ test('db.editFood updates name, category_id', () => {
       expect(res[0].category_id).toBe(food.category_id)
     })
 })
+
+test('db.getFood returns a specific food', () => {
+  const food = db.getFood(1, testDb)
+  const expected = {
+    'id': 1,
+    'name': 'Lamb',
+    'category': 'Meat',
+    'carbon_output': 20.85,
+    'water_usage': 8763
+  }
+  return expect(food).resolves.toEqual(expected)
+})
