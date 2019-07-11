@@ -14,7 +14,7 @@ function addFood (food, db = connection) {
       return db('carbon_outputs')
         .insert({ food_id: foodID, value: food.carbon_output })
     })
-    .then((id) => {
+    .then(() => {
       return db('water_usages')
         .insert({ food_id: foodID, value: food.water_usage })
     })

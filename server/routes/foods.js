@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const foods = req.body
   db.addFood(foods)
-    .then(id => res.status(201))
+    .then(id => res.status(201).send(id[0]))
 })
 
 module.exports = router
