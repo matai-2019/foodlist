@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Button, Form, Container, Header } from 'semantic-ui-react'
 
 const options = [
@@ -28,26 +27,26 @@ export default class AddFood extends React.Component {
   render() {
     return (
       <Container>
-        <div className='ui hidden divider'></div>
-        <Header as='h1'>Add a Food</Header>
+        <div className="ui hidden divider"></div>
+        <Header as="h1">Add a Food</Header>
         <Form>
           <Form.Field>
             <label>Name</label>
-            <input onChange={this.handleInputChange} name='name' placeholder='food name' />
+            <input onChange={this.handleInputChange} name="name" placeholder="food name" />
           </Form.Field>
-          <Form.Field onChange={this.handleInputChange} label='Food group' name='food_group_id' control='select'>
-            <option value=''>choose a food group</option>
+          <Form.Field onChange={this.handleInputChange} label="Food group" name="food_group_id" control="select">
+            <option value="">choose a food group</option>
             {options.map(el => <option key={el.id} value={el.id}>{el.name}</option>)}
           </Form.Field>
           <Form.Field>
             <label>Carbon output</label>
-            <input type='number' onChange={this.handleInputChange} name='carbon_output' />
+            <input type="number" onChange={this.handleInputChange} name="carbon_output" />
           </Form.Field>
           <Form.Field>
             <label>Water usage</label>
-            <input type='number' onChange={this.handleInputChange} name='water_usage' />
+            <input type="number" onChange={this.handleInputChange} name="water_usage" />
           </Form.Field>
-          <Button type='submit'>Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </Container>
     )
