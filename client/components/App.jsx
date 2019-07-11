@@ -5,6 +5,7 @@ import { Container } from 'semantic-ui-react'
 import FoodList from './FoodList'
 import TopMenu from './TopMenu'
 import NoMatch from './NoMatch'
+import FoodDetails from './FoodDetails'
 
 export default function App () {
   return (
@@ -15,6 +16,7 @@ export default function App () {
           <Switch>
             <Route exact path="/" component={FoodList} />
             <Route component={NoMatch} />
+            <Route path='/details/:foodId' component={FoodDetails} />
           </Switch>
         </Container>
       </>
