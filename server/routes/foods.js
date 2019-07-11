@@ -20,4 +20,16 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.get('/category/:categoryName', (req, res) => {
+  let category = req.params.categoryName
+  category = category[0].toUpperCase() + category.slice(1)
+  db.getFoodsByCategory(category)
+    .then(category => {
+      res.status(200).json(category)
+    })
+    .catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 module.exports = router
