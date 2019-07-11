@@ -1,16 +1,29 @@
+// External Imports
 import React from 'react'
 import { Provider } from 'react-redux'
-import FoodDetails from '../../../client/components/FoodDetails'
-import { render, mount } from 'enzyme'
+// Test Imports
+import { render, shallow } from 'enzyme'
 import configureStore from 'redux-mock-store'
+// Local Imports
+import FoodDetails from '../../../client/components/FoodDetails'
 
 describe('React Tests', () => {
   it('Test Runner is working', () => {
     expect(true).toBeTruthy()
   })
 
-  it('<FoodDetails> root has className of .food-details', () => {
-    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' } })
+  it('Loading message if pending is true', () => {
+    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: true, error: null } })
+    const wrapper = render(
+      <Provider store={mockStore}>
+        <FoodDetails />
+      </Provider>
+    )
+    expect(wrapper.text()).toMatch(/LOADING.../)
+  })
+
+  it('<FoodDetails> is an instance of FoodDetails', () => {
+    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
         <FoodDetails/>
@@ -21,7 +34,7 @@ describe('React Tests', () => {
   })
 
   it('page header includes food name', () => {
-    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' } })
+    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
         <FoodDetails />
@@ -38,8 +51,8 @@ describe('React Tests', () => {
       'carbon_output': 403,
       'water_usage': 52
     }
-    const mockStore = configureStore()({ foodDetails })
-    const wrapper = mount(
+    const mockStore = configureStore()({ foodDetails, info: { pending: false, error: null } })
+    const wrapper = render(
       <Provider store={mockStore}>
         <FoodDetails />
       </Provider>
@@ -54,13 +67,13 @@ describe('React Tests', () => {
 
 describe('Redux Test', () => {
   it('Should have a dispatch function in props', () => {
-    const mockStore = configureStore()({ foodDetails: {} })
-    const wrapper = mount(
+    const mockStore = configureStore()({ foodDetails: {}, info: {} })
+    const wrapper = shallow(
       <Provider store={mockStore}>
         <FoodDetails />
       </Provider>
     )
-    const dispatch = wrapper.props().store.dispatch
+    const dispatch = wrapper.props().value.store.dispatch
     expect(dispatch).toBeTruthy()
   })
 })
