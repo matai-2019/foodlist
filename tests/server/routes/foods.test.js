@@ -6,10 +6,33 @@ jest.mock('../../../server/db/foods', () => ({
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
   ]),
-  getFood: () => Promise.resolve([
-    { id: 1, name: 'Lamb' },
+  getFood: (id) => Promise.resolve([
+    { id: id, name: 'Lamb' },
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
+  ]),
+  getFoodsByCategory: (category) => Promise.resolve([
+    {
+      id: 1,
+      name: 'Turkey',
+      category: category,
+      carbon_output: 403,
+      water_usage: 52
+    },
+    {
+      id: 1,
+      name: 'Not',
+      category: category,
+      carbon_output: 403,
+      water_usage: 52
+    },
+    {
+      id: 1,
+      name: 'Turkey',
+      category: 'Not',
+      carbon_output: 403,
+      water_usage: 52
+    }
   ])
 }))
 
@@ -32,6 +55,26 @@ test('GET /food returns specific food', () => {
     .then(res => {
       const actual = res.text
       expect(actual).toMatch('Lamb')
+    })
+    .catch(err => expect(err).toBeNull())
+})
+
+test('GET /foods by category route capitalises category', () => {
+  return request(server)
+    .get(`/api/v1/foods/category/meat`)
+    .expect(200)
+    .then(res => {
+      expect(res.body[0].category).toBe('Meat')
+    })
+    .catch(err => expect(err).toBeNull())
+})
+
+test('GET /foods by category ', () => {
+  return request(server)
+    .get(`/api/v1/foods/category/meat`)
+    .expect(200)
+    .then(res => {
+      expect(res.body).toHaveLength(3)
     })
     .catch(err => expect(err).toBeNull())
 })
