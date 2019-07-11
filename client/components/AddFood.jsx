@@ -4,7 +4,7 @@ import { Button, Form, Container, Header } from 'semantic-ui-react'
 
 import { addFood } from '../api/api'
 
-const options = [
+const categories = [
   { id: 1, name: 'Fruits' },
   { id: 2, name: 'Vegetables' },
   { id: 3, name: 'Grains, beans, and legumes' },
@@ -46,19 +46,37 @@ export default class AddFood extends React.Component {
         <Form>
           <Form.Field>
             <label>Name</label>
-            <input onChange={this.handleInputChange} name="name" placeholder="food name" />
+            <input onChange={this.handleInputChange}
+              name="name"
+              placeholder="Enter food name"
+            />
           </Form.Field>
-          <Form.Field onChange={this.handleInputChange} label="Food group" name="category_id" control="select">
-            <option value="">choose a food category</option>
-            {options.map(el => <option key={el.id} value={el.id}>{el.name}</option>)}
+          <Form.Field onChange={this.handleInputChange}
+            label="Food group"
+            name="category_id"
+            control="select"
+          >
+            <option value="">Choose a food category</option>
+            {categories.map(category =>
+              <option key={category.id}
+                value={category.id}>{category.name}</option>
+            )}
           </Form.Field>
           <Form.Field>
             <label>Carbon output</label>
-            <input type="number" onChange={this.handleInputChange} name="carbon_output" />
+            <input type="number"
+              onChange={this.handleInputChange}
+              name="carbon_output"
+              placeholder="Enter carbon output"
+            />
           </Form.Field>
           <Form.Field>
             <label>Water usage</label>
-            <input type="number" onChange={this.handleInputChange} name="water_usage" />
+            <input type="number"
+              onChange={this.handleInputChange}
+              name="water_usage"
+              placeholder="Enter water usage"
+            />
           </Form.Field>
           <Button onClick={this.handleSubmit} type="submit">Submit</Button>
         </Form>
