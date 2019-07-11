@@ -7,3 +7,7 @@ test('<App /> contains the router', () => {
   const wrapper = shallow(<App />)
   expect(wrapper.text()).toBe('<BrowserRouter />')
 })
+
+test('Test setup is working correctly', () => {
+  expect(true).toBeTruthy()
+})
