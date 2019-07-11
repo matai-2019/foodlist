@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { getFoods } from '../actions/foods'
 import Food from './Food'
-import CategoriesList from './CategoriesList'
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -18,8 +18,11 @@ class FoodList extends React.Component {
     } else {
       return (
       <>
-         {!this.props.match.params.includes('category') &&
-         <CategoriesList />}
+         {!this.props.match.path.includes('category') &&
+         (<ul>
+           <li><Link to="category/vegetables">Vegetables</Link></li>
+           <li><Link to="category/meat">Meat</Link></li>
+         </ul>)}
         {error && <div>{error}</div>}
         {foods.map(food =>
           <Food key={food.id} food={food} />)}
