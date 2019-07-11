@@ -40,10 +40,12 @@ export default class AddFood extends React.Component {
           <Form.Field onChange={this.handleInputChange}
             label="Food group"
             name="category_id"
-            control="select">
+            control="select"
+          >
             <option value="">Choose a food category</option>
             {categories.map(category =>
-              <option key={category.id} value={category.id}>{category.name}</option>
+              <option key={category.id}
+                value={category.id}>{category.name}</option>
             )}
           </Form.Field>
           <Form.Field>
@@ -51,14 +53,16 @@ export default class AddFood extends React.Component {
             <input type="number"
               onChange={this.handleInputChange}
               name="carbon_output"
-              placeholder="Enter carbon output" />
+              placeholder="Enter carbon output"
+            />
           </Form.Field>
           <Form.Field>
             <label>Water usage</label>
             <input type="number"
               onChange={this.handleInputChange}
               name="water_usage"
-              placeholder="Enter water usage" />
+              placeholder="Enter water usage"
+            />
           </Form.Field>
           <Button type="submit">Submit</Button>
         </Form>
