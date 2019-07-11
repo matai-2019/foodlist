@@ -10,10 +10,10 @@ export function getFoodDetailsPending () {
   }
 }
 
-export function getFoodDetailsSuccess (foods) {
+export function getFoodDetailsSuccess (foodDetails) {
   return {
     type: GET_FOOD_DETAILS_SUCCESS,
-    foods
+    foodDetails
   }
 }
 
