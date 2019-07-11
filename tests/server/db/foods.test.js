@@ -35,8 +35,3 @@ test('db.getFood returns a specific food', () => {
   }
   return expect(food).resolves.toEqual(expected)
 })
-
-test('db.getFoodsByCategory returns all of given category', () => {
-  const food = db.getFoodsByCategory('Meat', testDb)
-  return expect(food).resolves.toHaveLength(5)
-})

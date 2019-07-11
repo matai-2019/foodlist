@@ -20,18 +20,7 @@ function getFood (id, db = connection) {
     )
 }
 
-function getFoodsByCategory (categoryName, db = connection) {
-  return db('foods')
-    .join('categories', 'foods.category_id', 'categories.id')
-    .where('categories.name', categoryName)
-    .select(
-      'foods.id',
-      'foods.name'
-    )
-}
-
 module.exports = {
   getFoods,
-  getFood,
-  getFoodsByCategory
+  getFood
 }

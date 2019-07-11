@@ -58,23 +58,3 @@ test('GET /food returns specific food', () => {
     })
     .catch(err => expect(err).toBeNull())
 })
-
-test('GET /foods by category route capitalises category', () => {
-  return request(server)
-    .get(`/api/v1/foods/category/meat`)
-    .expect(200)
-    .then(res => {
-      expect(res.body[0].category).toBe('Meat')
-    })
-    .catch(err => expect(err).toBeNull())
-})
-
-test('GET /foods by category ', () => {
-  return request(server)
-    .get(`/api/v1/foods/category/meat`)
-    .expect(200)
-    .then(res => {
-      expect(res.body).toHaveLength(3)
-    })
-    .catch(err => expect(err).toBeNull())
-})
