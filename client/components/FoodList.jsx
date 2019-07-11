@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { getFoods } from '../actions/foods'
 import Food from './Food'
+import CategoriesList from './CategoriesList'
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -14,15 +15,17 @@ class FoodList extends React.Component {
 
     if (pending) {
       return <div>LOADING...</div>
-    }
-
-    return (
+    } else {
+      return (
       <>
+         {!this.props.match.params.includes('category') &&
+         <CategoriesList />}
         {error && <div>{error}</div>}
         {foods.map(food =>
           <Food key={food.id} food={food} />)}
       </>
-    )
+      )
+    }
   }
 }
 
