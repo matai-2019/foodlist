@@ -39,5 +39,4 @@ test('handleSubmit changes state.redirect to true', () => {
 
     expect(actual).toBe(expected)
   })
-
 })
