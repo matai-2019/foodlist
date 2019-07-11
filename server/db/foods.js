@@ -20,7 +20,14 @@ function getFood (id, db = connection) {
     )
 }
 
+function deleteFood (id, db = connection) {
+  return db('foods')
+    .where('id', id)
+    .del()
+}
+
 module.exports = {
   getFoods,
-  getFood
+  getFood,
+  deleteFood
 }
