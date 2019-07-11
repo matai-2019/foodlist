@@ -3,8 +3,7 @@ import { mount } from 'enzyme'
 import { Form } from 'semantic-ui-react'
 
 import AddFood from '../../../client/components/AddFood'
-
-jest.mock('../../../client/api/api')
+import '../mocks/api'
 
 test('<AddFood /> contains a form tag', () => {
   const expected = true
