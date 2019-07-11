@@ -6,10 +6,33 @@ jest.mock('../../../server/db/foods', () => ({
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
   ]),
-  getFood: () => Promise.resolve([
-    { id: 1, name: 'Lamb' },
+  getFood: (id) => Promise.resolve([
+    { id: id, name: 'Lamb' },
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
+  ]),
+  getFoodsByCategory: (category) => Promise.resolve([
+    {
+      id: 1,
+      name: 'Turkey',
+      category: category,
+      carbon_output: 403,
+      water_usage: 52
+    },
+    {
+      id: 1,
+      name: 'Not',
+      category: category,
+      carbon_output: 403,
+      water_usage: 52
+    },
+    {
+      id: 1,
+      name: 'Turkey',
+      category: 'Not',
+      carbon_output: 403,
+      water_usage: 52
+    }
   ])
 }))
 
