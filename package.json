@@ -65,6 +65,7 @@
     "npm-run-all": "^4.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "redux-mock-store": "^1.5.3",
     "supertest": "^4.0.2",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
