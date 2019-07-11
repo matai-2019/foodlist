@@ -1,6 +1,11 @@
+// External Imports
 import React from 'react'
 import { connect } from 'react-redux'
+
+// Semantic
 import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
+
+// Local Imports
 import { getFood } from '../actions/foodDetails'
 
 class FoodDetails extends React.Component {
@@ -15,44 +20,44 @@ class FoodDetails extends React.Component {
       : (<>
       {error && <div>{error}</div> }
         <div>
-        <Container className='food-details'>
-          <Card centered>
-            <Card.Content>
-              <Card.Header>
-                {foodDetails && foodDetails.name}
-              </Card.Header>
-              <Card.Description>
-                <Grid columns={2} divided>
-                  <Grid.Column>
-                    <Statistic>
-                      <Icon color='grey' name='cloud' size='huge' />
-                      <Statistic.Value>
-                        {foodDetails && foodDetails.carbon_output}
-                      </Statistic.Value>
-                      <Statistic.Label>
+          <Container className='food-details'>
+            <Card centered>
+              <Card.Content>
+                <Card.Header>
+                  {foodDetails && foodDetails.name}
+                </Card.Header>
+                <Card.Description>
+                  <Grid columns={2} divided>
+                    <Grid.Column>
+                      <Statistic>
+                        <Icon color='grey' name='cloud' size='huge' />
+                        <Statistic.Value>
+                          {foodDetails && foodDetails.carbon_output}
+                        </Statistic.Value>
+                        <Statistic.Label>
                         Carbon Output
-                      </Statistic.Label>
-                    </Statistic>
-                  </Grid.Column>
-                  <Grid.Column>
-                    <Statistic>
-                      <Icon color="blue" name='tint' size='huge' />
-                      <Statistic.Value>
-                        {foodDetails && foodDetails.water_usage}
-                      </Statistic.Value>
-                      <Statistic.Label>
+                        </Statistic.Label>
+                      </Statistic>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Statistic>
+                        <Icon color="blue" name='tint' size='huge' />
+                        <Statistic.Value>
+                          {foodDetails && foodDetails.water_usage}
+                        </Statistic.Value>
+                        <Statistic.Label>
                         Water Usage
-                      </Statistic.Label>
-                    </Statistic>
-                  </Grid.Column>
-                </Grid>
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
+                        </Statistic.Label>
+                      </Statistic>
+                    </Grid.Column>
+                  </Grid>
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
               Category: {foodDetails && foodDetails.category}
-            </Card.Content>
-          </Card>
-        </Container>
+              </Card.Content>
+            </Card>
+          </Container>
         </div>
       </>)
   }
