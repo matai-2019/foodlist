@@ -27,7 +27,6 @@ export function getCategoriesError (message) {
 export function getCategories () {
   return dispatch => {
     dispatch(getCategoriesPending())
-
     request.get('/api/v1/categories')
       .then(res => dispatch(getCategoriesSuccess(res.body)))
       .catch(err => dispatch(getCategoriesError(err.message)))
