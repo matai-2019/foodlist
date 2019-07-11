@@ -24,11 +24,11 @@ export function getFoodDetailsError (message) {
   }
 }
 
-export function getFoods () {
+export function getFood (id) {
   return dispatch => {
     dispatch(getFoodDetailsPending())
 
-    request.get('/api/v1/getfoods/:id')
+    request.get(`/api/v1/foods/${id}`)
       .then(res => dispatch(getFoodDetailsSuccess(res.body)))
       .catch(err => dispatch(getFoodDetailsError(err.message)))
   }
