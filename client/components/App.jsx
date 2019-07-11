@@ -11,10 +11,10 @@ export default function App () {
   return (
     <Router>
       <>
-        <Route path='/' component={TopMenu} />
-        <Container style={{ marginTop: 75 }}>
+        <Route path="/" component={TopMenu} />
+        <Container style={{ paddingTop: 75 }}>
           <Switch>
-            <Route exact path='/' component={FoodList} />
+            <Route exact path="/" component={FoodList} />
             <Route component={NoMatch} />
             <Route path='/details/:foodId' component={FoodDetails} />
           </Switch>
