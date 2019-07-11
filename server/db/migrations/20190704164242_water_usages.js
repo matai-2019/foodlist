@@ -3,6 +3,7 @@ exports.up = (knex) =>
     table.increments('id').primary()
     table.integer('food_id')
       .references('foods.id')
+      .onDelete('CASCADE')
     table.integer('value')
   })
 
