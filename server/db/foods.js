@@ -25,6 +25,8 @@ function editFood (food, db = connection) {
           value: food.water_usage
         })
     })
+    .then(() => db)
+    .then(getFoods)
 }
 
 module.exports = {
