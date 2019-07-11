@@ -11,9 +11,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const foods = req.body
-  console.log('api', foods)
   db.addFood(foods)
-    .then(id => res.status(201).send(foods))
+    .then(id => res.status(201))
 })
 
 module.exports = router
