@@ -13,7 +13,7 @@ const options = [
 export default class AddFood extends React.Component {
   state = {
     name: '',
-    food_group_id: null,
+    category_id: null,
     carbon_output: null,
     water_usage: null
   }
@@ -34,8 +34,8 @@ export default class AddFood extends React.Component {
             <label>Name</label>
             <input onChange={this.handleInputChange} name="name" placeholder="food name" />
           </Form.Field>
-          <Form.Field onChange={this.handleInputChange} label="Food group" name="food_group_id" control="select">
-            <option value="">choose a food group</option>
+          <Form.Field onChange={this.handleInputChange} label="Food group" name="category_id" control="select">
+            <option value="">choose a food category</option>
             {options.map(el => <option key={el.id} value={el.id}>{el.name}</option>)}
           </Form.Field>
           <Form.Field>

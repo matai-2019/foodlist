@@ -1,6 +1,5 @@
 import React from 'react'
 import { mount } from 'enzyme'
-
 import { Form } from 'semantic-ui-react'
 
 import AddFood from '../../../client/components/AddFood'
