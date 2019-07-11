@@ -65,6 +65,7 @@ bundle.*
 
 # Development databases
 dev.sqlite3
+dev.sqlite3-journal
 
 # Vim tag files
 tags

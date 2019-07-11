@@ -6,12 +6,36 @@ jest.mock('../../../server/db/foods', () => ({
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
   ]),
-  getFood: () => Promise.resolve([
-    { id: 1, name: 'Lamb' },
+  getFood: (id) => Promise.resolve([
+    { id: id, name: 'Lamb' },
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
   ]),
-  deleteFood: (id) => Promise.resolve(1)
+  deleteFood: (id) => Promise.resolve(1),
+
+  getFoodsByCategory: (category) => Promise.resolve([
+    {
+      id: 1,
+      name: 'Turkey',
+      category: category,
+      carbon_output: 403,
+      water_usage: 52
+    },
+    {
+      id: 1,
+      name: 'Not',
+      category: category,
+      carbon_output: 403,
+      water_usage: 52
+    },
+    {
+      id: 1,
+      name: 'Turkey',
+      category: 'Not',
+      carbon_output: 403,
+      water_usage: 52
+    }
+  ])
 }))
 
 // This line must go after mocking out the database

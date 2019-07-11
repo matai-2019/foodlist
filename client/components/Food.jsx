@@ -8,7 +8,9 @@ export default function Food ({ food: { name, id } }) {
       <Table singleLine>
         <Table.Header>
           <Table.Row >
-            <Table.HeaderCell><Link to={'/details/' + id }>{name}</Link></Table.HeaderCell>
+            <Table.HeaderCell>
+              <Link to={`/details/${id}`}>{name}</Link>
+            </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
       </Table>
