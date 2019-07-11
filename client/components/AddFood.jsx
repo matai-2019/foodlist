@@ -24,7 +24,7 @@ export default class AddFood extends React.Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <Container>
         <div className="ui hidden divider"></div>
