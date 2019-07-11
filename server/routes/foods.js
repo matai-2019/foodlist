@@ -9,4 +9,9 @@ router.get('/', (req, res) => {
     .then(foods => res.status(200).json(foods))
 })
 
+router.put('/:id', (req, res) => {
+  const food = req.body
+  db.editFood(food)
+    .then(updateFood => res.status(200).json(updateFood))
+})
 module.exports = router
