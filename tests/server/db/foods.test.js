@@ -38,3 +38,15 @@ test('db.addFood should add food to db', () => {
       expect(expected).toBe(28)
     })
 })
+
+test('db.getFood returns a specific food', () => {
+  const food = db.getFood(1, testDb)
+  const expected = {
+    'id': 1,
+    'name': 'Lamb',
+    'category': 'Meat',
+    'carbon_output': 20.85,
+    'water_usage': 8763
+  }
+  return expect(food).resolves.toEqual(expected)
+})
