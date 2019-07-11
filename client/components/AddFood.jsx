@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, Container, Header } from 'semantic-ui-react'
 
-const options = [
+const categories = [
   { id: 1, name: 'Fruits' },
   { id: 2, name: 'Vegetables' },
   { id: 3, name: 'Grains, beans, and legumes' },
@@ -42,8 +42,8 @@ export default class AddFood extends React.Component {
             name="category_id"
             control="select">
             <option value="">Choose a food category</option>
-            {options.map(el =>
-              <option key={el.id} value={el.id}>{el.name}</option>
+            {categories.map(category =>
+              <option key={category.id} value={category.id}>{category.name}</option>
             )}
           </Form.Field>
           <Form.Field>
