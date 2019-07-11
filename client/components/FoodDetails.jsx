@@ -3,7 +3,7 @@ import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
 
 function FoodDetails ({ foodId, foodDetails }) {
   return (
-    <Grid className='food-details'>
+    <Grid className="food-details">
       <Container>
         <Card centered>
           <Card.Content>
@@ -14,7 +14,7 @@ function FoodDetails ({ foodId, foodDetails }) {
               <Grid columns={2} divided>
                 <Grid.Column>
                   <Statistic>
-                    <Icon color='grey' name='cloud' size='huge'/>
+                    <Icon color="grey" name="cloud" size="huge"/>
                     <Statistic.Value>
                       {foodDetails.carbon_output}
                     </Statistic.Value>
@@ -25,7 +25,7 @@ function FoodDetails ({ foodId, foodDetails }) {
                 </Grid.Column>
                 <Grid.Column>
                   <Statistic>
-                    <Icon color="blue" name='tint' size='huge'/>
+                    <Icon color="blue" name="tint" size="huge"/>
                     <Statistic.Value>
                       {foodDetails.water_usage}
                     </Statistic.Value>
