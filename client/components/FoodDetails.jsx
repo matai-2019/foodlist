@@ -14,6 +14,7 @@ class FoodDetails extends React.Component {
     return pending ? (<div>LOADING...</div>)
       : (<>
       {error && <div>{error}</div> }
+        <div>
         <Container className='food-details'>
           <Card centered>
             <Card.Content>
@@ -52,6 +53,7 @@ class FoodDetails extends React.Component {
             </Card.Content>
           </Card>
         </Container>
+        </div>
       </>)
   }
 }
