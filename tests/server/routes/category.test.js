@@ -34,7 +34,6 @@ jest.mock('../../../server/db/category', () => ({
   ])
 }))
 
-// This line must go after mocking out the database
 const server = require('../../../server/server')
 
 test('GET /foods by category route capitalises category', () => {
