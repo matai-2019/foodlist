@@ -1,17 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
-// import { getFoodDetails } from '../actions'
+import { getFood } from '../actions/foodDetails'
 
 class FoodDetails extends React.Component {
+  componentDidMount () {
+    const id = this.props.match.params.foodId
+    this.props.getFood(id)
+  }
+
   render () {
-    return (
-      <div>
+    const { foodDetails, info: { pending, error } } = this.props
+    return pending ? (<div>LOADING...</div>)
+      : (<>
+      {error && <div>{error}</div> }
         <Container className='food-details'>
           <Card centered>
             <Card.Content>
               <Card.Header>
-                {this.props.foodDetails.name}
+                {foodDetails && foodDetails.name}
               </Card.Header>
               <Card.Description>
                 <Grid columns={2} divided>
@@ -19,7 +26,7 @@ class FoodDetails extends React.Component {
                     <Statistic>
                       <Icon color='grey' name='cloud' size='huge' />
                       <Statistic.Value>
-                        {this.props.foodDetails.carbon_output}
+                        {foodDetails && foodDetails.carbon_output}
                       </Statistic.Value>
                       <Statistic.Label>
                         Carbon Output
@@ -30,7 +37,7 @@ class FoodDetails extends React.Component {
                     <Statistic>
                       <Icon color="blue" name='tint' size='huge' />
                       <Statistic.Value>
-                        {this.props.foodDetails.water_usage}
+                        {foodDetails && foodDetails.water_usage}
                       </Statistic.Value>
                       <Statistic.Label>
                         Water Usage
@@ -41,19 +48,25 @@ class FoodDetails extends React.Component {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              Category: {this.props.foodDetails.category}
+              Category: {foodDetails && foodDetails.category}
             </Card.Content>
           </Card>
         </Container>
-      </div>
-    )
+      </>)
   }
 }
 
 const mapStateToProps = state => {
   return {
+    info: state.info,
     foodDetails: state.foodDetails
   }
 }
 
-export default connect(mapStateToProps)(FoodDetails)
+const mapDispatchToProps = dispatch => {
+  return {
+    getFood: (id) => dispatch(getFood(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FoodDetails)
