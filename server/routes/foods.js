@@ -9,15 +9,6 @@ router.get('/', (req, res) => {
     .then(foods => res.status(200).json(foods))
 })
 
-router.post('/', (req, res) => {
-  const foods = req.body
-  db.addFood(foods)
-    .then(id => {
-      const idObj = { id: id[0] }
-      return res.status(201).json(idObj)
-  })
-})
-
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getFood(id)
@@ -27,6 +18,15 @@ router.get('/:id', (req, res) => {
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
+})
+
+router.post('/', (req, res) => {
+  const foods = req.body
+  db.addFood(foods)
+    .then(id => {
+      const idObj = { id: id[0] }
+      return res.status(201).json(idObj)
+  })
 })
 
 module.exports = router
