@@ -23,3 +23,16 @@ test('db.getFoods returns an array of 27 foods', () => {
   //     expect(actual).toBe(expected)
   //   })
 })
+
+test('db.editFood updates name, category_id', () => {
+  const food = {
+    id: 1,
+    name: 'sheep',
+    category_id: 3
+  }
+  return db.editFood(food, testDb)
+    .then(res => {
+      expect(res[0].name).toBe(food.name)
+      expect(res[0].category_id).toBe(food.category_id)
+    })
+})
