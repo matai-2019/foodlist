@@ -19,8 +19,6 @@ function editFood (food, db = connection) {
           .update({
             value: food.carbon_output
           })
-      } else {
-        return db
       }
     })
     .then(() => {
@@ -30,12 +28,9 @@ function editFood (food, db = connection) {
           .update({
             value: food.water_usage
           })
-      } else {
-        return db
       }
     })
-    .then(() => db)
-    .then(getFoods)
+    .then(() => getFood(food.id))
 }
 
 function getFood (id, db = connection) {
