@@ -28,8 +28,8 @@ export default class AddFood extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
-    addFood(this.state)
+  handleSubmit = () => {
+    return addFood(this.state)
       .then(() => this.setState({
         redirect: true
       }))
@@ -39,7 +39,7 @@ export default class AddFood extends React.Component {
   }
 
   render() {
-    return !this.state.redirect ?
+    return this.state.redirect ? <Redirect to={{ pathname: '/' }} /> :
       <Container>
         <div className="ui hidden divider"></div>
         <Header as="h1">Add a Food</Header>
@@ -63,7 +63,5 @@ export default class AddFood extends React.Component {
           <Button onClick={this.handleSubmit} type="submit">Submit</Button>
         </Form>
       </Container>
-      :
-      <Redirect to={{ pathname: '/' }} />
   }
 }
