@@ -1,28 +1,31 @@
-import {
-  GET_FOOD_DETAILS_SUCCESS,
-  GET_FOOD_DETAILS_ERROR,
-  GET_FOOD_DETAILS_PENDING } from '../../../client/actions/foodDetails'
+import { GET_FOOD_DETAILS_SUCCESS } from '../../../client/actions/foodDetails'
 
 import foodDetailsReducer from '../../../client/reducers/foodDetails'
 
-const mockDetails = [{
+const mockDetails = {
   id: 1,
   name: 'Turkey',
   category: 'meat',
   carbon_output: 500,
   water_usage: 50
-}, {
-  id: 2,
-  name: 'Chicken',
-  category: 'meat',
-  carbon_output: 300,
-  water_usage: 30
-}]
+}
+
+describe('jest', () => {
+  it('jest is working', () => {
+    expect(true).toBe(true)
+  })
+})
 
 describe('foodDetailsReducer', () => {
-  it('returns default state without any action cases', () => {
+  it('returns default state without case matches', () => {
     const action = { type: 'GET_NO_CASE_MATCH', action: { name: 'noCaseMatch' } }
     const actual = foodDetailsReducer(undefined, action)
-    expect({}).toBe(actual)
+    expect(actual).toStrictEqual({})
+  })
+
+  it('matches with GET_FOOD_DETAILS_SUCCESS', () => {
+    const action = { type: GET_FOOD_DETAILS_SUCCESS, foodDetails: mockDetails }
+    const actual = foodDetailsReducer(undefined, action)
+    expect(actual).toBe(mockDetails)
   })
 })
