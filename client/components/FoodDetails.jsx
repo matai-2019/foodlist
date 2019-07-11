@@ -10,7 +10,7 @@ const foodDetails = {
 
 function FoodDetails ({ foodId }) {
   return (
-    <Grid>
+    <Grid className='food-details'>
       <Container>
         <Card centered>
           <Card.Content>
