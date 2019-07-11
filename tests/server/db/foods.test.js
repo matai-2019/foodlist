@@ -24,16 +24,21 @@ test('db.getFoods returns an array of 27 foods', () => {
   //   })
 })
 
-test('db.editFood updates name, category_id', () => {
+test('db.editFood updates name, category, carbon_output & water_usage', () => {
   const food = {
     id: 1,
     name: 'sheep',
-    category_id: 3
+    category_id: 4,
+    carbon_output: 777,
+    water_usage: 1000
   }
+
   return db.editFood(food, testDb)
     .then(res => {
-      expect(res[0].name).toBe(food.name)
-      expect(res[0].category_id).toBe(food.category_id)
+      expect(res.name).toBe(food.name)
+      expect(res.category).toBe('Fish')
+      expect(res.carbon_output).toBe(food.carbon_output)
+      expect(res.water_usage).toBe(food.water_usage)
     })
 })
 
