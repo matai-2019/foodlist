@@ -5,7 +5,7 @@ import {
   getCategoriesPending,
   getCategoriesSuccess,
   getCategoriesError
-} from '../../client/actions/categories'
+} from '../../../client/actions/categories'
 
 describe('actions', () => {
   it('GET_CATEGORIES_SUCCESS returns Categories', () => {
