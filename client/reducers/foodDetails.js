@@ -1,4 +1,4 @@
-import { GET_FOOD_DETAILS_PENDING, GET_FOOD_DETAILS_SUCCESS, GET_FOOD_DETAILS_ERROR } from '../actions/foodDetails'
+import { GET_FOOD_DETAILS_SUCCESS } from '../actions/foodDetails'
 
 export default function foodDetailsReducer (state = {}, action) {
   switch (action.type) {
