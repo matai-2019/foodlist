@@ -1,14 +1,7 @@
 import React from 'react'
 import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
 
-const foodDetails = {
-  'name': 'Turkey',
-  'category': 'meat',
-  'carbon_output': 403,
-  'water_usage': 52
-}
-
-function FoodDetails ({ foodId }) {
+function FoodDetails ({ foodId, foodDetails }) {
   return (
     <Grid className='food-details'>
       <Container>
@@ -17,9 +10,6 @@ function FoodDetails ({ foodId }) {
             <Card.Header>
               {foodDetails.name}
             </Card.Header>
-            <Card.Meta hidden>
-              {foodId}
-            </Card.Meta>
             <Card.Description>
               <Grid columns={2} divided>
                 <Grid.Column>
