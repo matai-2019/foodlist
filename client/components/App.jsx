@@ -6,6 +6,7 @@ import FoodList from './FoodList'
 import TopMenu from './TopMenu'
 import NoMatch from './NoMatch'
 import AddFood from './AddFood'
+import FoodDetails from './FoodDetails'
 
 export default function App () {
   return (
@@ -17,6 +18,7 @@ export default function App () {
             <Route exact path='/' component={FoodList} />
             <Route component={NoMatch} />
             <Route path='/new' component={AddFood} />
+            <Route path='/details/:foodId' component={FoodDetails} />
           </Switch>
         </Container>
       </>
