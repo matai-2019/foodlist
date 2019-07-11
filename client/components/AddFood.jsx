@@ -36,6 +36,7 @@ export default class AddFood extends React.Component {
             <input onChange={this.handleInputChange} name='name' placeholder='food name' />
           </Form.Field>
           <Form.Field onChange={this.handleInputChange} label='Food group' name='food_group_id' control='select'>
+            <option value=''>choose a food group</option>
             {options.map(el => <option key={el.id} value={el.id}>{el.name}</option>)}
           </Form.Field>
           <Form.Field>
