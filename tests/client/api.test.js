@@ -1,4 +1,10 @@
-import { deleteFood, addFood, editFood } from '../../client/api/__mocks__/api'
+import { deleteFood, editFood } from '../../client/api/__mocks__/api'
+
+import { addFood } from '../../client/api/api'
+
+// jest.mock('superagent', () => ({
+//   post: () => Promise.resolve({ id: 1 })
+// }))
 
 test('deleteFood returns Okay response', () => {
   const id = 1
