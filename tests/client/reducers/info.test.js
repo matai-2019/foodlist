@@ -56,4 +56,27 @@ describe('reducer', () => {
     expect(newState.info.pending).toBe(expected.info.pending)
     expect(newState.info.error).toBe(expected.info.error)
   })
+  it('getCategoriesError', () => {
+    // arrange
+    const expected = {
+      info: {
+        pending: false,
+        error: 'ERR: derp'
+      }
+    }
+
+    const currentState = {
+      info: {
+        pending: false,
+        error: ''
+      }
+    }
+    const action = getCategoriesError('ERR: derp')
+
+    // act
+    const newState = infoReducer(currentState, action)
+
+    // assert
+    expect(newState.info.error).toBe(expected.info.error)
+  })
 })
