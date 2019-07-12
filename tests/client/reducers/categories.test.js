@@ -1,4 +1,4 @@
-import { getCategoriesSuccess } from '../../../client/actions/categories'
+import { GET_CATEGORIES_SUCCESS } from '../../../client/actions/categories'
 import categoriesReducer from '../../../client/reducers/'
 
 describe('reducer', () => {
@@ -12,7 +12,10 @@ describe('reducer', () => {
     const currentState = {
       categories: []
     }
-    const action = getCategoriesSuccess(testState)
+    const action = {
+      type: GET_CATEGORIES_SUCCESS,
+      categories: testState
+    }
 
     // act
     const newState = categoriesReducer(currentState, action)

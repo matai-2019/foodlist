@@ -1,15 +1,15 @@
 import {
-  getCategoriesSuccess,
-  getCategoriesPending,
-  getCategoriesError } from '../../../client/actions/categories'
+  GET_CATEGORIES_SUCCESS,
+  GET_CATEGORIES_PENDING,
+  GET_CATEGORIES_ERROR } from '../../../client/actions/categories'
 import {
   getFoodsSuccess,
   getFoodsPending,
   getFoodsError } from '../../../client/actions/foods'
 import infoReducer from '../../../client/reducers/'
 
-describe('reducer', () => {
-  it('getCategoriesSuccess', () => {
+describe('info reducer', () => {
+  it(GET_CATEGORIES_SUCCESS, () => {
     const testState = [
       { id: 1, name: 'Fruits' },
       { id: 2, name: 'Vegetables' },
@@ -18,12 +18,15 @@ describe('reducer', () => {
     const currentState = {
       categories: []
     }
-    const action = getCategoriesSuccess(testState)
+    const action = {
+      type: GET_CATEGORIES_SUCCESS,
+      categories: testState
+    }
     const newState = infoReducer(currentState, action)
     expect(newState.categories).toBe(testState)
   })
 
-  it('getCategoriesPending', () => {
+  it(GET_CATEGORIES_PENDING, () => {
     const expected = {
       info: {
         pending: true,
@@ -36,13 +39,13 @@ describe('reducer', () => {
         error: 'ERR: derp'
       }
     }
-    const action = getCategoriesPending()
+    const action = { type: GET_CATEGORIES_PENDING }
     const newState = infoReducer(currentState, action)
     expect(newState.info.pending).toBe(expected.info.pending)
     expect(newState.info.error).toBe(expected.info.error)
   })
 
-  it('getCategoriesError', () => {
+  it(GET_CATEGORIES_ERROR, () => {
     const expected = {
       info: {
         pending: false,
@@ -55,7 +58,10 @@ describe('reducer', () => {
         error: ''
       }
     }
-    const action = getCategoriesError('ERR: derp')
+    const action = {
+      type: GET_CATEGORIES_ERROR,
+      message: 'ERR: derp'
+    }
     const newState = infoReducer(currentState, action)
     expect(newState.info.error).toBe(expected.info.error)
   })
