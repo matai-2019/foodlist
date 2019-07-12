@@ -5,20 +5,17 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 class CategoriesListDropdown extends React.Component {
-  render () {
-    let { categories } = this.props
-    categories = categories ||
-      [ { id: 1, name: 'Fruits' },
-        { id: 2, name: 'Vegetables' },
-        { id: 3, name: 'Grains, beans, and legumes' },
-        { id: 4, name: 'Fish' },
-        { id: 5, name: 'Meat' },
-        { id: 6, name: 'Animal byproducts' } ]
+  componentDidMount () {
+    if (this.props.categories.length === 0) {
+      this.props.getCategories()
+    }
+  }
 
+  render () {
     return (
       <Dropdown text="Pick a category">
         <Dropdown.Menu>
-          {categories && categories.map(({ id, name }) =>
+          {this.props.categories.map(({ id, name }) =>
             <Dropdown.Item key={id}>
               <Link to={`/category/${name}`}>{name}</Link>
             </Dropdown.Item>
