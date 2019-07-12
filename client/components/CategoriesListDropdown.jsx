@@ -2,6 +2,7 @@ import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
 import { getCategories } from '../actions/categories'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class CategoriesListDropdown extends React.Component {
   render () {
@@ -17,8 +18,10 @@ class CategoriesListDropdown extends React.Component {
     return (
       <Dropdown text="Pick a category">
         <Dropdown.Menu>
-          {categories && categories.map(category =>
-            <Dropdown.Item key={category.id}>{category.name}</Dropdown.Item>
+          {categories && categories.map(({ id, name }) =>
+            <Dropdown.Item key={id}>
+              <Link to={`/category/${name}`}>{name}</Link>
+            </Dropdown.Item>
           )}
         </Dropdown.Menu>
       </Dropdown>
