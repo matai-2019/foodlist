@@ -4,14 +4,14 @@ import {
   GET_FOOD_DETAILS_ERROR } from '../../../client/actions/foodDetails'
 import infoReducer from '../../../client/reducers/info'
 
-describe('infoReducer with getFoods actions', () => {
-  it('returns default state without case matches', () => {
-    const intialState = { pending: true }
-    const action = { type: 'GET_NO_CASE_MATCH', action: { name: 'noCaseMatch' } }
-    const actual = infoReducer(intialState, action)
-    expect(actual).toBe(intialState)
-  })
+it('returns default state without case matches', () => {
+  const intialState = { pending: true }
+  const action = { type: 'GET_NO_CASE_MATCH', action: { name: 'noCaseMatch' } }
+  const actual = infoReducer(intialState, action)
+  expect(actual).toBe(intialState)
+})
 
+describe('infoReducer with getFoods actions', () => {
   it('returns pending | pending: true', () => {
     const intialState = { pending: true }
     const action = { type: GET_FOOD_DETAILS_PENDING, action: {} }
