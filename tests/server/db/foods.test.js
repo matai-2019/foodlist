@@ -34,4 +34,27 @@ test('db.getFood returns a specific food', () => {
     'water_usage': 8763
   }
   return expect(food).resolves.toEqual(expected)
+    .catch(err => expect(err).toBeNull())
+})
+
+test('db.deleteFood runs a successful delete', () => {
+  return db.deleteFood(1, testDb)
+    .then(wasDeleteSuccessful => {
+      expect(wasDeleteSuccessful).toBeTruthy()
+    })
+})
+
+test('db.addFood should add food to db', () => {
+  const food = {
+    name: 'Mungo',
+    category_id: 1,
+    carbon_output: 142,
+    water_usage: 69
+  }
+
+  return db.addFood(food, testDb)
+    .then(foods => {
+      const expected = foods[0]
+      expect(expected).toBe(28)
+    })
 })

@@ -10,6 +10,7 @@ export default function TopMenu () {
           <Header as="h1" inverted>The Food List</Header>
         </Menu.Item>
         <Menu.Item as={Link} to="/">Home</Menu.Item>
+        <Menu.Item as={Link} to="/new">Add Food</Menu.Item>
       </Container>
     </Menu>
   )
