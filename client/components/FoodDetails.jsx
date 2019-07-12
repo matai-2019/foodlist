@@ -23,29 +23,29 @@ class FoodDetails extends React.Component {
           <Container className='food-details'>
             <Card centered>
               <Card.Content>
-                <Card.Header>
+                <Card.Header as='h2'>
                   {foodDetails && foodDetails.name}
                 </Card.Header>
                 <Card.Description>
                   <Grid columns={2} divided>
                     <Grid.Column>
-                      <Statistic>
-                        <Icon color='grey' name='cloud' size='huge' />
+                      <Icon color='grey' name='cloud' size='huge' />
+                      <Statistic size='small'>
                         <Statistic.Value>
                           {foodDetails && foodDetails.carbon_output}
                         </Statistic.Value>
-                        <Statistic.Label>
+                        <Statistic.Label color='grey'>
                         Carbon Output
                         </Statistic.Label>
                       </Statistic>
                     </Grid.Column>
                     <Grid.Column>
-                      <Statistic>
-                        <Icon color="blue" name='tint' size='huge' />
+                      <Icon color="blue" name='tint' size='huge' />
+                      <Statistic size='small'>
                         <Statistic.Value>
                           {foodDetails && foodDetails.water_usage}
                         </Statistic.Value>
-                        <Statistic.Label>
+                        <Statistic.Label color='grey'>
                         Water Usage
                         </Statistic.Label>
                       </Statistic>
