@@ -1,8 +1,10 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { Form } from 'semantic-ui-react'
 
 import EditFood from '../../../client/components/EditFood'
+
+jest.mock('../../../client/api/api')
 
 test('<EditFood /> contains a form tag', () => {
   const expected = true
@@ -25,4 +27,16 @@ test('handleChange changes state of the component', () => {
   const actual = app.state.carbon_output
 
   expect(actual).toBe(expected)
+})
+
+test('handleSubmit changes state.redirect to true', () => {
+  const wrapper = shallow(<EditFood />)
+  const expected = true
+
+  const app = wrapper.instance()
+  return app.handleSubmit().then(() => {
+    const actual = app.state.redirect
+
+    expect(actual).toBe(expected)
+  })
 })
