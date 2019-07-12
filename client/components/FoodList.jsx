@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { getFoods } from '../actions/foods'
 import Food from './Food'
+import CatergoriesListDropdown from './CatergoriesListDropdown'
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -20,8 +21,7 @@ class FoodList extends React.Component {
       <>
          {!this.props.match.path.includes('category') &&
          (<ul>
-           <li><Link to="category/vegetables">Vegetables</Link></li>
-           <li><Link to="category/meat">Meat</Link></li>
+           <CatergoriesListDropdown>
          </ul>)}
         {error && <div>{error}</div>}
         {foods.map(food =>
