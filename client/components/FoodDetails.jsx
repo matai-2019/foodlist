@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
 import { getFood } from '../actions/foodDetails'
+import { Link } from 'react-router-dom'
 
 class FoodDetails extends React.Component {
   componentDidMount () {
@@ -54,6 +55,7 @@ class FoodDetails extends React.Component {
             </Card>
           </Container>
         </div>
+        <button><Link to={`/edit/${this.props.match.params.foodId}`}>Edit Food</Link></button>
       </>)
   }
 }
