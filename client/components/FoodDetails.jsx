@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
+import { Link } from 'react-router-dom'
 
 class FoodDetails extends React.Component {
 
@@ -81,6 +82,7 @@ class FoodDetails extends React.Component {
             </Card>
           </Container>
         </div>
+        <Button><Link to={`/edit/${this.props.match.params.foodId}`}>Edit Food</Link></Button>
       </>)
   }
 }

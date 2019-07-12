@@ -11,3 +11,8 @@ export function deleteFood (id) {
   return request
     .delete(`${foodsUrl}/${id}`)
 }
+
+export function editFood (food) {
+  return request.put(`/api/v1/foods/${food.id}`)
+    .send(food)
+}
