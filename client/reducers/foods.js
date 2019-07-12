@@ -12,8 +12,8 @@ export default function foodReducer (state = [], action) {
 
 export default function categoryReducer (state = {}, action) {
   switch (action.type) {
-    case GET_CATEGORIES_SUCCESS:
-      return action.categories
+    case GET_CATEGORY_SUCCESS:
+      return action.category
     default:
       return state
   }
