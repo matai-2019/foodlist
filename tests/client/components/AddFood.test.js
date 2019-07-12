@@ -6,6 +6,10 @@ import AddFood from '../../../client/components/AddFood'
 
 jest.mock('../../../client/api/api')
 
+test('<AddFood /> test setup is working correctly', () => {
+  expect(true).toBeTruthy()
+})
+
 test('<AddFood /> contains a form tag', () => {
   const expected = true
   const wrapper = mount(<AddFood />)
@@ -13,7 +17,7 @@ test('<AddFood /> contains a form tag', () => {
   expect(actual).toBe(expected)
 })
 
-test('handleInputChange changes state of the component', () => {
+test('<AddFood /> handleInputChange changes state of the component', () => {
   const wrapper = mount(<AddFood />)
   const expected = 'carrot'
 

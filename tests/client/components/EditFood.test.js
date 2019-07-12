@@ -13,7 +13,7 @@ test('<EditFood /> contains a form tag', () => {
   expect(actual).toBe(expected)
 })
 
-test('handleChange changes state of the component', () => {
+test('<EditFood /> handleChange changes state of the component', () => {
   const wrapper = mount(<EditFood />)
   const expected = 101
 
