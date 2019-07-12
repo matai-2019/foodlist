@@ -5,7 +5,7 @@ import {
 import categoriesReducer from '../../../client/reducers/'
 
 describe('reducer', () => {
-  it('getCatergoriesSuccess', () => {
+  it('getCategoriesSuccess', () => {
     // arrange
     const testState = [
       { id: 1, name: 'Fruits' },
