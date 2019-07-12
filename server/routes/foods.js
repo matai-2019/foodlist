@@ -20,6 +20,15 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  const foods = req.body
+  db.addFood(foods)
+    .then(id => {
+      const idObj = { id: id[0] }
+      return res.status(201).json(idObj)
+  })
+})
+
 router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.deleteFood(id)
