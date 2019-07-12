@@ -35,7 +35,7 @@ test('handleSubmit changes state.redirect to true', () => {
   const expected = true
 
   const app = wrapper.instance()
-  app.handleSubmit().then(() => {
+  return app.handleSubmit().then(() => {
     const actual = app.state.redirect
 
     expect(actual).toBe(expected)
