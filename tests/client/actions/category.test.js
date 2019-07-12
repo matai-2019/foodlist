@@ -8,19 +8,19 @@ import {
 } from '../../../client/actions/category'
 
 describe('category actions', () => {
-  it('GET_CATEGORY_PENDING works', () => {
+  it('getCategoryPending() works', () => {
     const action = getCategoryPending()
     expect(action.type).toBe(GET_CATEGORY_PENDING)
   })
 
-  it('GET_CATEGORY_SUCCESS returns Category', () => {
+  it('getCategorySuccess() returns Category', () => {
     const testCategory = 'Fruits'
     const action = getCategorySuccess(testCategory)
     expect(action.type).toBe(GET_CATEGORY_SUCCESS)
     expect(action.category).toMatch('Fruits')
   })
 
-  it('GET_CATEGORY_ERROR returns an error message', () => {
+  it('getCategoryError() returns an error message', () => {
     const errorMessage = 'Cannot get category'
     const action = getCategoryError(errorMessage)
     expect(action.type).toBe(GET_CATEGORY_ERROR)
