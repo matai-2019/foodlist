@@ -27,7 +27,7 @@ describe('FoodDetails', () => {
     expect(wrapper.text()).toMatch(/LOADING.../)
   })
 
-  it.skip('<FoodDetails> is an instance of FoodDetails', () => {
+  it('<FoodDetails> is an instance of FoodDetails', () => {
     const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
@@ -40,7 +40,7 @@ describe('FoodDetails', () => {
     expect(root.length).toBe(1)
   })
 
-  it.skip('has page header that includes food name', () => {
+  it('has page header that includes food name', () => {
     const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
@@ -53,7 +53,7 @@ describe('FoodDetails', () => {
     expect(header.text()).toMatch(/Turkey/)
   })
 
-  it.skip('has props of "foodDetails" passed in', () => {
+  it('has props of "foodDetails" passed in', () => {
     const foodDetails = {
       'name': 'Turkey',
       'category': 'meat',
