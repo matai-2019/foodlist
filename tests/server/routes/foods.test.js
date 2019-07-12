@@ -1,5 +1,4 @@
 import request from 'supertest'
-import { Item } from 'semantic-ui-react'
 
 jest.mock('../../../server/db/foods', () => ({
   getFoods: () => Promise.resolve([
