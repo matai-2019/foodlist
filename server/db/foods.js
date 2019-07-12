@@ -30,7 +30,7 @@ function editFood (food, db = connection) {
           })
       }
     })
-    .then(() => getFood(food.id))
+    .then(() => getFood(food.id, db))
 }
 
 function getFood (id, db = connection) {
