@@ -7,7 +7,7 @@ class CategoriesListDropdown extends React.Component {
   render () {
     const { categories } = this.props
     return (
-      <Dropdown icon="food" text="Pick a category">
+      <Dropdown text="Pick a category">
         <Dropdown.Menu>
           <Dropdown.Item>Fruits</Dropdown.Item>
           <Dropdown.Item>Vegetables</Dropdown.Item>
