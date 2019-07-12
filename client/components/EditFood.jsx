@@ -46,7 +46,7 @@ export default class EditFood extends React.Component {
             Carbon Output: <input name="carbon_output" value={this.state.carbon_output} onChange={this.handleChange} />
             Water Usage:  <input name="water_usage" value={this.state.water_usage} onChange={this.handleChange} />
           </form>
-          <button type="submit">Submit</button>
+          <button onClick={this.handleSubmit} type="submit">Submit</button>
         </>
   }
 }
