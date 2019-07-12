@@ -20,9 +20,7 @@ class FoodList extends React.Component {
       return (
       <>
          {!this.props.match.path.includes('category') &&
-         (<ul>
-           <CategoriesListDropdown />
-         </ul>)}
+         <CategoriesListDropdown />}
         {error && <div>{error}</div>}
         {foods.map(food =>
           <Food key={food.id} food={food} />)}
