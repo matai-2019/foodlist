@@ -7,6 +7,7 @@ import TopMenu from './TopMenu'
 import NoMatch from './NoMatch'
 import AddFood from './AddFood'
 import FoodDetails from './FoodDetails'
+import EditFood from './EditFood'
 
 export default function App () {
   return (
@@ -19,6 +20,7 @@ export default function App () {
             <Route path="/category/:name" component={FoodList} />
             <Route path="/new" component={AddFood} />
             <Route path="/details/:foodId" component={FoodDetails} />
+            <Route path="/edit/:foodId" component={EditFood} />
             <Route component={NoMatch} />
           </Switch>
         </Container>

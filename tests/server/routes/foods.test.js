@@ -35,7 +35,17 @@ jest.mock('../../../server/db/foods', () => ({
       carbon_output: 403,
       water_usage: 52
     }
-  ])
+  ]),
+  editFood: (food) => Promise.resolve(
+    {
+      id: food.id,
+      name: food.name,
+      category: 'Fish',
+      carbon_output: food.carbon_output,
+      water_usage: food.water_usage
+    }
+  ),
+  addFood: () => Promise.resolve([4])
 }))
 
 // This line must go after mocking out the database
@@ -59,6 +69,39 @@ test('GET /food returns specific food', () => {
       expect(actual).toMatch('Lamb')
     })
     .catch(err => expect(err).toBeNull())
+})
+
+test('PUT / add new food', () => {
+  const newFood = 'hi-chew'
+  const newCarbon = 900
+  const newWater = 0
+  const test = { id: 1, name: newFood, carbon_output: newCarbon, water_usage: newWater }
+
+  return request(server)
+    .put('/api/v1/foods/1')
+    .send(test)
+    .expect(200)
+    .then(res => {
+      expect(res.body.name).toBe(newFood)
+      expect(res.body.carbon_output).toBe(newCarbon)
+      expect(res.body.water_usage).toBe(newWater)
+    })
+})
+
+test('POST adds a new food', () => {
+  const newFood = {
+    name: 'Mungo',
+    category_id: 1,
+    carbon_output: 142,
+    water_usage: 69
+  }
+  return request(server)
+    .post('/api/v1/foods')
+    .expect(201)
+    .send(newFood)
+    .then(res => {
+      expect(res.body.id).toBe(4)
+    })
 })
 
 test('DELETE /:id deletes a specific food', () => {
