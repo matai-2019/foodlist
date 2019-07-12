@@ -8,11 +8,11 @@ import Food from './Food'
 
 class FoodList extends React.Component {
   componentDidMount () {
-    const { match, dispatch, getFoods } = this.props
+    const { match, dispatch } = this.props
     const category = match.category
     category
       ? dispatch(getCategory(category))
-      : getFoods()
+      : dispatch(getFoods())
   }
 
   render () {
@@ -44,10 +44,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getFoods: () => dispatch(getFoods())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FoodList)
+export default connect(mapStateToProps)(FoodList)
