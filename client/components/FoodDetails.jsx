@@ -1,7 +1,6 @@
 import React from 'react'
 import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
-
-import EditFood from './EditFood'
+import { Link } from 'react-router-dom'
 
 function FoodDetails ({ foodId, foodDetails }) {
   return (
@@ -46,7 +45,7 @@ function FoodDetails ({ foodId, foodDetails }) {
         </Card>
       </Container>
     </Grid>
-    <EditFood />
+    <button><Link to={`/details/${foodId}`}>Edit Food</Link></button>
     </>
   )
 }
