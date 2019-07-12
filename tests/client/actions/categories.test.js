@@ -7,7 +7,7 @@ import {
   getCategoriesError
 } from '../../../client/actions/categories'
 
-describe('actions', () => {
+describe('categories actions', () => {
   it('GET_CATEGORIES_SUCCESS returns Categories', () => {
     const testCategories = [{}, {}, {}]
     const action = getCategoriesSuccess(testCategories)
