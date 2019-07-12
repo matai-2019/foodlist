@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store'
 
 import FoodList from '../../../client/components/FoodList'
 
-test.skip('<FoodList /> contains <Food /> component', () => {
+test('<FoodList /> contains <Food /> component', () => {
   const mockStore = configureStore()({ foods: [{ name: 'carrot', id: 2 }], info: { pending: false, error: null } })
   const wrapper = render(
     <Provider store={mockStore}>
