@@ -1,5 +1,5 @@
 export function addFood () {
-  return Promise.resolve({ body: 'Post ok!' })
+  return Promise.resolve({ id: 1 })
 }
 
 export function editFood () {
