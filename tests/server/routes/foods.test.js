@@ -6,8 +6,7 @@ jest.mock('../../../server/db/foods', () => ({
     { id: 1, name: 'Lamb' },
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
-  ]),
-  addFood: () => Promise.resolve([4]), 
+  ]), 
   getFood: (id) => Promise.resolve([
     { id: id, name: 'Lamb' },
     { id: 2, name: 'Beef' },
@@ -35,7 +34,8 @@ jest.mock('../../../server/db/foods', () => ({
       carbon_output: 403,
       water_usage: 52
     }
-  ])
+  ]),
+  addFood: () => Promise.resolve([4])
 }))
 
 
@@ -49,6 +49,17 @@ test('GET /foods returns all of the foods', () => {
     .then(res => {
       expect(res.body).toHaveLength(3)
     })
+})
+
+test('GET /food returns specific food', () => {
+  return request(server)
+    .get('/api/v1/foods/1')
+    .expect(200)
+    .then(res => {
+      const actual = res.text
+      expect(actual).toMatch('Lamb')
+    })
+    .catch(err => expect(err).toBeNull())
 })
 
 test('POST adds a new food', () => {
@@ -65,15 +76,4 @@ test('POST adds a new food', () => {
     .then(res => {
       expect(res.body.id).toBe(4)
     })
-})
-
-test('GET /food returns specific food', () => {
-  return request(server)
-    .get('/api/v1/foods/1')
-    .expect(200)
-    .then(res => {
-      const actual = res.text
-      expect(actual).toMatch('Lamb')
-    })
-    .catch(err => expect(err).toBeNull())
 })
