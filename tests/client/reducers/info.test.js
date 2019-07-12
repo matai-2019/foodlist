@@ -5,9 +5,9 @@ import {
 } from '../../../client/actions/categories'
 
 import {
-  getFoodSuccess,
-  getFoodPending,
-  getFoodError
+  getFoodsSuccess,
+  getFoodsPending,
+  getFoodsError
 } from '../../../client/actions/foods'
 
 import infoReducer from '../../../client/reducers/'
@@ -77,6 +77,48 @@ describe('reducer', () => {
     const newState = infoReducer(currentState, action)
 
     // assert
+    expect(newState.info.error).toBe(expected.info.error)
+  })
+  it('getFoodsSuccess', () => {
+    // arrange
+    const expected = [
+      { id: 1, name: 'Lamb', category_id: 5 },
+      { id: 2, name: 'Beef', category_id: 5 },
+      { id: 3, name: 'Turkey', category_id: 5 }
+    ]
+    const currentState = {
+      foods: []
+    }
+    const action = getFoodsSuccess(expected)
+
+    // act
+    const newState = infoReducer(currentState, action)
+
+    // assert
+    expect(newState.foods).toBe(expected)
+  })
+  it('getFoodsPending', () => {
+    // arrange
+    const expected = {
+      info: {
+        pending: true,
+        error: 'ERR: derp'
+      }
+    }
+
+    const currentState = {
+      info: {
+        pending: false,
+        error: 'ERR: derp'
+      }
+    }
+    const action = getFoodsPending()
+
+    // act
+    const newState = infoReducer(currentState, action)
+
+    // assert
+    expect(newState.info.pending).toBe(expected.info.pending)
     expect(newState.info.error).toBe(expected.info.error)
   })
 })
