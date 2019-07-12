@@ -29,4 +29,14 @@ router.post('/', (req, res) => {
   })
 })
 
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.deleteFood(id)
+    .then(successful => {
+      successful
+        ? res.status(200).json({ Okay: true })
+        : res.status(500).json({ Okay: false })
+    })
+})
+
 module.exports = router

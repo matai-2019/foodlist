@@ -6,12 +6,14 @@ jest.mock('../../../server/db/foods', () => ({
     { id: 1, name: 'Lamb' },
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
-  ]), 
+  ]),
   getFood: (id) => Promise.resolve([
     { id: id, name: 'Lamb' },
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
   ]),
+  deleteFood: (id) => Promise.resolve(1),
+
   getFoodsByCategory: (category) => Promise.resolve([
     {
       id: 1,
@@ -76,4 +78,13 @@ test('POST adds a new food', () => {
     .then(res => {
       expect(res.body.id).toBe(4)
     })
+})
+
+test('DELETE /:id deletes a specific food', () => {
+  return request(server)
+    .delete('/api/v1/foods/1')
+    .then(res => {
+      expect(res.status).toBe(200)
+    })
+    .catch(err => expect(err).toBeNull())
 })

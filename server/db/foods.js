@@ -33,10 +33,17 @@ function addFood (food, db = connection) {
         .insert({ food_id: foodID, value: food.water_usage })
     })
     .catch(err => err)
+  }
+
+function deleteFood (id, db = connection) {
+  return db('foods')
+    .where('id', id)
+    .del()
 }
 
 module.exports = {
   getFoods,
   getFood,
-  addFood
+  addFood,
+  deleteFood
 }

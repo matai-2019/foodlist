@@ -1,8 +1,11 @@
 import React from 'react'
 import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
 
+import EditFood from './EditFood'
+
 function FoodDetails ({ foodId, foodDetails }) {
   return (
+    <>
     <Grid className="food-details">
       <Container>
         <Card centered>
@@ -43,6 +46,8 @@ function FoodDetails ({ foodId, foodDetails }) {
         </Card>
       </Container>
     </Grid>
+    <EditFood />
+    </>
   )
 }
 

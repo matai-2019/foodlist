@@ -34,6 +34,14 @@ test('db.getFood returns a specific food', () => {
     'water_usage': 8763
   }
   return expect(food).resolves.toEqual(expected)
+    .catch(err => expect(err).toBeNull())
+})
+
+test('db.deleteFood runs a successful delete', () => {
+  return db.deleteFood(1, testDb)
+    .then(wasDeleteSuccessful => {
+      expect(wasDeleteSuccessful).toBeTruthy()
+    })
 })
 
 test('db.addFood should add food to db', () => {
