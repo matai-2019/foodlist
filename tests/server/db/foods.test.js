@@ -24,24 +24,6 @@ test('db.getFoods returns an array of 27 foods', () => {
   //   })
 })
 
-test('db.editFood updates name, category, carbon_output & water_usage', () => {
-  const food = {
-    id: 1,
-    name: 'sheep',
-    category_id: 4,
-    carbon_output: 777,
-    water_usage: 1000
-  }
-
-  return db.editFood(food, testDb)
-    .then(res => {
-      expect(res.name).toBe(food.name)
-      expect(res.category).toBe('Fish')
-      expect(res.carbon_output).toBe(food.carbon_output)
-      expect(res.water_usage).toBe(food.water_usage)
-    })
-})
-
 test('db.getFood returns a specific food', () => {
   const food = db.getFood(1, testDb)
   const expected = {
@@ -59,6 +41,24 @@ test('db.deleteFood runs a successful delete', () => {
   return db.deleteFood(1, testDb)
     .then(wasDeleteSuccessful => {
       expect(wasDeleteSuccessful).toBeTruthy()
+    })
+})
+
+test('db.editFood updates name, category, carbon_output & water_usage', () => {
+  const food = {
+    id: 1,
+    name: 'sheep',
+    category_id: 4,
+    carbon_output: 777,
+    water_usage: 1000
+  }
+
+  return db.editFood(food, testDb)
+    .then(res => {
+      expect(res.name).toBe(food.name)
+      expect(res.category).toBe('Fish')
+      expect(res.carbon_output).toBe(food.carbon_output)
+      expect(res.water_usage).toBe(food.water_usage)
     })
 })
 
