@@ -4,6 +4,22 @@ function getFoods (db = connection) {
   return db('foods')
 }
 
+function getFood (id, db = connection) {
+  return db('foods')
+    .join('water_usages', 'foods.id', 'water_usages.food_id')
+    .join('carbon_outputs', 'foods.id', 'carbon_outputs.food_id')
+    .join('categories', 'foods.category_id', 'categories.id')
+    .where('foods.id', id)
+    .first()
+    .select(
+      'foods.id',
+      'foods.name',
+      'categories.name as category',
+      'carbon_outputs.value as carbon_output',
+      'water_usages.value as water_usage'
+    )
+}
+
 function editFood (food, db = connection) {
   return db('foods')
     .where('id', food.id)
@@ -33,22 +49,6 @@ function editFood (food, db = connection) {
     .then(() => getFood(food.id, db))
 }
 
-function getFood (id, db = connection) {
-  return db('foods')
-    .join('water_usages', 'foods.id', 'water_usages.food_id')
-    .join('carbon_outputs', 'foods.id', 'carbon_outputs.food_id')
-    .join('categories', 'foods.category_id', 'categories.id')
-    .where('foods.id', id)
-    .first()
-    .select(
-      'foods.id',
-      'foods.name',
-      'categories.name as category',
-      'carbon_outputs.value as carbon_output',
-      'water_usages.value as water_usage'
-    )
-}
-
 function addFood (food, db = connection) {
   let foodID
   return db('foods')
@@ -73,8 +73,8 @@ function deleteFood (id, db = connection) {
 
 module.exports = {
   getFoods,
-  editFood,
   getFood,
+  editFood,
   addFood,
   deleteFood
 }
