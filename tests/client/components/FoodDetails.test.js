@@ -14,6 +14,9 @@ describe('React Tests', () => {
     const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: true, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
+        <Router>
+          <Route component={FoodDetails} />
+        </Router>
         <FoodDetails />
       </Provider>
     )
@@ -24,7 +27,9 @@ describe('React Tests', () => {
     const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
-        <FoodDetails/>
+        <Router>
+          <Route component={FoodDetails} />
+        </Router>
       </Provider>
     )
     const root = wrapper.find('.food-details')
@@ -35,7 +40,9 @@ describe('React Tests', () => {
     const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
-        <FoodDetails />
+        <Router>
+          <Route component={FoodDetails} />
+        </Router>
       </Provider>
     )
     const header = wrapper.find('.header')
@@ -52,7 +59,9 @@ describe('React Tests', () => {
     const mockStore = configureStore()({ foodDetails, info: { pending: false, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
-        <FoodDetails />
+        <Router>
+          <Route component={FoodDetails} />
+        </Router>
       </Provider>
     )
     const html = wrapper.text()
@@ -68,7 +77,9 @@ describe('Redux Test', () => {
     const mockStore = configureStore()({ foodDetails: {}, info: {} })
     const wrapper = shallow(
       <Provider store={mockStore}>
-        <FoodDetails />
+        <Router>
+          <Route component={FoodDetails} />
+        </Router>
       </Provider>
     )
     const dispatch = wrapper.props().value.store.dispatch

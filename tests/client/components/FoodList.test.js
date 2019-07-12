@@ -11,7 +11,7 @@ test('<FoodList /> contains <Food />', () => {
   const wrapper = render(
     <Provider store={mockStore}>
       <Router>
-        <FoodList />
+        <Route component={FoodList} />
       </Router>
     </Provider>
   )
