@@ -3,17 +3,15 @@ import {
   getCategoriesPending,
   getCategoriesError
 } from '../../../client/actions/categories'
-
 import {
   getFoodsSuccess,
   getFoodsPending,
   getFoodsError
 } from '../../../client/actions/foods'
-
 import infoReducer from '../../../client/reducers/'
 
 describe('reducer', () => {
-  it('getCatergoriesSuccess', () => {
+  it('getCategoriesSuccess', () => {
     const testState = [
       { id: 1, name: 'Fruits' },
       { id: 2, name: 'Vegetables' },
@@ -27,7 +25,7 @@ describe('reducer', () => {
     expect(newState.categories).toBe(testState)
   })
 
-  it('getCatergoriesPending', () => {
+  it('getCategoriesPending', () => {
     const expected = {
       info: {
         pending: true,
