@@ -16,9 +16,9 @@ class CategoriesListDropdown extends React.Component {
           <Dropdown.Item>Fish</Dropdown.Item>
           <Dropdown.Item>Meat</Dropdown.Item>
           <Dropdown.Item>Animal bybroducts</Dropdown.Item>
-          {categories && categories.map(category => {
-            return <Dropdown.Item key={category.id}>{category.name}</Dropdown.Item>
-          })}
+          {categories && categories.map(category =>
+            <Dropdown.Item key={category.id}>{category.name}</Dropdown.Item>
+          )}
         </Dropdown.Menu>
       </Dropdown>
     )
