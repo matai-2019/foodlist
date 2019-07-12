@@ -38,7 +38,7 @@ const server = require('../../../server/server')
 
 test('GET /foods by category route capitalises category', () => {
   return request(server)
-    .get(`/api/v1/category/meat`)
+    .get(`/api/v1/categories/meat`)
     .expect(200)
     .then(res => {
       expect(res.body[0].category).toBe('Meat')
@@ -48,7 +48,7 @@ test('GET /foods by category route capitalises category', () => {
 
 test('GET /foods by category ', () => {
   return request(server)
-    .get(`/api/v1/category/meat`)
+    .get(`/api/v1/categories/meat`)
     .expect(200)
     .then(res => {
       expect(res.body).toHaveLength(3)
@@ -58,7 +58,7 @@ test('GET /foods by category ', () => {
 
 test('GET /categories returns all of the categories', () => {
   return request(server)
-    .get(`/api/v1/category`)
+    .get(`/api/v1/categories`)
     .expect(200)
     .then(res => {
       expect(res.body).toHaveLength(6)

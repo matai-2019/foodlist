@@ -1,129 +1,42 @@
 import {
-  getCategoriesSuccess,
-  getCategoriesPending,
-  getCategoriesError
-} from '../../../client/actions/categories'
+  GET_FOOD_DETAILS_PENDING,
+  GET_FOOD_DETAILS_SUCCESS,
+  GET_FOOD_DETAILS_ERROR } from '../../../client/actions/foodDetails'
 
-import {
-  getFoodsSuccess,
-  getFoodsPending,
-  getFoodsError
-} from '../../../client/actions/foods'
+import infoReducer from '../../../client/reducers/info'
 
-import infoReducer from '../../../client/reducers/'
+describe('jest', () => {
+  it('jest is working', () => {
+    expect(true).toBe(true)
+  })
+})
 
-describe('reducer', () => {
-  it('getCatergoriesSuccess', () => {
-    const testState = [
-      { id: 1, name: 'Fruits' },
-      { id: 2, name: 'Vegetables' },
-      { id: 3, name: 'Grains, beans, and legumes' }
-    ]
-    const currentState = {
-      categories: []
-    }
-    const action = getCategoriesSuccess(testState)
-
-    const newState = infoReducer(currentState, action)
-
-    expect(newState.categories).toBe(testState)
+describe('infoReducer', () => {
+  it('returns default state without case matches', () => {
+    const intialState = { pending: true }
+    const action = { type: 'GET_NO_CASE_MATCH', action: { name: 'noCaseMatch' } }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toBe(intialState)
   })
 
-  it('getCatergoriesPending', () => {
-    const expected = {
-      info: {
-        pending: true,
-        error: 'ERR: derp'
-      }
-    }
-
-    const currentState = {
-      info: {
-        pending: false,
-        error: 'ERR: derp'
-      }
-    }
-    const action = getCategoriesPending()
-
-    const newState = infoReducer(currentState, action)
-
-    expect(newState.info.pending).toBe(expected.info.pending)
-    expect(newState.info.error).toBe(expected.info.error)
+  it('returns pending | pending: true', () => {
+    const intialState = { pending: true }
+    const action = { type: GET_FOOD_DETAILS_PENDING, action: {} }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
   })
-  it('getCategoriesError', () => {
-    const expected = {
-      info: {
-        pending: false,
-        error: 'ERR: derp'
-      }
-    }
 
-    const currentState = {
-      info: {
-        pending: false,
-        error: ''
-      }
-    }
-    const action = getCategoriesError('ERR: derp')
-
-    const newState = infoReducer(currentState, action)
-
-    expect(newState.info.error).toBe(expected.info.error)
+  it('returns success | pending: false, error: null', () => {
+    const intialState = { pending: false, error: null }
+    const action = { type: GET_FOOD_DETAILS_SUCCESS, action: {} }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
   })
-  it('getFoodsSuccess', () => {
-    const expected = [
-      { id: 1, name: 'Lamb', category_id: 5 },
-      { id: 2, name: 'Beef', category_id: 5 },
-      { id: 3, name: 'Turkey', category_id: 5 }
-    ]
-    const currentState = {
-      foods: []
-    }
-    const action = getFoodsSuccess(expected)
 
-    const newState = infoReducer(currentState, action)
-
-    expect(newState.foods).toBe(expected)
-  })
-  it('getFoodsPending', () => {
-    const expected = {
-      info: {
-        pending: true,
-        error: 'ERR: derp'
-      }
-    }
-
-    const currentState = {
-      info: {
-        pending: false,
-        error: 'ERR: derp'
-      }
-    }
-    const action = getFoodsPending()
-
-    const newState = infoReducer(currentState, action)
-
-    expect(newState.info.pending).toBe(expected.info.pending)
-    expect(newState.info.error).toBe(expected.info.error)
-  })
-  it('getFoodsError', () => {
-    const expected = {
-      info: {
-        pending: true,
-        error: 'ERR: derp'
-      }
-    }
-
-    const currentState = {
-      info: {
-        pending: false,
-        error: ''
-      }
-    }
-    const action = getFoodsError('ERR: derp')
-
-    const newState = infoReducer(currentState, action)
-
-    expect(newState.info.error).toBe(expected.info.error)
+  it('returns error | pending: false, error: message', () => {
+    const intialState = { pending: false, error: 'ERROR' }
+    const action = { type: GET_FOOD_DETAILS_ERROR, message: 'ERROR' }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
   })
 })

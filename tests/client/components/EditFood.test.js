@@ -2,40 +2,35 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import { Form } from 'semantic-ui-react'
 
-import AddFood from '../../../client/components/AddFood'
+import EditFood from '../../../client/components/EditFood'
 
 jest.mock('../../../client/api/api')
 
-test('<AddFood /> test setup is working correctly', () => {
-  expect(true).toBeTruthy()
-})
-
-test('<AddFood /> contains a form tag', () => {
+test('<EditFood /> contains a form tag', () => {
   const expected = true
-  const wrapper = mount(<AddFood />)
+  const wrapper = mount(<EditFood />)
   const actual = wrapper.containsMatchingElement(Form)
   expect(actual).toBe(expected)
 })
 
-test('<AddFood /> handleInputChange changes state of the component', () => {
-  const wrapper = mount(<AddFood />)
-  const expected = 'carrot'
+test('<EditFood /> handleChange changes state of the component', () => {
+  const wrapper = mount(<EditFood />)
+  const expected = 101
 
   const app = wrapper.instance()
-  app.handleInputChange({
+  app.handleChange({
     target: {
-      name: 'name',
-      value: 'carrot'
+      carbon_output: 101
     }
   })
 
-  const actual = app.state.name
+  const actual = app.state.carbon_output
 
   expect(actual).toBe(expected)
 })
 
 test('handleSubmit changes state.redirect to true', () => {
-  const wrapper = shallow(<AddFood />)
+  const wrapper = shallow(<EditFood />)
   const expected = true
 
   const app = wrapper.instance()
