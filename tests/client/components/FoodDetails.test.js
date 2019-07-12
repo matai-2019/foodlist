@@ -2,7 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { render, shallow } from 'enzyme'
-// import configureStore from 'redux-mock-store'
+import configureStore from 'redux-mock-store'
 import FoodDetails from '../../../client/components/FoodDetails'
 
 jest.mock('../../../client/api/api')
@@ -75,7 +75,7 @@ describe('FoodDetails', () => {
     expect(html).toMatch(/52/)
   })
 
-  it.skip('should have a dispatch function in props', () => {
+  it('should have a dispatch function in props', () => {
     const mockStore = configureStore()({ foodDetails: {}, info: {} })
     const wrapper = shallow(
       <Provider store={mockStore}>
@@ -89,16 +89,16 @@ describe('FoodDetails', () => {
   })
 })
 
-test('<FoodDetails /> handleDelete deletes food item', () => {
-  expect(this.handleDelete()).toBe(true)
-  // const wrapper = mount(<foodDetails />)
-  // // const expected = 'carrot'
+test('<FoodDetails /> handleDelete deletes food item', () => { expect(this.handleDelete()).toBe(true) })
 
-  // const app = wrapper.instance()
-  // app.handleDelete({
-  // })
+test('<FoodDetails /> handleDelete changes state.redirect to true', () => {
+  const wrapper = shallow(<FoodDetails />)
+  const expected = true
 
-  // const actual = app.state.name
+  const app = wrapper.instance()
+  return app.handleDelete().then(() => {
+    const actual = app.state.redirect
 
-  // expect(actual).toBe(expected)
+    expect(actual).toBe(expected)
+  })
 })
