@@ -1,4 +1,5 @@
 import request from 'supertest'
+import { Item } from 'semantic-ui-react'
 
 jest.mock('../../../server/db/foods', () => ({
   getFoods: () => Promise.resolve([
@@ -11,6 +12,8 @@ jest.mock('../../../server/db/foods', () => ({
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
   ]),
+  deleteFood: (id) => Promise.resolve(1),
+
   getFoodsByCategory: (category) => Promise.resolve([
     {
       id: 1,
@@ -42,7 +45,8 @@ jest.mock('../../../server/db/foods', () => ({
       carbon_output: food.carbon_output,
       water_usage: food.water_usage
     }
-  )
+  ),
+  addFood: () => Promise.resolve([4])
 }))
 
 // This line must go after mocking out the database
@@ -83,4 +87,29 @@ test('PUT / add new food', () => {
       expect(res.body.carbon_output).toBe(newCarbon)
       expect(res.body.water_usage).toBe(newWater)
     })
+})
+
+test('POST adds a new food', () => {
+  const newFood = {
+    name: 'Mungo',
+    category_id: 1,
+    carbon_output: 142,
+    water_usage: 69
+  }
+  return request(server)
+    .post('/api/v1/foods')
+    .expect(201)
+    .send(newFood)
+    .then(res => {
+      expect(res.body.id).toBe(4)
+    })
+})
+
+test('DELETE /:id deletes a specific food', () => {
+  return request(server)
+    .delete('/api/v1/foods/1')
+    .then(res => {
+      expect(res.status).toBe(200)
+    })
+    .catch(err => expect(err).toBeNull())
 })

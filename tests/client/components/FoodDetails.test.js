@@ -1,41 +1,76 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import { render, shallow } from 'enzyme'
+import configureStore from 'redux-mock-store'
 import FoodDetails from '../../../client/components/FoodDetails'
-import { render, shallow, mount } from 'enzyme'
 
-FoodDetails.prototype.componentDidMount = () => {}
-
-describe('Tests for FoodDetails Componnent', () => {
+describe('React Tests', () => {
   it('Test Runner is working', () => {
     expect(true).toBeTruthy()
   })
 
-  it('<FoodDetails> root has className of .food-details', () => {
-    const expected = { 'name': 'Turkey' }
-    const wrapper = shallow(<FoodDetails foodDetails={expected}/>)
+  it('Loading message if pending is true', () => {
+    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: true, error: null } })
+    const wrapper = render(
+      <Provider store={mockStore}>
+        <FoodDetails />
+      </Provider>
+    )
+    expect(wrapper.text()).toMatch(/LOADING.../)
+  })
+
+  it('<FoodDetails> is an instance of FoodDetails', () => {
+    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
+    const wrapper = render(
+      <Provider store={mockStore}>
+        <FoodDetails/>
+      </Provider>
+    )
     const root = wrapper.find('.food-details')
     expect(root.length).toBe(1)
   })
 
   it('page header includes food name', () => {
-    const foodDetails = { 'name': 'Turkey' }
-    const wrapper = render(<FoodDetails foodDetails={foodDetails}/>)
+    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
+    const wrapper = render(
+      <Provider store={mockStore}>
+        <FoodDetails />
+      </Provider>
+    )
     const header = wrapper.find('.header')
     expect(header.text()).toMatch(/Turkey/)
   })
 
   it('page has props foodDetails passed in', () => {
-    const expected = {
+    const foodDetails = {
       'name': 'Turkey',
       'category': 'meat',
       'carbon_output': 403,
       'water_usage': 52
     }
+    const mockStore = configureStore()({ foodDetails, info: { pending: false, error: null } })
+    const wrapper = render(
+      <Provider store={mockStore}>
+        <FoodDetails />
+      </Provider>
+    )
+    const html = wrapper.text()
+    expect(html).toMatch(/Turkey/)
+    expect(html).toMatch(/meat/)
+    expect(html).toMatch(/403/)
+    expect(html).toMatch(/52/)
+  })
+})
 
-    const wrapper = mount(<FoodDetails foodDetails={expected}/>)
-    const { foodDetails } = wrapper.props()
-    expect(foodDetails.name).toBe(expected.name)
-    expect(foodDetails.category).toBe(expected.category)
-    expect(foodDetails.carbon_output).toBe(expected.carbon_output)
-    expect(foodDetails.water_usage).toBe(expected.water_usage)
+describe('Redux Test', () => {
+  it('Should have a dispatch function in props', () => {
+    const mockStore = configureStore()({ foodDetails: {}, info: {} })
+    const wrapper = shallow(
+      <Provider store={mockStore}>
+        <FoodDetails />
+      </Provider>
+    )
+    const dispatch = wrapper.props().value.store.dispatch
+    expect(dispatch).toBeTruthy()
   })
 })
