@@ -5,3 +5,7 @@ export function addFood () {
 export function editFood () {
   return Promise.resolve({ body: 'Put ok!' })
 }
+
+export function deleteFood () {
+  return Promise.resolve({ Okay: true })
+}
