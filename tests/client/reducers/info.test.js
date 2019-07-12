@@ -2,7 +2,6 @@ import {
   GET_FOOD_DETAILS_PENDING,
   GET_FOOD_DETAILS_SUCCESS,
   GET_FOOD_DETAILS_ERROR } from '../../../client/actions/foodDetails'
-
 import infoReducer from '../../../client/reducers/info'
 
 describe('jest', () => {

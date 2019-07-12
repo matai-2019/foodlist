@@ -1,15 +1,11 @@
 import {
   GET_FOODS_PENDING,
   GET_FOODS_SUCCESS,
-  GET_FOODS_ERROR
-} from './../actions/foods'
-
+  GET_FOODS_ERROR } from './../actions/foods'
 import {
   GET_CATEGORIES_PENDING,
   GET_CATEGORIES_SUCCESS,
-  GET_CATEGORIES_ERROR
-} from '../actions/categories'
-
+  GET_CATEGORIES_ERROR } from '../actions/categories'
 import {
   GET_FOOD_DETAILS_PENDING,
   GET_FOOD_DETAILS_SUCCESS,

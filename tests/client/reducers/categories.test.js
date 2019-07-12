@@ -1,7 +1,4 @@
-import {
-  getCategoriesSuccess
-} from '../../../client/actions/categories'
-
+import { getCategoriesSuccess } from '../../../client/actions/categories'
 import categoriesReducer from '../../../client/reducers/'
 
 describe('reducer', () => {

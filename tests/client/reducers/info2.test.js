@@ -1,13 +1,11 @@
 import {
   getCategoriesSuccess,
   getCategoriesPending,
-  getCategoriesError
-} from '../../../client/actions/categories'
+  getCategoriesError } from '../../../client/actions/categories'
 import {
   getFoodsSuccess,
   getFoodsPending,
-  getFoodsError
-} from '../../../client/actions/foods'
+  getFoodsError } from '../../../client/actions/foods'
 import infoReducer from '../../../client/reducers/'
 
 describe('reducer', () => {
