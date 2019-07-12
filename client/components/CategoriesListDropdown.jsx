@@ -3,7 +3,7 @@ import { Dropdown } from 'semantic-ui-react'
 import { getCategories } from '../actions/categories'
 import { connect } from 'react-redux'
 
-class CatergoriesListDropdown extends React.Component {
+class CategoriesListDropdown extends React.Component {
   render () {
     const { name, categories } = this.props
     return (
@@ -39,4 +39,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CatergoriesListDropdown)
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesListDropdown)
