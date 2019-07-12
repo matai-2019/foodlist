@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 class CategoriesListDropdown extends React.Component {
   render () {
-    const { name, categories } = this.props
+    const { categories } = this.props
     return (
       <Dropdown icon="food" text="Pick a category">
         <Dropdown.Menu>
