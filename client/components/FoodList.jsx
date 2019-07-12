@@ -3,11 +3,16 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { getFoods } from '../actions/foods'
+import { getCategory } from '../actions/category'
 import Food from './Food'
 
 class FoodList extends React.Component {
   componentDidMount () {
-    this.props.getFoods()
+    const { match, dispatch, getFoods } = this.props
+    const category = match.category
+    category
+      ? dispatch(getCategory(category))
+      : getFoods()
   }
 
   render () {
