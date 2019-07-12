@@ -6,6 +6,10 @@ import {
   GET_CATEGORIES_PENDING,
   GET_CATEGORIES_SUCCESS,
   GET_CATEGORIES_ERROR } from '../../../client/actions/categories'
+import {
+  GET_FOODS_PENDING,
+  GET_FOODS_SUCCESS,
+  GET_FOODS_ERROR } from '../../../client/actions/foods'
 import infoReducer from '../../../client/reducers/info'
 
 it('returns default state without case matches', () => {
@@ -56,6 +60,29 @@ describe('infoReducer with getCategories actions', () => {
   it('returns error | pending: false, error: message', () => {
     const intialState = { pending: false, error: 'ERROR' }
     const action = { type: GET_CATEGORIES_ERROR, message: 'ERROR' }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
+  })
+})
+
+describe('infoReducer with getFoods actions', () => {
+  it('returns pending | pending: true', () => {
+    const intialState = { pending: true }
+    const action = { type: GET_FOODS_PENDING, action: {} }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
+  })
+
+  it('returns success | pending: false, error: null', () => {
+    const intialState = { pending: false, error: null }
+    const action = { type: GET_FOODS_SUCCESS, action: {} }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
+  })
+
+  it('returns error | pending: false, error: message', () => {
+    const intialState = { pending: false, error: 'ERROR' }
+    const action = { type: GET_FOODS_ERROR, message: 'ERROR' }
     const actual = infoReducer(intialState, action)
     expect(actual).toStrictEqual(intialState)
   })
