@@ -16,6 +16,7 @@ export default function App () {
         <Container style={{ paddingTop: 75 }}>
           <Switch>
             <Route exact path="/" component={FoodList} />
+            <Route path="/category/:name" component={FoodList} />
             <Route path="/new" component={AddFood} />
             <Route path="/details/:foodId" component={FoodDetails} />
             <Route component={NoMatch} />
