@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'enzyme'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
 
 import FoodList from '../../../client/components/FoodList'
