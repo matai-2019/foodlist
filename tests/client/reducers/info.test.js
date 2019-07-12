@@ -15,7 +15,7 @@ it('returns default state without case matches', () => {
   expect(actual).toBe(intialState)
 })
 
-describe('infoReducer with getFoods actions', () => {
+describe('infoReducer with getFoodDetails actions', () => {
   it('returns pending | pending: true', () => {
     const intialState = { pending: true }
     const action = { type: GET_FOOD_DETAILS_PENDING, action: {} }
