@@ -4,12 +4,14 @@ import { render, shallow } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import FoodDetails from '../../../client/components/FoodDetails'
 
-describe('React Tests', () => {
-  it('Test Runner is working', () => {
+describe('FoodDetails test suite', () => {
+  it('has test runner working', () => {
     expect(true).toBeTruthy()
   })
+})
 
-  it('Loading message if pending is true', () => {
+describe('FoodDetails', () => {
+  it('has loading message if pending is true', () => {
     const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: true, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
@@ -30,7 +32,7 @@ describe('React Tests', () => {
     expect(root.length).toBe(1)
   })
 
-  it('page header includes food name', () => {
+  it('has page header that includes food name', () => {
     const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = render(
       <Provider store={mockStore}>
@@ -41,7 +43,7 @@ describe('React Tests', () => {
     expect(header.text()).toMatch(/Turkey/)
   })
 
-  it('page has props foodDetails passed in', () => {
+  it('has props of "foodDetails" passed in', () => {
     const foodDetails = {
       'name': 'Turkey',
       'category': 'meat',
@@ -60,10 +62,8 @@ describe('React Tests', () => {
     expect(html).toMatch(/403/)
     expect(html).toMatch(/52/)
   })
-})
 
-describe('Redux Test', () => {
-  it('Should have a dispatch function in props', () => {
+  it('should have a dispatch function in props', () => {
     const mockStore = configureStore()({ foodDetails: {}, info: {} })
     const wrapper = shallow(
       <Provider store={mockStore}>
