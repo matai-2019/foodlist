@@ -1,10 +1,7 @@
-// External Imports
 import React from 'react'
 import { Provider } from 'react-redux'
-// Test Imports
 import { render, shallow } from 'enzyme'
 import configureStore from 'redux-mock-store'
-// Local Imports
 import FoodDetails from '../../../client/components/FoodDetails'
 
 describe('React Tests', () => {

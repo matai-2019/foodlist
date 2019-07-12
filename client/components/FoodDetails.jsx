@@ -1,11 +1,6 @@
-// External Imports
 import React from 'react'
 import { connect } from 'react-redux'
-
-// Semantic
 import { Grid, Container, Card, Statistic, Icon } from 'semantic-ui-react'
-
-// Local Imports
 import { getFood } from '../actions/foodDetails'
 
 class FoodDetails extends React.Component {
