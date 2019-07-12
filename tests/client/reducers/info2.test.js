@@ -3,9 +3,9 @@ import {
   GET_CATEGORIES_PENDING,
   GET_CATEGORIES_ERROR } from '../../../client/actions/categories'
 import {
-  getFoodsSuccess,
-  getFoodsPending,
-  getFoodsError } from '../../../client/actions/foods'
+  GET_FOODS_SUCCESS,
+  GET_FOODS_PENDING,
+  GET_FOODS_ERROR } from '../../../client/actions/foods'
 import infoReducer from '../../../client/reducers/'
 
 describe('info reducer for getCategory actions', () => {
@@ -68,7 +68,7 @@ describe('info reducer for getCategory actions', () => {
 })
 
 describe('info reducer for getFood actions', () => {
-  it('getFoodsSuccess', () => {
+  it(GET_FOODS_SUCCESS, () => {
     const expected = [
       { id: 1, name: 'Lamb', category_id: 5 },
       { id: 2, name: 'Beef', category_id: 5 },
@@ -77,12 +77,15 @@ describe('info reducer for getFood actions', () => {
     const currentState = {
       foods: []
     }
-    const action = getFoodsSuccess(expected)
+    const action = {
+      type: GET_FOODS_SUCCESS,
+      foods: expected
+    }
     const newState = infoReducer(currentState, action)
     expect(newState.foods).toBe(expected)
   })
 
-  it('getFoodsPending', () => {
+  it(GET_FOODS_PENDING, () => {
     const expected = {
       info: {
         pending: true,
@@ -95,13 +98,13 @@ describe('info reducer for getFood actions', () => {
         error: 'ERR: derp'
       }
     }
-    const action = getFoodsPending()
+    const action = { type: GET_FOODS_PENDING }
     const newState = infoReducer(currentState, action)
     expect(newState.info.pending).toBe(expected.info.pending)
     expect(newState.info.error).toBe(expected.info.error)
   })
 
-  it('getFoodsError', () => {
+  it(GET_FOODS_ERROR, () => {
     const expected = {
       info: {
         pending: true,
@@ -114,7 +117,10 @@ describe('info reducer for getFood actions', () => {
         error: ''
       }
     }
-    const action = getFoodsError('ERR: derp')
+    const action = {
+      type: GET_FOODS_ERROR,
+      message: 'ERR: derp'
+    }
     const newState = infoReducer(currentState, action)
     expect(newState.info.error).toBe(expected.info.error)
   })
