@@ -1,5 +1,4 @@
 import request from 'supertest'
-import { Item } from 'semantic-ui-react'
 
 jest.mock('../../../server/db/foods', () => ({
   getFoods: () => Promise.resolve([
@@ -39,7 +38,6 @@ jest.mock('../../../server/db/foods', () => ({
   ]),
   addFood: () => Promise.resolve([4])
 }))
-
 
 // This line must go after mocking out the database
 const server = require('../../../server/server')
