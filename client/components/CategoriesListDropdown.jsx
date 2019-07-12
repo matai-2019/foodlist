@@ -5,16 +5,18 @@ import { connect } from 'react-redux'
 
 class CategoriesListDropdown extends React.Component {
   render () {
-    const { categories } = this.props
+    let { categories } = this.props
+    categories = categories ||
+      [ { id: 1, name: 'Fruits' },
+        { id: 2, name: 'Vegetables' },
+        { id: 3, name: 'Grains, beans, and legumes' },
+        { id: 4, name: 'Fish' },
+        { id: 5, name: 'Meat' },
+        { id: 6, name: 'Animal byproducts' } ]
+
     return (
       <Dropdown text="Pick a category">
         <Dropdown.Menu>
-          <Dropdown.Item>Fruits</Dropdown.Item>
-          <Dropdown.Item>Vegetables</Dropdown.Item>
-          <Dropdown.Item>Grains, beans, and legumes</Dropdown.Item>
-          <Dropdown.Item>Fish</Dropdown.Item>
-          <Dropdown.Item>Meat</Dropdown.Item>
-          <Dropdown.Item>Animal byproducts</Dropdown.Item>
           {categories && categories.map(category =>
             <Dropdown.Item key={category.id}>{category.name}</Dropdown.Item>
           )}
