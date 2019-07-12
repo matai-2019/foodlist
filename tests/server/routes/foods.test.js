@@ -11,6 +11,8 @@ jest.mock('../../../server/db/foods', () => ({
     { id: 2, name: 'Beef' },
     { id: 3, name: 'Broccoli' }
   ]),
+  deleteFood: (id) => Promise.resolve(1),
+
   getFoodsByCategory: (category) => Promise.resolve([
     {
       id: 1,
@@ -55,6 +57,15 @@ test('GET /food returns specific food', () => {
     .then(res => {
       const actual = res.text
       expect(actual).toMatch('Lamb')
+    })
+    .catch(err => expect(err).toBeNull())
+})
+
+test('DELETE /:id deletes a specific food', () => {
+  return request(server)
+    .delete('/api/v1/foods/1')
+    .then(res => {
+      expect(res.status).toBe(200)
     })
     .catch(err => expect(err).toBeNull())
 })
