@@ -18,7 +18,7 @@ export default class EditFood extends React.Component {
     return (
       <>
       <form>
-        Name: <input value={this.state.name} />
+        Name: <input defaultValue={this.state.name} />
         Food Group:
         <select name="food_group" onChange={this.handleChange}>
           <option value="Fruits">Fruits</option>
