@@ -8,7 +8,7 @@ import {
   getFoodsError } from '../../../client/actions/foods'
 import infoReducer from '../../../client/reducers/'
 
-describe('info reducer', () => {
+describe('info reducer for getCategory actions', () => {
   it(GET_CATEGORIES_SUCCESS, () => {
     const testState = [
       { id: 1, name: 'Fruits' },
@@ -65,7 +65,9 @@ describe('info reducer', () => {
     const newState = infoReducer(currentState, action)
     expect(newState.info.error).toBe(expected.info.error)
   })
+})
 
+describe('info reducer for getFood actions', () => {
   it('getFoodsSuccess', () => {
     const expected = [
       { id: 1, name: 'Lamb', category_id: 5 },
