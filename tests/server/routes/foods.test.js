@@ -1,5 +1,4 @@
 import request from 'supertest'
-import { Item } from 'semantic-ui-react'
 
 jest.mock('../../../server/db/foods', () => ({
   getFoods: () => Promise.resolve([
@@ -37,9 +36,17 @@ jest.mock('../../../server/db/foods', () => ({
       water_usage: 52
     }
   ]),
+  editFood: (food) => Promise.resolve(
+    {
+      id: food.id,
+      name: food.name,
+      category: 'Fish',
+      carbon_output: food.carbon_output,
+      water_usage: food.water_usage
+    }
+  ),
   addFood: () => Promise.resolve([4])
 }))
-
 
 // This line must go after mocking out the database
 const server = require('../../../server/server')
@@ -62,6 +69,23 @@ test('GET /food returns specific food', () => {
       expect(actual).toMatch('Lamb')
     })
     .catch(err => expect(err).toBeNull())
+})
+
+test('PUT / add new food', () => {
+  const newFood = 'hi-chew'
+  const newCarbon = 900
+  const newWater = 0
+  const test = { id: 1, name: newFood, carbon_output: newCarbon, water_usage: newWater }
+
+  return request(server)
+    .put('/api/v1/foods/1')
+    .send(test)
+    .expect(200)
+    .then(res => {
+      expect(res.body.name).toBe(newFood)
+      expect(res.body.carbon_output).toBe(newCarbon)
+      expect(res.body.water_usage).toBe(newWater)
+    })
 })
 
 test('POST adds a new food', () => {

@@ -3,6 +3,7 @@ const connection = require('./connection')
 function getFoods (db = connection) {
   return db('foods')
 }
+
 function getFood (id, db = connection) {
   return db('foods')
     .join('water_usages', 'foods.id', 'water_usages.food_id')
@@ -19,21 +20,59 @@ function getFood (id, db = connection) {
     )
 }
 
+function editFood (food, db = connection) {
+  return db('foods')
+    .where('id', food.id)
+    .update({
+      id: food.id,
+      name: food.name,
+      category_id: food.category_id
+    })
+    .then(() => {
+      if (food.carbon_output) {
+        return db('carbon_outputs')
+          .where('food_id', food.id)
+          .update({
+            value: food.carbon_output
+          })
+      }
+    })
+    .then(() => {
+      if (food.water_usage) {
+        return db('water_usages')
+          .where('food_id', food.id)
+          .update({
+            value: food.water_usage
+          })
+      }
+    })
+    .then(() => getFood(food.id, db))
+}
+
 function addFood (food, db = connection) {
   let foodID
   return db('foods')
-    .insert({ name: food.name, category_id: food.category_id })
+    .insert({
+      name: food.name,
+      category_id: food.category_id
+    })
     .then((id) => {
       foodID = id[0]
       return db('carbon_outputs')
-        .insert({ food_id: foodID, value: food.carbon_output })
+        .insert({
+          food_id: foodID,
+          value: food.carbon_output
+        })
     })
     .then(() => {
       return db('water_usages')
-        .insert({ food_id: foodID, value: food.water_usage })
+        .insert({
+          food_id: foodID,
+          value: food.water_usage
+        })
     })
     .catch(err => err)
-  }
+}
 
 function deleteFood (id, db = connection) {
   return db('foods')
@@ -44,6 +83,7 @@ function deleteFood (id, db = connection) {
 module.exports = {
   getFoods,
   getFood,
+  editFood,
   addFood,
   deleteFood
 }
