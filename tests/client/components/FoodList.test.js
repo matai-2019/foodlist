@@ -28,9 +28,9 @@ describe('Category toggle', () => {
     const category = null
     expect(category ? 'truthy' : null).toBeFalsy()
   })
-  it('returns all foods', () => {
+  it('dispatches getFoods', () => {
     const match = { params: { id: 3 }, path: 'category' }
-    const mockStore = configureStore([thunk])({ foods: [{ name: 'carrot', id: 2 }, { name: 'Vegeta', id: 3 }], info: { pending: false, error: null } })
+    const mockStore = configureStore([thunk])({ foods: [{ name: 'carrot', id: 2 }], info: { pending: false, error: null } })
     const wrapper = mount(
       <Provider store={mockStore}>
         <Router>
@@ -38,12 +38,12 @@ describe('Category toggle', () => {
         </Router>
       </Provider>
     )
-    console.log('Get all', wrapper.state().subscription.store.getState())
-    expect(wrapper.find('a').length).toBe(2)
+    const actions = wrapper.state().subscription.store.getActions()[0]
+    expect(actions).toStrictEqual({ type: 'GET_FOODS_PENDING' })
   })
-  it('returns one category', () => {
+  it('dispatches getCategories when category exists', () => {
     const match = { params: { id: 3 }, path: 'category', category: 'meat' }
-    const mockStore = configureStore([thunk])({ foods: [{ name: 'carrot', id: 2 }, { name: 'Vegeta', id: 3 }], info: { pending: false, error: null } })
+    const mockStore = configureStore([thunk])({ foods: [{ name: 'carrot', id: 2 }], info: { pending: false, error: null } })
     const wrapper = mount(
       <Provider store={mockStore}>
         <Router>
@@ -51,7 +51,7 @@ describe('Category toggle', () => {
         </Router>
       </Provider>
     )
-    console.log('Get one', wrapper.state().subscription.store.getState())
-    expect(wrapper.find('a').length).toBe(1)
+    const actions = wrapper.state().subscription.store.getActions()[0]
+    expect(actions).toStrictEqual({ type: 'GET_CATEGORY_PENDING' })
   })
 })
