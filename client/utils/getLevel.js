@@ -1,5 +1,5 @@
-import waterLevels from './waterLevels'
-import carbonLevels from './carbonLevels'
+import waterLevels from './waterLevels.json'
+import carbonLevels from './carbonLevels.json'
 
 export function getWaterLevel (waterUsage) {
   switch (true) {
