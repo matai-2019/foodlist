@@ -40,6 +40,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.18.3",
     "libsodium-wrappers-sumo": "^0.7.4",
+    "pg": "^7.11.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.1",
