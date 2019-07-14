@@ -11,9 +11,9 @@ import {
   GET_FOODS_SUCCESS,
   GET_FOODS_ERROR } from '../../../client/actions/foods'
 import {
-    GET_CATEGORY_PENDING,
-    GET_CATEGORY_SUCCESS,
-    GET_CATEGORY_ERROR } from '../../../client/actions/category'
+  GET_CATEGORY_PENDING,
+  GET_CATEGORY_SUCCESS,
+  GET_CATEGORY_ERROR } from '../../../client/actions/category'
 import infoReducer from '../../../client/reducers/info'
 
 it('returns default state without case matches', () => {
