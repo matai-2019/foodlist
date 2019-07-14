@@ -1,5 +1,7 @@
 exports.seed = (knex) =>
-  knex('foods').del()
+  knex('water_usages').del()
+    .then(() => knex('carbon_outputs').del())
+    .then(() => knex('foods').del())
     .then(() => knex('categories').del())
     .then(() =>
       knex('categories').insert([
