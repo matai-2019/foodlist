@@ -18,7 +18,8 @@
     "db:reset": "run-s db:delete db:migrate db:seed",
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
-    "db:delete": "rm -f server/db/dev.sqlite3"
+    "db:delete": "rm -f server/db/dev.sqlite3",
+    "postinstall": "run-s build db:migrate db:seed"
   },
   "babel": {
     "presets": [
