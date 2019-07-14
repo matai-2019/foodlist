@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { getFoods } from '../actions/foods'
 import Food from './Food'
+import SortListDropdown from './SortListDropdown'
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -18,6 +19,7 @@ class FoodList extends React.Component {
     } else {
       return (
       <>
+        <SortListDropdown />
          {!this.props.match.path.includes('category') &&
          (<ul>
            <li><Link to="category/vegetables">Vegetables</Link></li>
