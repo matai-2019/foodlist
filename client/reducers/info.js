@@ -10,6 +10,10 @@ import {
   GET_FOOD_DETAILS_PENDING,
   GET_FOOD_DETAILS_SUCCESS,
   GET_FOOD_DETAILS_ERROR } from './../actions/foodDetails'
+import {
+  GET_CATEGORY_PENDING,
+  GET_CATEGORY_SUCCESS,
+  GET_CATEGORY_ERROR } from '../actions/categories'
 
 export default function infoReducer (state = { pending: true }, action) {
   switch (action.type) {
