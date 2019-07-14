@@ -1,14 +1,12 @@
-import { SORT_AZ } from '../../client/actions/sort'
-import { sortReducer } from '../../client/reducers/sort'
+import { SORT_AZ } from '../../../client/actions/sort'
+import sortReducer from '../../../client/reducers/sort'
 
 describe('Tests for SortAZ in reducer', () => {
   it('SORTAZ returns new sortType az', () => {
-    const expected = {
-      sortType: 'az'
-    }
+    const expected = SORT_AZ
 
     const currentState = {
-      sortType: 'carbonHigh'
+      sortType: ''
     }
 
     const action = {
