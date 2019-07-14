@@ -2,12 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getFoods } from '../actions/foods'
+import { getCategory } from '../actions/category'
 import Food from './Food'
 import CategoriesListDropdown from './CategoriesListDropdown'
 
 class FoodList extends React.Component {
   componentDidMount () {
-    this.props.getFoods()
+    const { match, dispatch } = this.props
+    const category = match.category
+    category
+      ? dispatch(getCategory(category))
+      : dispatch(getFoods())
   }
 
   render () {
@@ -36,10 +41,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getFoods: () => dispatch(getFoods())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FoodList)
+export default connect(mapStateToProps)(FoodList)
