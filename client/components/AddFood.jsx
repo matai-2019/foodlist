@@ -38,9 +38,10 @@ export default class AddFood extends React.Component {
       })
   }
 
-  render() {
-    return this.state.redirect ? <Redirect to={{ pathname: '/' }} /> :
-      <Container>
+  render () {
+    return this.state.redirect
+      ? <Redirect to={{ pathname: '/' }} />
+      : <Container>
         <div className="ui hidden divider"></div>
         <Header as="h1">Add a Food</Header>
         <Form>

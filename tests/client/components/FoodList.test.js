@@ -1,18 +1,23 @@
 import React from 'react'
 import { render, mount } from 'enzyme'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
 import FoodList from '../../../client/components/FoodList'
 
-test.skip('<FoodList /> contains <Food /> component', () => {
-  const mockStore = configureStore()({ foods: [{ name: 'carrot', id: 2 }], info: { pending: false, error: null } })
+test('<FoodList /> contains <Food /> component', () => {
+  const mockStore = configureStore()(
+    {
+      foods: [{ name: 'carrot', id: 2 }],
+      info: { pending: false, error: null },
+      categories: [{ id: 1, name: 'Vegetables' }, { id: 2, name: 'Meat' }]
+    })
   const wrapper = render(
     <Provider store={mockStore}>
       <Router>
-        <FoodList />
+        <Route component={FoodList} />
       </Router>
     </Provider>
   )

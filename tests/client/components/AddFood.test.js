@@ -1,9 +1,10 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { Form } from 'semantic-ui-react'
 
 import AddFood from '../../../client/components/AddFood'
-import '../mocks/api'
+
+jest.mock('../../../client/api/api')
 
 test('<AddFood /> test setup is working correctly', () => {
   expect(true).toBeTruthy()
@@ -33,12 +34,12 @@ test('<AddFood /> handleInputChange changes state of the component', () => {
   expect(actual).toBe(expected)
 })
 
-test('<AddFood /> handleSubmit changes state.redirect to true', () => {
-  const wrapper = mount(<AddFood />)
+test('handleSubmit changes state.redirect to true', () => {
+  const wrapper = shallow(<AddFood />)
   const expected = true
 
   const app = wrapper.instance()
-  app.handleSubmit().then(() => {
+  return app.handleSubmit().then(() => {
     const actual = app.state.redirect
 
     expect(actual).toBe(expected)
