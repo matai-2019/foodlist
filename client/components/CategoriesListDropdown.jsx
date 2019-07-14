@@ -1,8 +1,9 @@
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
-import { getCategories } from '../actions/categories'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+
+import { getCategories } from '../actions/categories'
 
 class CategoriesListDropdown extends React.Component {
   componentDidMount () {
