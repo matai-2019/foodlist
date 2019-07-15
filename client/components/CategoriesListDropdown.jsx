@@ -32,6 +32,9 @@ class CategoriesListDropdown extends React.Component {
               <Link to={`/category/${name.replace(this.regex, '-')}`}>{name}</Link>
             </Dropdown.Item>
           )}
+          <Dropdown.Item>
+            <Link to='/'>All</Link>
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     )
