@@ -20,7 +20,6 @@ test('<AddFood /> contains a form tag', () => {
 test('<AddFood /> handleInputChange changes state of the component', () => {
   const wrapper = mount(<AddFood />)
   const expected = 'carrot'
-
   const app = wrapper.instance()
   app.handleInputChange({
     target: {
@@ -28,20 +27,16 @@ test('<AddFood /> handleInputChange changes state of the component', () => {
       value: 'carrot'
     }
   })
-
-  const actual = app.state.name
-
-  expect(actual).toBe(expected)
+  expect(app.state.name).toBe('carrot')
 })
 
-test('handleSubmit changes state.redirect to true', () => {
+test('mocks handleSubmit and sets redirect to true', () => {
+  expect.assertions(1)
   const wrapper = shallow(<AddFood />)
-  const expected = true
-
   const app = wrapper.instance()
-  return app.handleSubmit().then(() => {
-    const actual = app.state.redirect
-
-    expect(actual).toBe(expected)
-  })
+  app.handleSubmit = () => {
+    app.setState({ redirect: true })
+  }
+  app.handleSubmit()
+  expect(app.state.redirect).toBe(true)
 })
