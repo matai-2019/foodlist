@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
-import { getFood } from '../actions/foodDetails'
 import { Link } from 'react-router-dom'
+
+import { getFood } from '../actions/foodDetails'
 
 class FoodDetails extends React.Component {
   componentDidMount () {

@@ -2,6 +2,14 @@ const connection = require('./connection')
 
 function getFoods (db = connection) {
   return db('foods')
+    .join('carbon_outputs', 'foods.id', 'carbon_outputs.food_id')
+    .join('water_usages', 'foods.id', 'water_usages.food_id')
+    .select(
+      'foods.id',
+      'foods.name',
+      'carbon_outputs.value as carbonOutput',
+      'water_usages.value as waterUsage'
+    )
 }
 
 function getFood (id, db = connection) {
@@ -52,15 +60,24 @@ function editFood (food, db = connection) {
 function addFood (food, db = connection) {
   let foodID
   return db('foods')
-    .insert({ name: food.name, category_id: food.category_id })
+    .insert({
+      name: food.name,
+      category_id: food.category_id
+    })
     .then((id) => {
       foodID = id[0]
       return db('carbon_outputs')
-        .insert({ food_id: foodID, value: food.carbon_output })
+        .insert({
+          food_id: foodID,
+          value: food.carbon_output
+        })
     })
     .then(() => {
       return db('water_usages')
-        .insert({ food_id: foodID, value: food.water_usage })
+        .insert({
+          food_id: foodID,
+          value: food.water_usage
+        })
     })
     .catch(err => err)
 }

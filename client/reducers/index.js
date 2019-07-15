@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux'
 
 import foods from './foods'
-import info from './info'
+import categories from './categories'
 import foodDetails from './foodDetails'
+import sort from './sort'
+import info from './info'
 
 export default combineReducers({
   foods,
-  info,
-  foodDetails
+  categories,
+  foodDetails,
+  sort,
+  info
 })
