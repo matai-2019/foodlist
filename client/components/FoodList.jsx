@@ -25,11 +25,10 @@ class FoodList extends React.Component {
     } else {
       return (
       <>
-        <SortListDropdown />
-         {!this.props.match.path.includes('category') &&
-         <CategoriesListDropdown />}
-         <br/>
-         <SearchBar/>
+        {!this.props.match.path.includes('category') &&
+        <CategoriesListDropdown /> } &nbsp;
+        <SortListDropdown /> &nbsp;
+        <SearchBar/>
         {error && <div>{error}</div>}
         {foods.map(food =>
           <Food key={food.id} food={food} />)}
