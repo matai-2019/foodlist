@@ -22,7 +22,13 @@ describe('<SearchBar /> tests', () => {
     const actual = wrapper.find('input').length + wrapper.find('button').length
     expect(actual).toBe(expected)
   })
-  it.skip('should have a dispatch function in props', () => {
+  it('should call handleChange', () => {
+    const handleChangeMock = jest.fn()
+    const wrapper = mount(<input type="text" placeholder="Search..." onChange={handleChangeMock}/>)
+    wrapper.find('input').simulate('change')
+    expect(handleChangeMock).toBeCalled()
+  })
+  it.skip('should have a dispatch if connected', () => {
     const mockStore = configureStore()({ foodDetails: {}, info: {} })
     const wrapper = mount(<Provider store={mockStore}><SearchBar/></Provider>)
     const dispatch = wrapper.props().value.store.dispatch
