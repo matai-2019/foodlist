@@ -3,7 +3,6 @@ import sortAZ from '../../../client/utils/sort'
 test('sortAZ sorts an array of objects alphabetically', () => {
   const foods = [
     { id: 1, name: 'orange' },
-
     { id: 2, name: 'mango' },
     { id: 3, name: 'banana' },
     { id: 4, name: 'apple' }
