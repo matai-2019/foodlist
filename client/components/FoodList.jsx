@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { Grid } from 'semantic-ui-react'
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
 import { SORT_ALPHABETICAL_ASCENDING, SORT_WATER_USAGE_DESCENDING, SORT_WATER_USAGE_ASCENDING, SORT_CARBON_OUTPUT_DESCENDING } from '../actions/sort'
@@ -27,9 +27,20 @@ class FoodList extends React.Component {
     } else {
       return (
         <>
-          <CategoriesListDropdown /> &nbsp;
-        <SortListDropdown /> &nbsp;
-        <SearchBar />
+          <Grid columns={3} stackable
+          >
+            <Grid.Row verticalAlign="middle">
+              <Grid.Column >
+                <CategoriesListDropdown />
+              </Grid.Column>
+              <Grid.Column>
+                <SortListDropdown />
+              </Grid.Column>
+              <Grid.Column>
+                <SearchBar />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           {error && <div>{error}</div>}
           {foods.map(food =>
             <Food key={food.id} food={food} />)}
