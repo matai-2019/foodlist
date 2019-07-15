@@ -6,7 +6,7 @@ import { getCategory } from '../actions/category'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
-import { sortAZ } from '../utils/sort'
+import { sortAZ, sortHighLowWater } from '../utils/sort'
 import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
@@ -43,6 +43,11 @@ const mapStateToProps = ({ sortType, info, foods }) => {
   if (sortType === 'SORT_AZ') {
     return {
       foods: sortAZ(foods),
+      info: info
+    }
+  } else if (sortType === 'SORT_WATER_HIGH') {
+    return {
+      foods: sortHighLowWater(foods),
       info: info
     }
   } else {
