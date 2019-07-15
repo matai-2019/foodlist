@@ -24,7 +24,7 @@ class CategoriesListDropdown extends React.Component {
 
   render () {
     return (
-      <Dropdown text={this.state.category || 'Pick a Category'} icon='filter' floating labeled button className='icon'>
+      <Dropdown text={this.state.category || 'Pick a Category'}>
         <Dropdown.Menu>
           <Dropdown.Header icon='tags' content='Filter by Category' />
           {this.props.categories.map(({ id, name }) =>
