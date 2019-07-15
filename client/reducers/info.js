@@ -14,6 +14,9 @@ import {
   GET_CATEGORY_PENDING,
   GET_CATEGORY_SUCCESS,
   GET_CATEGORY_ERROR } from '../actions/category'
+import {
+  ADD_FOOD_ERROR,
+  EDIT_FOOD_ERROR } from './../actions/updateFoodErrors'
 
 export default function infoReducer (state = { pending: true }, action) {
   switch (action.type) {
@@ -37,6 +40,8 @@ export default function infoReducer (state = { pending: true }, action) {
     case GET_FOODS_ERROR:
     case GET_CATEGORIES_ERROR:
     case GET_FOOD_DETAILS_ERROR:
+    case ADD_FOOD_ERROR:
+    case EDIT_FOOD_ERROR:
     case GET_CATEGORY_ERROR:
       return {
         ...state,
