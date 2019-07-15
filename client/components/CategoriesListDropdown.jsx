@@ -25,9 +25,6 @@ class CategoriesListDropdown extends React.Component {
               >{name}</Link>
             </Dropdown.Item>
           )}
-          <Dropdown.Item>
-            <Link to='/'>All</Link>
-          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     )
