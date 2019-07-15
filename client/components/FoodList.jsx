@@ -45,18 +45,18 @@ const mapStateToProps = ({ sortType, info, foods }) => {
     case SORT_AZ:
       return {
         foods: sortAZ(foods),
-        info: info
+        info
       }
     case SORT_WATER_HIGH:
       return {
         foods: sortHighLowWater(foods),
-        info: info
+        info
       }
 
     default:
       return {
-        foods: foods,
-        info: info
+        foods,
+        info
       }
   }
 }
