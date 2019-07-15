@@ -18,7 +18,8 @@
     "db:reset": "run-s db:delete db:migrate db:seed",
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
-    "db:delete": "rm -f server/db/dev.sqlite3"
+    "db:delete": "rm -f server/db/dev.sqlite3",
+    "postinstall": "run-s build db:migrate db:seed"
   },
   "babel": {
     "presets": [
@@ -37,17 +38,10 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
     "knex": "^0.18.3",
-    "libsodium-wrappers-sumo": "^0.7.4",
-    "react-redux": "^7.1.0",
-    "react-router-dom": "^5.0.1",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.87.2",
-    "sqlite3": "^4.0.9",
-    "superagent": "^5.1.0"
+    "npm-run-all": "^4.1.5",
+    "pg": "^7.11.0",
+    "webpack": "^4.35.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
@@ -63,12 +57,18 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.8.0",
     "nodemon": "^1.19.1",
-    "npm-run-all": "^4.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "redux-mock-store": "^1.5.3",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.2",
+    "sqlite3": "^4.0.9",
+    "superagent": "^5.1.0",
     "supertest": "^4.0.2",
-    "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
   }

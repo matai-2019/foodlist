@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
-import { getFood } from '../actions/foodDetails'
-import { deleteFood } from '../api/api'
 import { Link } from 'react-router-dom'
 
-class FoodDetails extends React.Component {
+import { getFood } from '../actions/foodDetails'
+import { deleteFood } from '../api/api'
 
+class FoodDetails extends React.Component {
   state = {
     id: null
   }
-  componentDidMount() {
+  componentDidMount () {
     const id = this.props.match.params.foodId
     this.props.getFood(id)
 
@@ -20,7 +20,6 @@ class FoodDetails extends React.Component {
   }
 
   handleDelete = (e) => {
-
     deleteFood(this.state.id)
       .then(() => this.setState({
         redirect: true
@@ -30,7 +29,7 @@ class FoodDetails extends React.Component {
       })
   }
 
-  render() {
+  render () {
     const { foodDetails, info: { pending, error } } = this.props
     return pending ? (<div>LOADING...</div>)
       : (<>
