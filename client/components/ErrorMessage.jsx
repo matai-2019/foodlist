@@ -3,8 +3,9 @@ import { Message } from 'semantic-ui-react'
 
 const MessageExampleMessage = ({ message }) => (
   <Message>
-    <Message.Header>Error</Message.Header>
-
+    <Message.Header style={{ color: 'red' }}>
+      <i className="ambulance icon"></i>Error
+    </Message.Header>
     <p>
       { message }
     </p>
