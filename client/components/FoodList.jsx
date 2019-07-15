@@ -31,8 +31,7 @@ class FoodList extends React.Component {
           >
             <Grid.Row verticalAlign="middle">
               <Grid.Column >
-                {!this.props.match.path.includes('category') &&
-              <CategoriesListDropdown />}
+                <CategoriesListDropdown />
               </Grid.Column>
               <Grid.Column>
                 <SortListDropdown />
