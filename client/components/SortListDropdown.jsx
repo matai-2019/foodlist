@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Dropdown, Menu } from 'semantic-ui-react'
+import sortBy from '../actions/sort'
 
 class SortListDropdown extends React.Component {
   state ={
@@ -19,6 +20,7 @@ class SortListDropdown extends React.Component {
     this.setState({
       text: e.target.value
     })
+    this.props.dispatch(sortBy(e.target.value))
   }
 
   render () {
