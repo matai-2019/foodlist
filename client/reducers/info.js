@@ -5,19 +5,18 @@ import {
 import {
   GET_CATEGORIES_PENDING,
   GET_CATEGORIES_SUCCESS,
-  GET_CATEGORIES_ERROR
-} from '../actions/categories'
+  GET_CATEGORIES_ERROR } from '../actions/categories'
 import {
   GET_FOOD_DETAILS_PENDING,
   GET_FOOD_DETAILS_SUCCESS,
   GET_FOOD_DETAILS_ERROR } from './../actions/foodDetails'
 import {
-  ADD_FOOD_ERROR,
-  EDIT_FOOD_ERROR } from './../actions/updateFoodErrors'
-import {
   GET_CATEGORY_PENDING,
   GET_CATEGORY_SUCCESS,
   GET_CATEGORY_ERROR } from '../actions/category'
+import {
+  ADD_FOOD_ERROR,
+  EDIT_FOOD_ERROR } from './../actions/updateFoodErrors'
 
 export default function infoReducer (state = { pending: true }, action) {
   switch (action.type) {
