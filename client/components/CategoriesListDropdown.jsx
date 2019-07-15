@@ -28,13 +28,10 @@ class CategoriesListDropdown extends React.Component {
         <Dropdown.Menu>
           <Dropdown.Header icon='tags' content='Filter by Category' />
           {this.props.categories.map(({ id, name }) =>
-            <Dropdown.Item key={id} value={name} onClick={this.handleClick(name)}>
-              <Link to={`/category/${name.replace(this.regex, '-')}`}>{name}</Link>
+            <Dropdown.Item key={id} onClick={this.handleClick(name)}>
+              <Link to={`/category/${name.replace(this.regex, '-')}`} style={{ color: 'black' }}>{name}</Link>
             </Dropdown.Item>
           )}
-          <Dropdown.Item>
-            <Link to='/'>All</Link>
-          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     )
