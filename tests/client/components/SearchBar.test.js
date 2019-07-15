@@ -28,10 +28,16 @@ describe('<SearchBar /> tests', () => {
     wrapper.find('input').simulate('change')
     expect(handleChangeMock).toBeCalled()
   })
-  it.skip('should have a dispatch if connected', () => {
+  it('should call handleSearch', () => {
+    const handleSearchMock = jest.fn()
+    const wrapper = mount(<button className="ui button" onClick={handleSearchMock}>Search</button>)
+    wrapper.find('button').simulate('click')
+    expect(handleSearchMock).toBeCalled()
+  })
+  it('should have a dispatch if connected', () => {
     const mockStore = configureStore()({ foodDetails: {}, info: {} })
     const wrapper = mount(<Provider store={mockStore}><SearchBar/></Provider>)
-    const dispatch = wrapper.props().value.store.dispatch
+    const dispatch = wrapper.props().store.dispatch
     expect(dispatch).toBeTruthy()
   })
 })
