@@ -1,5 +1,5 @@
 import React from 'react'
-import { Label as Tag } from 'semantic-ui-react'
+import { Label as Tag, Icon } from 'semantic-ui-react'
 
 import { getWaterLevel, getCarbonLevel } from '../utils/getLevel'
 
@@ -13,7 +13,10 @@ export default function Label ({ value, type }) {
   }
 
   return (
-    <Tag color={label().color} tag>
+    <Tag color={label().color} basic size='mini'>
+      {type === 'water'
+      ? <Icon name='tint'/> 
+      : <Icon name='cloud'/>}
       {label().name}
     </Tag>
   )
