@@ -1,9 +1,13 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { Header, Form, Input, Select, Button } from 'semantic-ui-react'
-import { editFood } from '../api/api'
+import { connect } from 'react-redux'
 
-export default class EditFood extends React.Component {
+import { editFood } from '../api/api'
+import { editFoodError } from '../actions/updateFoodErrors'
+
+
+class EditFood extends React.Component {
   state = {
     id: 1,
     name: 'Orange',
@@ -25,7 +29,7 @@ export default class EditFood extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        throw new Error(`Oh no! ${err.message}`)
+        this.props.dispatch(editFoodError(err.message))
       })
   }
 
@@ -49,3 +53,5 @@ export default class EditFood extends React.Component {
     )
   }
 }
+
+export default connect()(EditFood)
