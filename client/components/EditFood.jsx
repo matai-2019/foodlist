@@ -35,12 +35,12 @@ export default class EditFood extends React.Component {
         <Header as="h1">Edit Food</Header>
         <Form>
           <Form.Group widths='equal'>
-            <Form.Field name="name" control={Input} label='Name :' value={this.state.name} />
-            <Form.Field name="food_group" control={Select} label='Food Group:' />
+            <Form.Field type="text" name="name" control={Input} label='Name :' value={this.state.name} />
+            <Form.Field type="text" name="food_group" control={Select} label='Food Group:' />
           </Form.Group>
           <Form.Group widths='equal'>
-            <Form.Field name="carbon_output" label='Carbon Output: ' control={Input} value={this.state.carbon_output} onChange={this.handleChange} />
-            <Form.Field name="water_usage" label='Water Usage: ' control={Input} value={this.state.water_usage} onChange={this.handleChange} />
+            <Form.Field type="number" name="carbon_output" label='Carbon Output: ' control={Input} value={this.state.carbon_output} onChange={this.handleChange} />
+            <Form.Field type="number" name="water_usage" label='Water Usage: ' control={Input} value={this.state.water_usage} onChange={this.handleChange} />
           </Form.Group>
 
           <Button type='submit'>Submit</Button>
