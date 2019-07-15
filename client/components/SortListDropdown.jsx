@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Dropdown, Menu } from 'semantic-ui-react'
 
-
 import sortAZ from '../utils/sortAZ'
 
 class SortListDropdown extends React.Component {
@@ -30,19 +29,17 @@ class SortListDropdown extends React.Component {
 }
 
 const mapStateToProps = state => {
-
   if (state.sortType === 'SORT_AZ') {
     return {
-        sortType: state.sortType,
-        foods: sortAZ(state.foods)
-      }
-    } else {
-      return {
-        sortType: state.sortType,
-        foods: state.foods
-      }
+      sortType: state.sortType,
+      foods: sortAZ(state.foods)
+    }
+  } else {
+    return {
+      sortType: state.sortType,
+      foods: state.foods
     }
   }
-
+}
 
 export default connect(mapStateToProps)(SortListDropdown)
