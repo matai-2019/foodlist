@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
-import { SORT_AZ, SORT_WATER_HIGH, SORT_WATER_LOW } from '../actions/sort'
+import { SORT_AZ, SORT_WATER_HIGH, SORT_WATER_LOW, SORT_CARBON_HIGH } from '../actions/sort'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
-import { sortAZ, sortHighLowWater, sortLowHighWater } from '../utils/sort'
+import { sortAZ, sortHighLowWater, sortLowHighWater, sortHighLowCarbon } from '../utils/sort'
 import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
@@ -28,8 +28,8 @@ class FoodList extends React.Component {
       return (
         <>
           <CategoriesListDropdown /> &nbsp;
-        <SortListDropdown /> &nbsp;
-        <SearchBar />
+          <SortListDropdown /> &nbsp;
+          <SearchBar />
           {error && <div>{error}</div>}
           {foods.map(food =>
             <Food key={food.id} food={food} />)}
