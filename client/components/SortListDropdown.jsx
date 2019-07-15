@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Dropdown, Menu } from 'semantic-ui-react'
-import sortBy from '../actions/sort'
+import { sortBy } from '../actions/sort'
 
 class SortListDropdown extends React.Component {
   options = [
