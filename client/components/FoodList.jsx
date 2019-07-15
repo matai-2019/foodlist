@@ -26,8 +26,7 @@ class FoodList extends React.Component {
     } else {
       return (
       <>
-        {!this.props.match.path.includes('category') &&
-        <CategoriesListDropdown /> } &nbsp;
+        <CategoriesListDropdown /> &nbsp;
         <SortListDropdown /> &nbsp;
         <SearchBar/>
         {error && <div>{error}</div>}
