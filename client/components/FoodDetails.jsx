@@ -5,8 +5,6 @@ import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
 import { Link } from 'react-router-dom'
 
-import { getFood } from '../actions/foodDetails'
-
 class FoodDetails extends React.Component {
 
   state = {
