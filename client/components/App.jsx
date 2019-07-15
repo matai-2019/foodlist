@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
@@ -9,12 +9,14 @@ import NoMatch from './NoMatch'
 import AddFood from './AddFood'
 import FoodDetails from './FoodDetails'
 import EditFood from './EditFood'
+import WaitIndicator from './WaitIndicator'
 
 function App ({ info }) {
   return (
     <Router>
       <>
         <Route path="/" component={TopMenu} />
+        {info.pending && <WaitIndicator />}
         <Container style={{ paddingTop: 75 }}>
           <Switch>
             <Route exact path="/" component={FoodList} />
