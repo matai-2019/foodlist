@@ -5,9 +5,9 @@ import { sortBy } from '../actions/sort'
 
 class SortListDropdown extends React.Component {
   options = [
-    { key: 1, text: 'A-Z', value: 'SORT_AZ' },
-    { key: 2, text: 'Water Usage High-Low', value: 'SORT_WATER_HIGH' },
-    { key: 3, text: 'Water Usage Low-High', value: 'SORT_WATER_LOW' },
+    { key: 1, text: 'A-Z', value: 'SORT_ALPHABETICAL_ASCENDING' },
+    { key: 2, text: 'Water Usage High-Low', value: 'SORT_WATER_USAGE_DESCENDING' },
+    { key: 3, text: 'Water Usage Low-High', value: 'SORT_WATER_USAGE_ASCENDING' },
     { key: 4, text: 'Carbon Output High-Low', value: 'CARBON_OUTPUT_HIGH' },
     { key: 5, text: 'Carbon Output Low-High', value: 'CARBON_OUTPUT_LOW' }
   ]
