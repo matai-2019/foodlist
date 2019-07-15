@@ -10,14 +10,14 @@ describe('<SearchBar /> tests', () => {
   })
   it('<Comp /> contains a Search button', () => {
     const expected = 'Search'
-    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: true, error: null } })
+    const mockStore = configureStore()({})
     const wrapper = mount(<Provider store={mockStore}><SearchBar/></Provider>)
     const actual = (wrapper.text())
     expect(actual).toBe(expected)
   })
   it('<Comp /> conatins a button and input ', () => {
     const expected = 2
-    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: true, error: null } })
+    const mockStore = configureStore()({})
     const wrapper = mount(<Provider store={mockStore}><SearchBar/></Provider>)
     const actual = wrapper.find('input').length + wrapper.find('button').length
     expect(actual).toBe(expected)
@@ -35,9 +35,20 @@ describe('<SearchBar /> tests', () => {
     expect(handleSearchMock).toBeCalled()
   })
   it('should have a dispatch if connected', () => {
-    const mockStore = configureStore()({ foodDetails: {}, info: {} })
+    const mockStore = configureStore()({})
     const wrapper = mount(<Provider store={mockStore}><SearchBar/></Provider>)
     const dispatch = wrapper.props().store.dispatch
     expect(dispatch).toBeTruthy()
+  })
+  it('dispatches setSearchTerm', () => {
+    const mockStore = configureStore()({})
+    const wrapper = mount(
+      <Provider store={mockStore}>
+        <SearchBar/>
+      </Provider>
+    )
+    wrapper.find('button').simulate('click')
+    const actions = wrapper.state().subscription.store.getActions()[0]
+    expect(actions).toStrictEqual({ type: 'SET_SEARCH_TERM', searchTerm: '' })
   })
 })
