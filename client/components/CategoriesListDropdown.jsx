@@ -11,8 +11,7 @@ class CategoriesListDropdown extends React.Component {
       this.props.getCategories()
     }
   }
-
-  regex = / /g;
+  regex = / /gi;
   render () {
     return (
       <Dropdown text="Pick a category">
