@@ -1,17 +1,38 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import { getFood } from '../actions/foodDetails'
+import { deleteFood } from '../api/api'
 
 class FoodDetails extends React.Component {
+  state = {
+    id: null
+  }
+
   componentDidMount () {
-    const id = this.props.match.params.foodId
+    const id = Number(this.props.match.params.foodId)
+
+    this.setState({ id })
     this.props.getFood(id)
   }
 
+  handleDelete = (e) => {
+    deleteFood(this.state.id)
+      .then(() => this.setState({
+        redirect: true
+      }))
+      .catch(err => {
+        throw new Error(err.message)
+      })
+  }
+
   render () {
+    if (this.state.redirect) {
+      return <Redirect push to="/" />
+    }
+
     const { foodDetails, info: { pending, error } } = this.props
     return pending ? (<div>LOADING...</div>)
       : (<>
@@ -56,7 +77,10 @@ class FoodDetails extends React.Component {
             </Card>
           </Container>
         </div>
-        <Button><Link to={`/edit/${this.props.match.params.foodId}`}>Edit Food</Link></Button>
+        <Button>
+          <Link to={`/edit/${this.props.match.params.foodId}`}>Edit Food</Link>
+        </Button>
+        <Button onClick={this.handleDelete}>Delete Food</Button>
       </>)
   }
 }
