@@ -9,7 +9,7 @@ import { SORT_AZ,
 
 class SortListDropdown extends React.Component {
   state ={
-    text: 'Sort by'
+    text: 'Default'
   }
 
   options = [
@@ -29,9 +29,16 @@ class SortListDropdown extends React.Component {
 
   render () {
     return (
-      <>
-      <Dropdown onChange={this.onChangeHandler} text={this.state.text} options={this.options} />
-      </>
+      <span>
+        <span style={{ marginRight: '0.5em' }}>Sort By :</span>
+        <Dropdown
+          onChange={this.onChangeHandler}
+          text={this.state.text}
+          options={this.options}
+          labeled
+        />
+      </span>
+
     )
   }
 }
