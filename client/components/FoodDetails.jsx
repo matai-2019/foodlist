@@ -8,7 +8,7 @@ import { getFood } from '../actions/foodDetails'
 class FoodDetails extends React.Component {
   componentDidMount () {
     const id = this.props.match.params.foodId
-    this.props.getFood(id)
+    this.props.dispatch(getFood(id))
   }
 
   render () {
@@ -68,10 +68,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getFood: (id) => dispatch(getFood(id))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FoodDetails)
+export default connect(mapStateToProps)(FoodDetails)
