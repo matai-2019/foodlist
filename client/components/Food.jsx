@@ -3,7 +3,6 @@ import { Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Label from './Label';
 
-
 export default function Food ({ food: { name, id , carbonOutput, waterUsage} }) {
   return (
     <>
@@ -13,8 +12,8 @@ export default function Food ({ food: { name, id , carbonOutput, waterUsage} }) 
             <Table.HeaderCell>
               <Link to={`/details/${id}`}>
                 {name}
-                <Label value={carbonOutput} type='carbon' />
-                <Label value={waterUsage} type='water' />
+                <Label value={carbonOutput} type="carbon" />
+                <Label value={waterUsage} type="water" />
               </Link>
             </Table.HeaderCell>
           </Table.Row>
