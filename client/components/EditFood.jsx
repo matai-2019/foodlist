@@ -2,8 +2,10 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { Header, Form, Input, Select, Button } from 'semantic-ui-react'
 import { editFood } from '../api/api'
+import { connect } from 'react-redux';
+import { getFood } from '../actions/foodDetails'
 
-export default class EditFood extends React.Component {
+class EditFood extends React.Component {
   state = {
     id: 1,
     name: 'Orange',
@@ -11,6 +13,14 @@ export default class EditFood extends React.Component {
     carbon_output: 101,
     water_usage: 88,
     redirect: false
+  }
+
+  componentDidMount() {
+    const { dispatch, match: { params: { foodId } } } = this.props
+    Number(foodId)
+    const food = dispatch(getFood(foodId)) // HOW TO GET FOODDETAILS IN MY PROPS AFTER CALLING DISPATCH?
+    console.log('mounted', food)
+    food ? this.setState(this.props.foodDetails) : 'error'
   }
 
   handleChange = (e) => {
@@ -29,14 +39,14 @@ export default class EditFood extends React.Component {
       })
   }
 
-  render () {
+  render() {
     return this.state.redirect ? (<Redirect to={{ pathname: '/' }} />) : (
       <>
         <Header as="h1">Edit Food</Header>
         <Form>
           <Form.Group widths='equal'>
             <Form.Field type="text" name="name" control={Input} label='Name :' value={this.state.name} />
-            <Form.Field type="text" name="food_group" control={Select} label='Food Group:' />
+            <Form.Field type="text" name="food_group" control={Select} options={[{ pls: 'none' }]} label='Food Group:' />
           </Form.Group>
           <Form.Group widths='equal'>
             <Form.Field type="number" name="carbon_output" label='Carbon Output: ' control={Input} value={this.state.carbon_output} onChange={this.handleChange} />
@@ -49,3 +59,8 @@ export default class EditFood extends React.Component {
     )
   }
 }
+const mapStateToProps = ({ foodDetails }) => {
+  return { foodDetails }
+}
+
+export default connect(mapStateToProps)(EditFood)
