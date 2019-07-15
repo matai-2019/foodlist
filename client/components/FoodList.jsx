@@ -57,6 +57,12 @@ const mapStateToProps = ({ sortType, info, foods }) => {
         info
       }
 
+    case SORT_CARBON_HIGH:
+      return {
+        foods: sortHighLowCarbon(foods),
+        info
+      }
+
     default:
       return {
         foods,
