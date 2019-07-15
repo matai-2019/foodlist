@@ -7,10 +7,10 @@ exports.seed = (knex) =>
       knex('categories').insert([
         { id: 1, name: 'Fruits' },
         { id: 2, name: 'Vegetables' },
-        { id: 3, name: 'Grains and Legumes' },
+        { id: 3, name: 'Grains, beans, and legumes' },
         { id: 4, name: 'Fish' },
         { id: 5, name: 'Meat' },
-        { id: 6, name: 'Animal Byproducts' }
+        { id: 6, name: 'Animal byproducts' }
       ]))
     .then(() =>
       knex('foods').insert([
