@@ -23,8 +23,8 @@ function getFood (id, db = connection) {
       'foods.id',
       'foods.name',
       'categories.name as category',
-      'carbon_outputs.value as carbon_output',
-      'water_usages.value as water_usage'
+      'carbon_outputs.value as carbonOutput',
+      'water_usages.value as waterUsage'
     )
 }
 

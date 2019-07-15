@@ -16,7 +16,7 @@ class CategoriesListDropdown extends React.Component {
     return (
       <Dropdown text="Pick a category">
         <Dropdown.Menu>
-          {this.props.categories.map(({ id, name }) =>
+        waterUsage {this.props.categories.map(({ id, name }) =>
             <Dropdown.Item key={id}>
               <Link to={`/category/${name.replace(this.regex, '-')}`}>{name}</Link>
             </Dropdown.Item>

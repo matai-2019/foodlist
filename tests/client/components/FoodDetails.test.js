@@ -55,8 +55,8 @@ describe('FoodDetails', () => {
     const foodDetails = {
       'name': 'Turkey',
       'category': 'meat',
-      'carbon_output': 403,
-      'water_usage': 52
+      'carbonOutput': 403,
+      'waterUsage': 52
     }
     const mockStore = configureStore()({ foodDetails, info: { pending: false, error: null } })
     const wrapper = render(

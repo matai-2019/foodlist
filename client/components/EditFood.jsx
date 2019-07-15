@@ -7,9 +7,9 @@ export default class EditFood extends React.Component {
   state = {
     id: 1,
     name: 'Orange',
-    food_group: 'fruits',
-    carbon_output: 101,
-    water_usage: 88,
+    foodGroup: 'fruits',
+    carbonOutput: 101,
+    waterUsage: 88,
     redirect: false
   }
 
@@ -36,11 +36,11 @@ export default class EditFood extends React.Component {
         <Form>
           <Form.Group widths='equal'>
             <Form.Field type="text" name="name" control={Input} label='Name :' value={this.state.name} />
-            <Form.Field type="text" name="food_group" control={Select} label='Food Group:' />
+            <Form.Field type="text" name="foodGroup" control={Select} label='Food Group:' />
           </Form.Group>
           <Form.Group widths='equal'>
-            <Form.Field type="number" name="carbon_output" label='Carbon Output: ' control={Input} value={this.state.carbon_output} onChange={this.handleChange} />
-            <Form.Field type="number" name="water_usage" label='Water Usage: ' control={Input} value={this.state.water_usage} onChange={this.handleChange} />
+            <Form.Field type="number" name="carbonOutput" label='Carbon Output: ' control={Input} value={this.state.carbonOutput} onChange={this.handleChange} />
+            <Form.Field type="number" name="waterUsage" label='Water Usage: ' control={Input} value={this.state.waterUsage} onChange={this.handleChange} />
           </Form.Group>
 
           <Button type='submit'>Submit</Button>

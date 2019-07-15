@@ -16,9 +16,9 @@ const categories = [
 export default class AddFood extends React.Component {
   state = {
     name: '',
-    category_id: null,
-    carbon_output: null,
-    water_usage: null,
+    categoryID: null,
+    carbonOutput: null,
+    waterUsage: null,
     redirect: false
   }
 
@@ -54,7 +54,7 @@ export default class AddFood extends React.Component {
           </Form.Field>
           <Form.Field onChange={this.handleInputChange}
             label="Food group"
-            name="category_id"
+            name="categoryID"
             control="select"
           >
             <option value="">Choose a food category</option>
@@ -67,7 +67,7 @@ export default class AddFood extends React.Component {
             <label>Carbon output</label>
             <input type="number"
               onChange={this.handleInputChange}
-              name="carbon_output"
+              name="carbonOutput"
               placeholder="Enter carbon output"
             />
           </Form.Field>
@@ -75,7 +75,7 @@ export default class AddFood extends React.Component {
             <label>Water usage</label>
             <input type="number"
               onChange={this.handleInputChange}
-              name="water_usage"
+              name="waterUsage"
               placeholder="Enter water usage"
             />
           </Form.Field>

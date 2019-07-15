@@ -14,22 +14,22 @@ jest.mock('../../../server/db/category', () => ({
       id: 1,
       name: 'Turkey',
       category: category,
-      carbon_output: 403,
-      water_usage: 52
+      carbonOutput: 403,
+      waterUsage: 52
     },
     {
       id: 2,
       name: 'Not',
       category: category,
-      carbon_output: 403,
-      water_usage: 52
+      carbonOutput: 403,
+      waterUsage: 52
     },
     {
       id: 3,
       name: 'Turkey',
       category: 'Not',
-      carbon_output: 403,
-      water_usage: 52
+      carbonOutput: 403,
+      waterUsage: 52
     }
   ])
 }))
