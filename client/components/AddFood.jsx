@@ -16,7 +16,7 @@ const categories = [
 export default class AddFood extends React.Component {
   state = {
     name: '',
-    categoryID: null,
+    categoryId: null,
     carbonOutput: null,
     waterUsage: null,
     redirect: false
@@ -54,7 +54,7 @@ export default class AddFood extends React.Component {
           </Form.Field>
           <Form.Field onChange={this.handleInputChange}
             label="Food group"
-            name="categoryID"
+            name="categoryId"
             control="select"
           >
             <option value="">Choose a food category</option>
