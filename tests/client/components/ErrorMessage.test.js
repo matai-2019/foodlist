@@ -3,7 +3,6 @@ import { mount } from 'enzyme'
 import { Message } from 'semantic-ui-react'
 
 import ErrorMessage from '../../../client/components/ErrorMessage'
-// import { shallow } from 'enzyme'
 
 const p = <p></p>
 
