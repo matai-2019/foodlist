@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { Dropdown, Menu } from 'semantic-ui-react'
 
 class SortListDropdown extends React.Component {
+  state ={
+    text: 'Sort by'
+  }
+
   options = [
     { key: 1, text: 'A-Z', value: 'SORT_AZ' },
     { key: 2, text: 'Water Usage High-Low', value: 'SORT_WATER_HIGH' },
@@ -11,12 +15,16 @@ class SortListDropdown extends React.Component {
     { key: 5, text: 'Carbon Output Low-High', value: 'CARBON_OUTPUT_LOW' }
   ]
 
+  onChangeHandler = (e) => {
+    this.setState({
+      text: e.target.value
+    })
+  }
+
   render () {
     return (
       <>
-        <Menu onChange={this.handleChange} compact>
-          <Dropdown text='Sort Through Foods' options={this.options} simple item />
-        </Menu>
+      <Dropdown onChange={this.onChangeHandler} text={this.state.text} options={this.options} />
       </>
     )
   }
