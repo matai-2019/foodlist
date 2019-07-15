@@ -11,18 +11,13 @@ import FoodDetails from './FoodDetails'
 import EditFood from './EditFood'
 import WaitIndicator from './WaitIndicator'
 import ErrorMessage from './ErrorMessage'
+
 function App({ error, pending }) {
   return (
     <Router>
       <>
-        <Route path="/" render={props =>
-          <>
-            <TopMenu />
-            {
-              true && <ErrorMessage message={error} />
-            }
-          </>
-        } />
+        <Route path="/" component={TopMenu}/>
+        {error && <ErrorMessage message={error} />}
         {pending && <WaitIndicator />}
         <Container style={{ paddingTop: 75 }}>
           <Switch>
