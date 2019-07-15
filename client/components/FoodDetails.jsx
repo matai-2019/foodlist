@@ -2,68 +2,45 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
 =======
 >>>>>>> 665d69c2e16752ec0d46ddd3966574b7b5ebb9c8
+=======
+>>>>>>> f55f27b41cbc15c6d030537243b2e2a5c7a29de9
 import { Link } from 'react-router-dom'
 
 import { getFood } from '../actions/foodDetails'
 
 class FoodDetails extends React.Component {
-
-  state = {
-    id: null
-  }
-  componentDidMount() {
+  componentDidMount () {
     const id = this.props.match.params.foodId
     this.props.getFood(id)
-
-    this.setState({
-      id: id
-    })
   }
 
-  handleDelete = (e) => {
-
-    deleteFood(this.state.id)
-      .then(() => this.setState({
-        redirect: true
-      }))
-      .catch(err => {
-        throw new Error(err.message)
-      })
-  }
-
-  render() {
+  render () {
     const { foodDetails, info: { pending, error } } = this.props
     return pending ? (<div>LOADING...</div>)
       : (<>
-        {error && <div>{error}</div>}
+      {error && <div>{error}</div> }
         <div>
           <Container className='food-details'>
             <Card centered>
               <Card.Content>
                 <Card.Header as='h2'>
-                  <Grid colums={2}>
-                    <Grid.Column floated="left">
-                      {foodDetails && foodDetails.name}
-                    </Grid.Column>
-                    <Grid.Column>
-                      <Button onClick={this.handleDelete} >Delete</Button>
-                    </Grid.Column>
-                  </Grid>
+                  {foodDetails && foodDetails.name}
                 </Card.Header>
                 <Card.Description>
                   <Grid columns={2} divided>
-                    <Grid.Column centered>
+                    <Grid.Column>
                       <Icon color='grey' name='cloud' size='huge' />
                       <Statistic size='small'>
                         <Statistic.Value>
                           {foodDetails && foodDetails.carbon_output}
                         </Statistic.Value>
                         <Statistic.Label color='grey'>
-                          Carbon Output
+                        Carbon Output
                         </Statistic.Label>
                       </Statistic>
                     </Grid.Column>
@@ -74,7 +51,7 @@ class FoodDetails extends React.Component {
                           {foodDetails && foodDetails.water_usage}
                         </Statistic.Value>
                         <Statistic.Label color='grey'>
-                          Water Usage
+                        Water Usage
                         </Statistic.Label>
                       </Statistic>
                     </Grid.Column>
@@ -82,7 +59,7 @@ class FoodDetails extends React.Component {
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>
-                Category: {foodDetails && foodDetails.category}
+              Category: {foodDetails && foodDetails.category}
               </Card.Content>
             </Card>
           </Container>

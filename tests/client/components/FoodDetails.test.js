@@ -5,8 +5,6 @@ import { render, shallow } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import FoodDetails from '../../../client/components/FoodDetails'
 
-jest.mock('../../../client/api/api')
-
 describe('FoodDetails test suite', () => {
   it('has test runner working', () => {
     expect(true).toBeTruthy()
@@ -86,19 +84,5 @@ describe('FoodDetails', () => {
     )
     const dispatch = wrapper.props().value.store.dispatch
     expect(dispatch).toBeTruthy()
-  })
-})
-
-test('<FoodDetails /> handleDelete deletes food item', () => { expect(this.handleDelete()).toBe(true) })
-
-test('<FoodDetails /> handleDelete changes state.redirect to true', () => {
-  const wrapper = shallow(<FoodDetails />)
-  const expected = true
-
-  const app = wrapper.instance()
-  return app.handleDelete().then(() => {
-    const actual = app.state.redirect
-
-    expect(actual).toBe(expected)
   })
 })
