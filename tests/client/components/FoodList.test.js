@@ -35,7 +35,11 @@ describe('Category toggle', () => {
   })
   it('dispatches getFoods', () => {
     const match = { params: { id: 3 }, path: 'category' }
-    const mockStore = configureStore([thunk])({ foods: [{ name: 'carrot', id: 2 }], info: { pending: false, error: null } })
+    const mockStore = configureStore([thunk])({
+      foods: [{ name: 'carrot', id: 2 }],
+      info: { pending: false, error: null },
+      categories: [{ id: 1, name: 'Vegetables' }, { id: 2, name: 'Meat' }]
+    })
     const wrapper = mount(
       <Provider store={mockStore}>
         <Router>
@@ -48,7 +52,11 @@ describe('Category toggle', () => {
   })
   it('dispatches getCategories when category exists', () => {
     const match = { params: { id: 3 }, path: 'category', category: 'meat' }
-    const mockStore = configureStore([thunk])({ foods: [{ name: 'carrot', id: 2 }], info: { pending: false, error: null } })
+    const mockStore = configureStore([thunk])({
+      foods: [{ name: 'carrot', id: 2 }],
+      info: { pending: false, error: null },
+      categories: [{ id: 1, name: 'Vegetables' }, { id: 2, name: 'Meat' }]
+    })
     const wrapper = mount(
       <Provider store={mockStore}>
         <Router>
