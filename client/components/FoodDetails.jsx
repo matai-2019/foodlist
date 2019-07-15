@@ -10,13 +10,12 @@ class FoodDetails extends React.Component {
   state = {
     id: null
   }
-  componentDidMount () {
-    const id = this.props.match.params.foodId
-    this.props.getFood(id)
 
-    this.setState({
-      id: id
-    })
+  componentDidMount () {
+    const id = Number(this.props.match.params.foodId)
+
+    this.setState({ id })
+    this.props.getFood(id)
   }
 
   handleDelete = (e) => {
