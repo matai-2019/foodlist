@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
+import { SORT_AZ, SORT_WATER_HIGH } from '../actions/sort'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
+import { sortAZ, sortHighLowWater } from '../utils/sort'
 import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
@@ -25,8 +27,7 @@ class FoodList extends React.Component {
     } else {
       return (
       <>
-        {!this.props.match.path.includes('category') &&
-        <CategoriesListDropdown /> } &nbsp;
+        <CategoriesListDropdown /> &nbsp;
         <SortListDropdown /> &nbsp;
         <SearchBar/>
         {error && <div>{error}</div>}
@@ -38,10 +39,24 @@ class FoodList extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    foods: state.foods,
-    info: state.info
+const mapStateToProps = ({ sortType, info, foods }) => {
+  switch (sortType) {
+    case SORT_AZ:
+      return {
+        foods: sortAZ(foods),
+        info
+      }
+    case SORT_WATER_HIGH:
+      return {
+        foods: sortHighLowWater(foods),
+        info
+      }
+
+    default:
+      return {
+        foods,
+        info
+      }
   }
 }
 
