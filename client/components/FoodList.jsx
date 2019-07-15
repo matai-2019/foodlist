@@ -6,7 +6,7 @@ import { getCategory } from '../actions/category'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
-import { sortAZ } from '../utils/sortAZ'
+import { sortAZ } from '../utils/sort'
 import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
