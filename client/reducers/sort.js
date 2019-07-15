@@ -1,4 +1,4 @@
-import { SORT_AZ, SORT_CARBON_HIGH } from '../actions/sort'
+import { SORT_AZ } from '../actions/sort'
 
 export default function sortReducer (state = '', action) {
   switch (action.type) {
