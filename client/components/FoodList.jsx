@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { Grid } from 'semantic-ui-react'
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
 import Food from './Food'
@@ -24,15 +24,26 @@ class FoodList extends React.Component {
       return <div>LOADING...</div>
     } else {
       return (
-      <>
-        {!this.props.match.path.includes('category') &&
-        <CategoriesListDropdown /> } &nbsp;
-        <SortListDropdown /> &nbsp;
-        <SearchBar/>
-        {error && <div>{error}</div>}
-        {foods.map(food =>
-          <Food key={food.id} food={food} />)}
-      </>
+        <>
+          <Grid columns={3} stackable
+          >
+            <Grid.Row verticalAlign="middle">
+              <Grid.Column >
+                {!this.props.match.path.includes('category') &&
+              <CategoriesListDropdown />}
+              </Grid.Column>
+              <Grid.Column>
+                <SortListDropdown />
+              </Grid.Column>
+              <Grid.Column>
+                <SearchBar />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          {error && <div>{error}</div>}
+          {foods.map(food =>
+            <Food key={food.id} food={food} />)}
+        </>
       )
     }
   }
