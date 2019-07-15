@@ -7,6 +7,7 @@ import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
 import { sortAZ } from '../utils/sortAZ'
+import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -25,9 +26,10 @@ class FoodList extends React.Component {
     } else {
       return (
       <>
-        <SortListDropdown />
-         {!this.props.match.path.includes('category') &&
-         <CategoriesListDropdown />}
+        {!this.props.match.path.includes('category') &&
+        <CategoriesListDropdown /> } &nbsp;
+        <SortListDropdown /> &nbsp;
+        <SearchBar/>
         {error && <div>{error}</div>}
         {foods.map(food =>
           <Food key={food.id} food={food} />)}
