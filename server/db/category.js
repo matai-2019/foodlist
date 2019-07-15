@@ -6,7 +6,7 @@ function getCategories (db = connection) {
 
 function getFoodsByCategory (categoryName, db = connection) {
   return db('foods')
-    .join('categories', 'foods.categoryId', 'categories.id')
+    .join('categories', 'foods.category_id', 'categories.id')
     .where('categories.name', categoryName)
     .select(
       'foods.id',
