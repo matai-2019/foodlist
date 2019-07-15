@@ -1,7 +1,8 @@
 import React from 'react'
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { render, shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import FoodDetails from '../../../client/components/FoodDetails'
 
@@ -13,35 +14,35 @@ describe('FoodDetails test suite', () => {
 
 describe('FoodDetails', () => {
   it('has loading message if pending is true', () => {
-    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: true, error: null } })
-    const wrapper = render(
+    const match = { params: { foodId: 1 } }
+    const mockStore = configureStore([thunk])({ foodDetails: { name: 'Turkey' }, info: { pending: true, error: null } })
+    const wrapper = mount(
       <Provider store={mockStore}>
-        <Router>
-          <Route component={FoodDetails} />
-        </Router>
-        <FoodDetails />
+        <FoodDetails match={match}/>
       </Provider>
     )
     expect(wrapper.text()).toMatch(/LOADING.../)
   })
 
   it('<FoodDetails> is an instance of FoodDetails', () => {
-    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
-    const wrapper = render(
+    const match = { params: { foodId: 1 } }
+    const mockStore = configureStore([thunk])({ foodDetails: { name: 'Turkey' }, info: { pending: false, error: null } })
+    const wrapper = mount(
       <Provider store={mockStore}>
         <Router>
-          <Route component={FoodDetails} />
+          <FoodDetails match={match}/>
         </Router>
       </Provider>
     )
     const root = wrapper.find('.food-details')
-    expect(root.length).toBe(1)
+    expect(root.length).toBe(2)
   })
 
   it('has page header that includes food name', () => {
-    const mockStore = configureStore()({ foodDetails: { 'name': 'Turkey' }, info: { pending: false, error: null } })
-    const wrapper = render(
+    const mockStore = configureStore([thunk])({ foodDetails: { name: 'Turkey' }, info: { pending: false, error: null } })
+    const wrapper = mount(
       <Provider store={mockStore}>
+ 
         <Router>
           <Route component={FoodDetails} />
         </Router>
@@ -53,13 +54,13 @@ describe('FoodDetails', () => {
 
   it('has props of "foodDetails" passed in', () => {
     const foodDetails = {
-      'name': 'Turkey',
-      'category': 'meat',
-      'carbon_output': 403,
-      'water_usage': 52
+      name: 'Turkey',
+      category: 'meat',
+      carbon_output: 403,
+      water_usage: 52
     }
-    const mockStore = configureStore()({ foodDetails, info: { pending: false, error: null } })
-    const wrapper = render(
+    const mockStore = configureStore([thunk])({ foodDetails, info: { pending: false, error: null } })
+    const wrapper = mount(
       <Provider store={mockStore}>
         <Router>
           <Route component={FoodDetails} />
