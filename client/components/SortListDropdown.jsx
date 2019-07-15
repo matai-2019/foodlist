@@ -1,30 +1,52 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Dropdown, Menu } from 'semantic-ui-react'
-import { sortBy } from '../actions/sort'
+import { Dropdown } from 'semantic-ui-react'
+import { SORT_AZ,
+  SORT_CARBON_HIGH,
+  SORT_CARBON_LOW, SORT_WATER_HIGH,
+  SORT_WATER_LOW,
+  sortBy } from '../actions/sort'
 
 class SortListDropdown extends React.Component {
+  state ={
+    text: 'Default'
+  }
+
   options = [
-    { key: 1, text: 'A-Z', value: 'SORT_AZ' },
-    { key: 2, text: 'Water Usage High-Low', value: 'SORT_WATER_HIGH' },
-    { key: 3, text: 'Water Usage Low-High', value: 'SORT_WATER_LOW' },
-    { key: 4, text: 'Carbon Output High-Low', value: 'CARBON_OUTPUT_HIGH' },
-    { key: 5, text: 'Carbon Output Low-High', value: 'CARBON_OUTPUT_LOW' }
+    { text: 'A-Z', value: SORT_AZ },
+    { text: 'Water Usage High-Low', value: SORT_WATER_HIGH },
+    { text: 'Water Usage Low-High', value: SORT_WATER_LOW },
+    { text: 'Carbon Output High-Low', value: SORT_CARBON_HIGH },
+    { text: 'Carbon Output Low-High', value: SORT_CARBON_LOW }
   ]
 
-  handleChange = (e) => {
-    this.props.dispatch(sortBy(e.target.value))
+  onChangeHandler = (e, data) => {
+    this.setState({
+      text: e.target.textContent
+    })
+    this.props.dispatch(sortBy(data.value))
   }
 
   render () {
     return (
-      <>
-        <Menu onChange={this.handleChange} compact>
-          <Dropdown text='Sort Through Foods' options={this.options} simple item />
-        </Menu>
-      </>
+      <span>
+        <span style={{ marginRight: '0.5em' }}>Sort By :</span>
+        <Dropdown
+          onChange={this.onChangeHandler}
+          text={this.state.text}
+          options={this.options}
+          labeled
+        />
+      </span>
+
     )
   }
 }
 
-export default connect()(SortListDropdown)
+const mapStateToProps = state => {
+  return {
+    sortType: state.sortType
+  }
+}
+
+export default connect(mapStateToProps)(SortListDropdown)
