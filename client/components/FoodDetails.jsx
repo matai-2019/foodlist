@@ -25,7 +25,7 @@ class FoodDetails extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        this.props.dispatch(deleteFoodError(err.message))
+        this.props.deleteFoodError(err.message)
       })
   }
 
@@ -95,7 +95,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getFood: (id) => dispatch(getFood(id))
+    getFood: (id) => dispatch(getFood(id)),
+    deleteFoodError: (message) => dispatch(deleteFoodError(message))
   }
 }
 
