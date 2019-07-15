@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
@@ -29,6 +29,10 @@ class FoodDetails extends React.Component {
   }
 
   render () {
+    if (this.state.redirect) {
+      return <Redirect push to="/" />
+    }
+
     const { foodDetails, info: { pending, error } } = this.props
     return pending ? (<div>LOADING...</div>)
       : (<>
@@ -76,6 +80,7 @@ class FoodDetails extends React.Component {
         <Button>
           <Link to={`/edit/${this.props.match.params.foodId}`}>Edit Food</Link>
         </Button>
+        <Button onClick={this.handleDelete}>Delete Food</Button>
       </>)
   }
 }
