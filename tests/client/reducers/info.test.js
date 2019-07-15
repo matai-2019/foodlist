@@ -11,6 +11,9 @@ import {
   GET_FOODS_SUCCESS,
   GET_FOODS_ERROR } from '../../../client/actions/foods'
 import {
+  ADD_FOOD_ERROR,
+  EDIT_FOOD_ERROR } from '../../../client/actions/updateFoodErrors'
+import {
   GET_CATEGORY_PENDING,
   GET_CATEGORY_SUCCESS,
   GET_CATEGORY_ERROR } from '../../../client/actions/category'
@@ -89,6 +92,24 @@ describe('infoReducer with getFoods actions', () => {
     const action = { type: GET_FOODS_ERROR, message: 'ERROR' }
     const actual = infoReducer(intialState, action)
     expect(actual).toStrictEqual(intialState)
+  })
+})
+
+describe('infoReducer with updateFoodErrors actions', () => {
+  it('ADD_FOOD_ERROR returns error | pending: false, error: message', () => {
+    const intialState = { pending: true }
+    const testState = { pending: false, error: 'ERROR' }
+    const action = { type: ADD_FOOD_ERROR, message: 'ERROR' }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(testState)
+  })
+
+  it('EDIT_FOOD_ERROR returns error | pending: false, error: message', () => {
+    const intialState = { pending: true }
+    const testState = { pending: false, error: 'ERROR' }
+    const action = { type: EDIT_FOOD_ERROR, message: 'ERROR' }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(testState)
   })
 })
 
