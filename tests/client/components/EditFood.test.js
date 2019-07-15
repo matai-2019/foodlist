@@ -22,12 +22,14 @@ describe('EditFood', () => {
     expect(app.state.carbon_output).toBe(555)
   })
 
-  it('changes state.redirect to true', () => {
+  it('mocks handleSubmit and changes app.state.redirect', () => {
     expect.assertions(1)
     const wrapper = shallow(<EditFood />)
     const app = wrapper.instance()
-    return app.handleSubmit().then(app => {
-      expect(app.state().redirect).toBe(true)
-    })
+    app.handleSubmit = () => {
+      app.setState({ redirect: true })
+    }
+    app.handleSubmit()
+    expect(app.state.redirect).toBe(true)
   })
 })
