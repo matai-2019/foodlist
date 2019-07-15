@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Input } from 'semantic-ui-react'
-// import { searchFood } from '../actions/searchFood'
+import { setSearchTerm } from '../actions/search'
 
 class SearchBar extends Component {
   state = {
@@ -11,7 +11,7 @@ class SearchBar extends Component {
     this.setState({ searchedFood: evt.target.value })
   }
   handleSearch = () => {
-    // this.props.dispatch(searchFood(this.state.searchedFood))
+    this.props.dispatch(setSearchTerm(this.state.searchedFood))
   }
   render = () => {
     return (
