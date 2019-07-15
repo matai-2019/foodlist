@@ -13,6 +13,10 @@ import {
 import {
   ADD_FOOD_ERROR,
   EDIT_FOOD_ERROR } from '../../../client/actions/updateFoodErrors'
+import {
+  GET_CATEGORY_PENDING,
+  GET_CATEGORY_SUCCESS,
+  GET_CATEGORY_ERROR } from '../../../client/actions/category'
 import infoReducer from '../../../client/reducers/info'
 
 it('returns default state without case matches', () => {
@@ -106,5 +110,28 @@ describe('infoReducer with updateFoodErrors actions', () => {
     const action = { type: EDIT_FOOD_ERROR, message: 'ERROR' }
     const actual = infoReducer(intialState, action)
     expect(actual).toStrictEqual(testState)
+  })
+})
+
+describe('infoReducer with getCategory actions', () => {
+  it('returns pending | pending: true', () => {
+    const intialState = { pending: true }
+    const action = { type: GET_CATEGORY_PENDING, action: {} }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
+  })
+
+  it('returns success | pending: false, error: null', () => {
+    const intialState = { pending: false, error: null }
+    const action = { type: GET_CATEGORY_SUCCESS, action: {} }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
+  })
+
+  it('returns error | pending: false, error: message', () => {
+    const intialState = { pending: false, error: 'ERROR' }
+    const action = { type: GET_CATEGORY_ERROR, message: 'ERROR' }
+    const actual = infoReducer(intialState, action)
+    expect(actual).toStrictEqual(intialState)
   })
 })
