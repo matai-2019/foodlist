@@ -9,12 +9,14 @@ import NoMatch from './NoMatch'
 import AddFood from './AddFood'
 import FoodDetails from './FoodDetails'
 import EditFood from './EditFood'
+import WaitIndicator from './WaitIndicator'
 
 function App ({ info }) {
   return (
     <Router>
       <>
         <Route path="/" component={TopMenu} />
+        {info.pending && <WaitIndicator />}
         <Container style={{ paddingTop: 75 }}>
           <Switch>
             <Route exact path="/" component={FoodList} />
