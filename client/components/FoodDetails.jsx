@@ -1,9 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
+<<<<<<< HEAD
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
+=======
+>>>>>>> 665d69c2e16752ec0d46ddd3966574b7b5ebb9c8
 import { Link } from 'react-router-dom'
+
+import { getFood } from '../actions/foodDetails'
 
 class FoodDetails extends React.Component {
 
