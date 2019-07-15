@@ -76,3 +76,9 @@ test('db.addFood should add food to db', () => {
       expect(expected).toBe(28)
     })
 })
+
+test('db.getFoods returns carbon output and water usage data', () => {
+  return db.getFoods(testDb).then(food => {
+    expect(food.length).toBe(27)
+  })
+})
