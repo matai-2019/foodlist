@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
 import Food from './Food'
+import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
+import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -23,8 +25,10 @@ class FoodList extends React.Component {
     } else {
       return (
       <>
-         {!this.props.match.path.includes('category') &&
-         <CategoriesListDropdown />}
+        {!this.props.match.path.includes('category') &&
+        <CategoriesListDropdown /> } &nbsp;
+        <SortListDropdown /> &nbsp;
+        <SearchBar/>
         {error && <div>{error}</div>}
         {foods.map(food =>
           <Food key={food.id} food={food} />)}
