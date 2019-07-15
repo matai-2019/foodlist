@@ -1,4 +1,4 @@
-import { sortAZ, sortHighLowWater, sortHighLowCarbon } from '../../../client/utils/sort'
+import { sortAZ, sortHighLowWater, sortLowHighWater, sortHighLowCarbon } from '../../../client/utils/sort'
 
 test('sortAZ sorts an array of objects alphabetically', () => {
   const foods = [
@@ -36,6 +36,26 @@ test('sortHighLowWater sorts an array of objects from high to low water usage', 
   ]
 
   const actual = sortHighLowWater(foods)
+
+  expect(actual).toStrictEqual(expected)
+})
+
+test('sortLowHighWater sorts an array of objects from low to high water usage', () => {
+  const foods = [
+    { id: 1, name: 'orange', waterUsage: 3000 },
+    { id: 2, name: 'apple', waterUsage: 2400 },
+    { id: 3, name: 'banana', waterUsage: 5530 },
+    { id: 4, name: 'carrot', waterUsage: 30 }
+  ]
+
+  const expected = [
+    { id: 3, name: 'banana', waterUsage: 5530 },
+    { id: 1, name: 'orange', waterUsage: 3000 },
+    { id: 2, name: 'apple', waterUsage: 2400 },
+    { id: 4, name: 'carrot', waterUsage: 30 }
+  ]
+
+  const actual = sortLowHighWater(foods)
 
   expect(actual).toStrictEqual(expected)
 })
