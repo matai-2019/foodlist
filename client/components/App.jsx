@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 import FoodList from './FoodList'
 import TopMenu from './TopMenu'
@@ -9,7 +10,7 @@ import AddFood from './AddFood'
 import FoodDetails from './FoodDetails'
 import EditFood from './EditFood'
 
-export default function App () {
+function App ({ info }) {
   return (
     <Router>
       <>
@@ -28,3 +29,11 @@ export default function App () {
     </Router>
   )
 }
+
+const mapStateToProps = ({ info }) => {
+  return {
+    info
+  }
+}
+
+export default connect(mapStateToProps)(App)
