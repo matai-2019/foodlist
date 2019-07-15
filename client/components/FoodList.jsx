@@ -41,21 +41,23 @@ class FoodList extends React.Component {
 }
 
 const mapStateToProps = ({ sortType, info, foods }) => {
-  if (sortType === SORT_AZ) {
-    return {
-      foods: sortAZ(foods),
-      info: info
-    }
-  } else if (sortType === SORT_WATER_HIGH) {
-    return {
-      foods: sortHighLowWater(foods),
-      info: info
-    }
-  } else {
-    return {
-      foods: foods,
-      info: info
-    }
+  switch (sortType) {
+    case SORT_AZ:
+      return {
+        foods: sortAZ(foods),
+        info: info
+      }
+    case SORT_WATER_HIGH:
+      return {
+        foods: sortHighLowWater(foods),
+        info: info
+      }
+
+    default:
+      return {
+        foods: foods,
+        info: info
+      }
   }
 }
 
