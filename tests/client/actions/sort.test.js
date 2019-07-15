@@ -1,4 +1,4 @@
-import { SORT_AZ, SORT_CARBON_HIGH, sortBy } from '../../../client/actions/sort'
+import { SORT_AZ, SORT_CARBON_HIGH, SORT_CARBON_LOW, sortBy } from '../../../client/actions/sort'
 
 describe('Tests for sort actions', () => {
   it('sortBy(SORT_AZ)  returns a given type SORT_AZ', () => {
@@ -9,5 +9,10 @@ describe('Tests for sort actions', () => {
   it('sortBy(SORT_CARBON_HIGH) returns a given type SORT_CARBON_HIGH', () => {
     const action = sortBy(SORT_CARBON_HIGH)
     expect(action.type).toBe(SORT_CARBON_HIGH)
+  })
+
+  it('sortBy(SORT_CARBON_HIGH) returns a given type SORT_CARBON_HIGH', () => {
+    const action = sortBy(SORT_CARBON_LOW)
+    expect(action.type).toBe(SORT_CARBON_LOW)
   })
 })
