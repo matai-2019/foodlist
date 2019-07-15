@@ -10,7 +10,7 @@ import { SORT_ALPHABETICAL_ASCENDING,
 
 class SortListDropdown extends React.Component {
   state ={
-    text: 'Default'
+    text: ''
   }
 
   options = [
