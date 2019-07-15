@@ -5,7 +5,6 @@ import { mount, shallow } from 'enzyme'
 import Food from '../../../client/components/Food'
 import Label from '../../../client/components/Label'
 
-
 test('<Food /> test setup is working correctly', () => {
   expect(true).toBeTruthy()
 })
