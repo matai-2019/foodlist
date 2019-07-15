@@ -1,8 +1,10 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { Button, Form, Container, Header } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 import { addFood } from '../api/api'
+import { addFoodError } from '../actions/updateFoodErrors'
 
 const categories = [
   { id: 1, name: 'Fruits' },
@@ -13,7 +15,7 @@ const categories = [
   { id: 6, name: 'Animal byproducts' }
 ]
 
-export default class AddFood extends React.Component {
+class AddFood extends React.Component {
   state = {
     name: '',
     category_id: null,
@@ -22,7 +24,7 @@ export default class AddFood extends React.Component {
     redirect: false
   }
 
-  handleInputChange = (e) => {
+  handleInputChange = (e) => {   
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -34,11 +36,11 @@ export default class AddFood extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        throw new Error(`Oh no! ${err.message}`)
+        this.props.dispatch(addFoodError(err.message))
       })
   }
 
-  render () {
+  render() {
     return this.state.redirect
       ? <Redirect to={{ pathname: '/' }} />
       : <Container>
@@ -84,3 +86,4 @@ export default class AddFood extends React.Component {
       </Container>
   }
 }
+export default connect()(AddFood)
