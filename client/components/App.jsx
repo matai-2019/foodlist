@@ -10,8 +10,8 @@ import AddFood from './AddFood'
 import FoodDetails from './FoodDetails'
 import EditFood from './EditFood'
 import WaitIndicator from './WaitIndicator'
-import ErrorMessage from './Error.jsx'
-function App({ info: { error } }) {
+import ErrorMessage from './ErrorMessage'
+function App({ info, info: { error } }) {
   return (
     <Router>
       <>
@@ -19,7 +19,7 @@ function App({ info: { error } }) {
           <>
             <TopMenu />
             {
-              error && <ErrorMessage message={error} />
+              true && <ErrorMessage message={error} />
             }
           </>
         } />
