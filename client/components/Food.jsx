@@ -12,12 +12,15 @@ export default function Food ({ food: { name, id , carbonOutput, waterUsage} }) 
             <Table.HeaderCell>
               <Link to={`/details/${id}`}>
                 {name}
+              </Link>
+            </Table.HeaderCell>
+            <Table.HeaderCell textAlign='right'>
                 <Label value={carbonOutput} type="carbon" />
                 <Label value={waterUsage} type="water" />
-              </Link>
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
+
       </Table>
     </>
   )
