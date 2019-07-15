@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom'
 
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
+import { deleteFoodError } from '../actions/updateFoodErrors'
 
 class FoodDetails extends React.Component {
   state = {
@@ -24,7 +25,7 @@ class FoodDetails extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        throw new Error(err.message)
+        this.props.dispatch(deleteFoodError(err.message))
       })
   }
 
