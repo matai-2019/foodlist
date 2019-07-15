@@ -19,7 +19,6 @@ test('<AddFood /> contains a form tag', () => {
 
 test('<AddFood /> handleInputChange changes state of the component', () => {
   const wrapper = mount(<AddFood />)
-  const expected = 'carrot'
   const app = wrapper.instance()
   app.handleInputChange({
     target: {
