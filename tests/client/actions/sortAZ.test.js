@@ -5,9 +5,4 @@ describe('Tests for sort actions', () => {
     const action = sortBy(SORT_AZ)
     expect(action.type).toBe(SORT_AZ)
   })
-
-  it('setSortType returns a given type', () => {
-    const action = sortBy(SORT_AZ)
-    expect(action.type).toBe(SORT_AZ)
-  })
 })
