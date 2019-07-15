@@ -6,6 +6,7 @@ import { getCategory } from '../actions/category'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
+import { sortAZ } from '../utils/sortAZ'
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -36,10 +37,17 @@ class FoodList extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    foods: state.foods,
-    info: state.info
+const mapStateToProps = ({ sortType, info, foods }) => {
+  if (sortType === 'SORT_AZ') {
+    return {
+      foods: sortAZ(foods),
+      info: info
+    }
+  } else {
+    return {
+      foods: foods,
+      info: info
+    }
   }
 }
 
