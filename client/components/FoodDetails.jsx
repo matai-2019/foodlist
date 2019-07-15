@@ -1,28 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
-=======
->>>>>>> 665d69c2e16752ec0d46ddd3966574b7b5ebb9c8
-=======
->>>>>>> f55f27b41cbc15c6d030537243b2e2a5c7a29de9
-=======
->>>>>>> 05a210de2ef15c815d57a7e199abab66e7fe4ecc
+
 import { Link } from 'react-router-dom'
 
-import { getFood } from '../actions/foodDetails'
-import { deleteFood } from '../api/api'
-
 class FoodDetails extends React.Component {
-<<<<<<< HEAD
-  componentDidMount () {
-    const id = this.props.match.params.foodId
-    this.props.getFood(id)
-=======
   state = {
     id: null
   }
@@ -43,7 +27,6 @@ class FoodDetails extends React.Component {
       .catch(err => {
         throw new Error(err.message)
       })
->>>>>>> 05a210de2ef15c815d57a7e199abab66e7fe4ecc
   }
 
   render () {
