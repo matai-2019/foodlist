@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
-import { SORT_AZ, SORT_WATER_HIGH } from '../actions/sort'
+import { SORT_AZ, SORT_WATER_HIGH, SORT_CARBON_HIGH } from '../actions/sort'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
-import { sortAZ, sortHighLowWater } from '../utils/sort'
+import { sortAZ, sortHighLowWater, sortHighLowCarbon } from '../utils/sort'
 import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
@@ -49,6 +49,12 @@ const mapStateToProps = ({ sortType, info, foods }) => {
     case SORT_WATER_HIGH:
       return {
         foods: sortHighLowWater(foods),
+        info
+      }
+
+    case SORT_CARBON_HIGH:
+      return {
+        foods: sortHighLowCarbon(foods),
         info
       }
 
