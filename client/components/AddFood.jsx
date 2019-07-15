@@ -24,7 +24,7 @@ class AddFood extends React.Component {
     redirect: false
   }
 
-  handleInputChange = (e) => {   
+  handleInputChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -40,7 +40,7 @@ class AddFood extends React.Component {
       })
   }
 
-  render() {
+  render () {
     return this.state.redirect
       ? <Redirect to={{ pathname: '/' }} />
       : <Container>
@@ -86,4 +86,5 @@ class AddFood extends React.Component {
       </Container>
   }
 }
+
 export default connect()(AddFood)
