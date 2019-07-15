@@ -13,7 +13,7 @@ import {
 import {
   GET_CATEGORY_PENDING,
   GET_CATEGORY_SUCCESS,
-  GET_CATEGORY_ERROR } from '../actions/categories'
+  GET_CATEGORY_ERROR } from '../actions/category'
 
 export default function infoReducer (state = { pending: true }, action) {
   switch (action.type) {
