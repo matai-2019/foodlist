@@ -6,6 +6,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
 import { deleteFoodError } from '../actions/updateFoodErrors'
+import WaitIndicator from './WaitIndicator';
 
 class FoodDetails extends React.Component {
   state = {
@@ -34,7 +35,7 @@ class FoodDetails extends React.Component {
     }
 
     const { foodDetails, info: { pending, error } } = this.props
-    return pending ? (<div>LOADING...</div>)
+    return pending ? <WaitIndicator />
       : (<>
       {error && <div>{error}</div> }
         <div>

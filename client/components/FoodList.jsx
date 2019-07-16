@@ -9,6 +9,7 @@ import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
 import { sortAlphabeticalAscending, sortWaterUsageDescending, sortWaterUsageAscending, sortCarbonDescending, searchFood } from '../utils/sort'
 import SearchBar from './SearchBar'
+import WaitIndicator from './WaitIndicator';
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -23,7 +24,7 @@ class FoodList extends React.Component {
     const { foods, info: { pending, error } } = this.props
 
     if (pending) {
-      return <div>LOADING...</div>
+      return <WaitIndicator />
     } else {
       return (
         <>
