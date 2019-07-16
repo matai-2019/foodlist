@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { Button, Form, Container, Header } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 import { addFood } from '../api/api'
 import { addFoodError } from '../actions/updateFoodErrors'
