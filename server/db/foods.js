@@ -23,8 +23,8 @@ function getFood (id, db = connection) {
       'foods.id',
       'foods.name',
       'categories.name as category',
-      'carbon_outputs.value as carbon_output',
-      'water_usages.value as water_usage'
+      'carbon_outputs.value as carbonOutput',
+      'water_usages.value as waterUsage'
     )
 }
 
@@ -34,23 +34,23 @@ function editFood (food, db = connection) {
     .update({
       id: food.id,
       name: food.name,
-      category_id: food.category_id
+      category_id: food.categoryId
     })
     .then(() => {
-      if (food.carbon_output) {
+      if (food.carbonOutput) {
         return db('carbon_outputs')
           .where('food_id', food.id)
           .update({
-            value: food.carbon_output
+            value: food.carbonOutput
           })
       }
     })
     .then(() => {
-      if (food.water_usage) {
+      if (food.waterUsage) {
         return db('water_usages')
           .where('food_id', food.id)
           .update({
-            value: food.water_usage
+            value: food.waterUsage
           })
       }
     })

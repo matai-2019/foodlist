@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { Grid } from 'semantic-ui-react'
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
-import { SORT_AZ, SORT_WATER_HIGH, SORT_WATER_LOW } from '../actions/sort'
+import { SORT_ALPHABETICAL_ASCENDING, SORT_WATER_USAGE_DESCENDING, SORT_WATER_USAGE_ASCENDING, SORT_CARBON_OUTPUT_DESCENDING, FILTER } from '../actions/sort'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
-import { sortAZ, sortHighLowWater, sortLowHighWater } from '../utils/sort'
+import { sortAlphabeticalAscending, sortWaterUsageDescending, sortWaterUsageAscending, sortCarbonDescending, searchFood } from '../utils/sort'
 import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
@@ -27,9 +27,20 @@ class FoodList extends React.Component {
     } else {
       return (
         <>
-          <CategoriesListDropdown /> &nbsp;
-        <SortListDropdown /> &nbsp;
-        <SearchBar />
+          <Grid columns={3} stackable
+          >
+            <Grid.Row verticalAlign="middle">
+              <Grid.Column >
+                <CategoriesListDropdown />
+              </Grid.Column>
+              <Grid.Column>
+                <SortListDropdown />
+              </Grid.Column>
+              <Grid.Column>
+                <SearchBar />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           {error && <div>{error}</div>}
           {foods.map(food =>
             <Food key={food.id} food={food} />)}
@@ -39,27 +50,32 @@ class FoodList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ sortType, info, foods }) => {
+const mapStateToProps = ({ sortType, info, foods, search }) => {
   switch (sortType) {
-    case SORT_AZ:
+    case FILTER:
       return {
-        foods: sortAZ(foods),
+        foods: searchFood(foods, search),
         info
       }
-    case SORT_WATER_HIGH:
+    case SORT_ALPHABETICAL_ASCENDING:
       return {
-        foods: sortHighLowWater(foods),
+        foods: sortAlphabeticalAscending(foods),
         info
       }
-    case SORT_WATER_LOW:
+    case SORT_WATER_USAGE_DESCENDING:
       return {
-        foods: sortLowHighWater(foods),
+        foods: sortWaterUsageDescending(foods),
+        info
+      }
+    case SORT_WATER_USAGE_ASCENDING:
+      return {
+        foods: sortWaterUsageAscending(foods),
         info
       }
 
-    case SORT_CARBON_HIGH:
+    case SORT_CARBON_OUTPUT_DESCENDING:
       return {
-        foods: sortHighLowCarbon(foods),
+        foods: sortCarbonDescending(foods),
         info
       }
 

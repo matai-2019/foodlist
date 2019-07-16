@@ -1,10 +1,9 @@
 import React from 'react'
-import thunk from 'redux-thunk'
-import { render, mount, shallow } from 'enzyme'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-// import { Form } from 'semantic-ui-react'
+import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
+import { mount } from 'enzyme'
+import { Form } from 'semantic-ui-react'
 
 import AddFood from '../../../client/components/AddFood'
 
@@ -17,53 +16,48 @@ const categories = [
   }
 ]
 
+const mockStore = configureStore([thunk])({ categories, carbon_output: '' })
+
 test('<AddFood /> test setup is working correctly', () => {
   expect(true).toBeTruthy()
 })
 
-test('<AddFood /> renders the addfood component', () => {
-  const mockStore = configureStore([thunk])({ categories })
+test('<AddFood /> contains a form tag', () => {
   const wrapper = mount(
     <Provider store={mockStore}>
-      <AddFood/>
+      <AddFood />
     </Provider>
   )
-  console.log('find', wrapper)
-  expect(wrapper.instance()).toBe.instanceOf(<AddFood/>)
+  const actual = wrapper.containsMatchingElement(Form)
+  expect(actual).toBe(true)
 })
 
-test.skip('<AddFood /> contains a form tag', () => {
-  const expected = true
-  const wrapper = mount(<AddFood />)
-  const actual = wrapper.containsMatchingElement('Form')
-  expect(actual).toBe(expected)
-})
-
-test.skip('<AddFood /> handleInputChange changes state of the component', () => {
-  const wrapper = mount(<AddFood />)
-  const expected = 'carrot'
-
+it('handleChange changes state of the component', () => {
+  const wrapper = mount(
+    <Provider store={mockStore}>
+      <AddFood />
+    </Provider>
+  )
   const app = wrapper.instance()
-  app.handleInputChange({
-    target: {
-      name: 'name',
-      value: 'carrot'
-    }
-  })
-
-  const actual = app.state.name
-
-  expect(actual).toBe(expected)
+  app.handleChange = () => {
+    app.setState({ carbon_output: 555 })
+  }
+  app.handleChange()
+  expect(app.state.carbon_output).toBe(555)
 })
 
-test.skip('handleSubmit changes state.redirect to true', () => {
-  const wrapper = shallow(<AddFood />)
-  const expected = true
+test('mocks handleSubmit and sets redirect to true', () => {
+  expect.assertions(1)
 
+  const wrapper = mount(
+    <Provider store={mockStore}>
+      <AddFood />
+    </Provider>
+  )
   const app = wrapper.instance()
-  return app.handleSubmit().then(() => {
-    const actual = app.state.redirect
-
-    expect(actual).toBe(expected)
-  })
+  app.handleSubmit = () => {
+    app.setState({ redirect: true })
+  }
+  app.handleSubmit()
+  expect(app.state.redirect).toBe(true)
 })

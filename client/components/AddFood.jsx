@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 // import { Redirect } from 'react-router-dom'
 import { Button, Form, Container, Header } from 'semantic-ui-react'
-import { addFood } from '../api/api'
+import { addFood, addFoodError } from '../api/api'
 import { getCategories } from '../actions/categories'
 
 class AddFood extends React.Component {
@@ -22,7 +22,7 @@ class AddFood extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        throw new Error(`Oh no! ${err.message}`)
+        this.props.dispatch(addFoodError(err.message))
       })
   }
 
