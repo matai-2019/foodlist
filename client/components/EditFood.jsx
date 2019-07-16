@@ -10,11 +10,6 @@ import { editFoodError } from '../actions/updateFoodErrors'
 
 class EditFood extends React.Component {
   state = {
-    id: 1,
-    name: 'Orange',
-    foodGroup: 'fruits',
-    carbonOutput: 101,
-    waterUsage: 88,
     redirect: false,
     foodDetails: this.props.foodDetails
   }
@@ -42,6 +37,7 @@ class EditFood extends React.Component {
   }
 
   render() {
+    // console.log('hi',this.state.foodDetails)
     const { name, carbonOutput, waterUsage } = this.state.foodDetails
     return this.state.redirect ? (<Redirect to={{ pathname: '/' }} />) : (
       <>

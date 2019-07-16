@@ -1,7 +1,10 @@
 import React from 'react'
 import { mount } from 'enzyme'
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 
 import { Form } from 'semantic-ui-react'
 import EditFood from '../../../client/components/EditFood'
@@ -17,10 +20,13 @@ console.error = message => {
 
 describe('EditFood', () => {
   it('contains a form tag', () => {
-    const mockStore = configureStore()({})
+    const match = { params: { foodId: 1 } }
+    const mockStore = configureStore([thunk])({foodDetails: {id:1, name: 'yofuck', waterUsage: 1, carbonOutput: 0}})
     const wrapper = mount(
       <Provider store={mockStore}>
-        <EditFood />
+        <Router>
+          <EditFood match={match} />
+        </Router>
       </Provider>
     )
     const actual = wrapper.containsMatchingElement(Form)
@@ -28,10 +34,13 @@ describe('EditFood', () => {
   })
 
   it('changes state of the component', () => {
-    const mockStore = configureStore()({ carbon_output: 100 })
+    const match = { params: { foodId: 1 } }
+    const mockStore = configureStore([thunk])({foodDetails: {id:1, name: 'yofuck', waterUsage: 1, carbonOutput: 0}})
     const wrapper = mount(
       <Provider store={mockStore}>
-        <EditFood />
+        <Router>
+          <EditFood match={match} />
+        </Router>
       </Provider>
     )
     const app = wrapper.instance()
@@ -44,10 +53,13 @@ describe('EditFood', () => {
 
   it('mocks handleSubmit and changes app.state.redirect', () => {
     expect.assertions(1)
-    const mockStore = configureStore()({})
+    const match = { params: { foodId: 1 } }
+    const mockStore = configureStore([thunk])({foodDetails: {id:1, name: 'yofuck', waterUsage: 1, carbonOutput: 0}})
     const wrapper = mount(
       <Provider store={mockStore}>
-        <EditFood />
+        <Router>
+          <EditFood match={match} />
+        </Router>
       </Provider>
     )
     const app = wrapper.instance()
@@ -57,11 +69,17 @@ describe('EditFood', () => {
     app.handleSubmit()
     expect(app.state.redirect).toBe(true)
   })
-})
-
-test('state is updated on component did mount', () => {
-  const wrapper = shallow(<EditFood/>)
-  expect(wrapper.state()).toBeTruthy()
-
-
+  it('state is updated on component did mount', () => {
+    const match = { params: { foodId: 1 } }
+    const mockStore = configureStore([thunk])({foodDetails: {id:1, name: 'yofuck', waterUsage: 1, carbonOutput: 0}})
+    const wrapper = mount(
+      <Provider store={mockStore}>
+        <Router>
+          <EditFood match={match} />
+        </Router>
+      </Provider>
+    )
+    expect(wrapper.state()).toBeTruthy()
+    
+  })
 })
