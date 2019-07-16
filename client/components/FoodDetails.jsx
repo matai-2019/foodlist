@@ -14,7 +14,6 @@ class FoodDetails extends React.Component {
 
   componentDidMount () {
     const id = Number(this.props.match.params.foodId)
-
     this.setState({ id })
     this.props.getFood(id)
   }
