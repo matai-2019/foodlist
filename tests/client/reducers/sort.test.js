@@ -1,81 +1,81 @@
-import { SORT_AZ,
-  SORT_CARBON_HIGH,
-  SORT_CARBON_LOW,
-  SORT_WATER_HIGH,
-  SORT_WATER_LOW
+import { SORT_ALPHABETICAL_ASCENDING,
+  SORT_CARBON_OUTPUT_DESCENDING,
+  SORT_CARBON_OUTPUT_ASCENDING,
+  SORT_WATER_USAGE_DESCENDING,
+  SORT_WATER_USAGE_ASCENDING
 } from '../../../client/actions/sort'
 import sortReducer from '../../../client/reducers/sort'
 
 describe('Tests given actions into sortReducer', () => {
-  it('returns a given sortType SORT_AZ', () => {
-    const expected = SORT_AZ
+  it('returns a given sortType SORT_ALPHABETICAL_ASCENDING', () => {
+    const expected = SORT_ALPHABETICAL_ASCENDING
 
     const currentState = {
       sortType: ''
     }
 
     const action = {
-      type: SORT_AZ
+      type: SORT_ALPHABETICAL_ASCENDING
     }
 
     const actual = sortReducer(currentState, action)
     expect(actual).toBe(expected)
   })
 
-  it('returns a given sortType SORT_CARBON_HIGH', () => {
-    const expected = SORT_CARBON_HIGH
+  it('returns a given sortType SORT_CARBON_OUTPUT_DESCENDING', () => {
+    const expected = SORT_CARBON_OUTPUT_DESCENDING
 
     const currentState = {
       sortType: ''
     }
 
     const action = {
-      type: SORT_CARBON_HIGH
+      type: SORT_CARBON_OUTPUT_DESCENDING
     }
 
     const actual = sortReducer(currentState, action)
     expect(actual).toBe(expected)
   })
 
-  it('returns a given sortType SORT_CARBON_LOW', () => {
-    const expected = SORT_CARBON_LOW
+  it('returns a given sortType SORT_CARBON_OUTPUT_ASCENDING', () => {
+    const expected = SORT_CARBON_OUTPUT_ASCENDING
 
     const currentState = {
       sortType: ''
     }
 
     const action = {
-      type: SORT_CARBON_LOW
+      type: SORT_CARBON_OUTPUT_ASCENDING
     }
 
     const actual = sortReducer(currentState, action)
     expect(actual).toBe(expected)
   })
 
-  it('returns a given sortType SORT_WATER_HIGH', () => {
-    const expected = SORT_WATER_HIGH
+  it('returns a given sortType SORT_WATER_USAGE_DESCENDING', () => {
+    const expected = SORT_WATER_USAGE_DESCENDING
 
     const currentState = {
       sortType: ''
     }
 
     const action = {
-      type: SORT_WATER_HIGH
+      type: SORT_WATER_USAGE_DESCENDING
     }
 
     const actual = sortReducer(currentState, action)
     expect(actual).toBe(expected)
   })
 
-  it('returns a given sortType SORT_WATER_LOW', () => {
-    const expected = SORT_WATER_LOW
+  it('returns a given sortType SORT_WATER_USAGE_ASCENDING', () => {
+    const expected = SORT_WATER_USAGE_ASCENDING
 
     const currentState = {
       sortType: ''
     }
 
     const action = {
-      type: SORT_WATER_LOW
+      type: SORT_WATER_USAGE_ASCENDING
     }
 
     const actual = sortReducer(currentState, action)
