@@ -1,18 +1,18 @@
 {
   "Extreme": {
     "name": "Extreme",
-    "color": "violet"
+    "color": "extremeblue"
   },
   "High": {
     "name": "High",
-    "color": "blue"
+    "color": "highblue"
   },
   "Medium": {
     "name": "Medium",
-    "color": "teal"
+    "color": "mediumblue"
   },
   "Low": {
     "name": "Low",
-    "color": "green"
+    "color": "lowblue"
   }
 }
