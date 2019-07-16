@@ -48,7 +48,7 @@ describe('<SearchBar /> tests', () => {
       </Provider>
     )
     wrapper.find('button').simulate('click')
-    const actions = wrapper.state().subscription.store.getActions()[0]
+    const actions = wrapper.state().subscription.store.getActions()[1]
     expect(actions).toStrictEqual({ type: 'SET_SEARCH_TERM', searchTerm: '' })
   })
 })

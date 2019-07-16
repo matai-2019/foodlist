@@ -29,3 +29,9 @@ export function sortWaterUsageAscending (arr) {
     else return 0
   })
 }
+
+export function searchFood (arr, searchTerm) {
+  return arr.filter(element => {
+    return element.name.toLowerCase().includes(searchTerm.toLowerCase())
+  })
+}
