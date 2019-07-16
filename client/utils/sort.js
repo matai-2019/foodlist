@@ -22,8 +22,8 @@ export function sortWaterUsageDescending (arr) {
 
 export function sortCarbonDescending (arr) {
   arr.sort((a, b) => {
-    if (a.carbon_output > b.carbon_output) return -1
-    else if (a.carbon_output < b.carbon_output) return 1
+    if (a.carbonOutput > b.carbonOutput) return -1
+    else if (a.carbonOutput < b.carbonOutput) return 1
     else return 0
   })
   return [
@@ -35,6 +35,17 @@ export function sortWaterUsageAscending (arr) {
   arr.sort((a, b) => {
     if (a.waterUsage < b.waterUsage) return -1
     else if (a.waterUsage > b.waterUsage) return 1
+    else return 0
+  })
+  return [
+    ...arr
+  ]
+}
+
+export function sortCarbonAscending (arr) {
+  arr.sort((a, b) => {
+    if (a.carbonOutput < b.carbonOutput) return -1
+    else if (a.carbonOutput > b.carbonOutput) return 1
     else return 0
   })
   return [

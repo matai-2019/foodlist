@@ -13,13 +13,16 @@ import {
   SORT_WATER_USAGE_DESCENDING,
   SORT_WATER_USAGE_ASCENDING,
   SORT_CARBON_OUTPUT_DESCENDING,
-  FILTER } from '../actions/sort'
-import {
-  sortAlphabeticalAscending,
+  SORT_CARBON_OUTPUT_ASCENDING,
+  FILTER
+} from '../actions/sort'
+import { sortAlphabeticalAscending,
   sortWaterUsageDescending,
   sortWaterUsageAscending,
   sortCarbonDescending,
-  searchFood } from '../utils/sort'
+  sortCarbonAscending,
+  searchFood
+} from '../utils/sort'
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -66,10 +69,18 @@ const mapStateToProps = ({ sortType, foods, search }) => {
       return {
         foods: sortWaterUsageDescending(foods) }
     case SORT_WATER_USAGE_ASCENDING:
-      return { foods: sortWaterUsageAscending(foods) }
-
+      return {
+        foods: sortWaterUsageAscending(foods)
+      }
     case SORT_CARBON_OUTPUT_DESCENDING:
-      return { foods: sortCarbonDescending(foods) }
+      return {
+        foods: sortCarbonDescending(foods)
+      }
+    case SORT_CARBON_OUTPUT_ASCENDING:
+      return {
+        foods: sortCarbonAscending(foods)
+      }
+
     default:
       return {
         foods
