@@ -11,6 +11,7 @@ export default function TopMenu () {
         </Menu.Item>
         <Menu.Item as={Link} to="/">Home</Menu.Item>
         <Menu.Item as={Link} to="/new">Add Food</Menu.Item>
+        <Menu.Item as={Link} to="/graph">Visualize This Data</Menu.Item>
       </Container>
     </Menu>
   )
