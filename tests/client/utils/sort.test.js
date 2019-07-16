@@ -1,4 +1,10 @@
-import { sortAlphabeticalAscending, sortWaterUsageDescending, sortWaterUsageAscending, sortCarbonDescending, searchFood } from '../../../client/utils/sort'
+import {
+  sortAlphabeticalAscending,
+  sortWaterUsageDescending,
+  sortWaterUsageAscending,
+  sortCarbonDescending,
+  sortCarbonAscending,
+  searchFood } from '../../../client/utils/sort'
 
 test('sortAlphabeticalAscending sorts an array of objects alphabetically', () => {
   const foods = [
@@ -74,6 +80,24 @@ test('sortCarbonDescending sorts an array of objects from high to low water usag
   ]
 
   const actual = sortCarbonDescending(foods)
+
+  expect(actual).toStrictEqual(expected)
+})
+
+test('sortCarbonAscending sorts an array of objects from high to low water usage', () => {
+  const foods = [
+    { id: 2, food_id: 2, carbon_output: 13.78 },
+    { id: 1, food_id: 1, carbon_output: 20.85 },
+    { id: 3, food_id: 3, carbon_output: 5.83 }
+  ]
+
+  const expected = [
+    { id: 3, food_id: 3, carbon_output: 5.83 },
+    { id: 2, food_id: 2, carbon_output: 13.78 },
+    { id: 1, food_id: 1, carbon_output: 20.85 }
+  ]
+
+  const actual = sortCarbonAscending(foods)
 
   expect(actual).toStrictEqual(expected)
 })
