@@ -81,7 +81,7 @@ describe('Category toggle', () => {
 test('<FoodList /> renders <Food /> component with search term', () => {
   const expected = 'Lamb'
 
-  const mockStore = configureStore()(
+  const mockStore = configureStore([thunk])(
     {
       foods: [{ name: 'Lamb', id: 1 }, { name: 'Chicken', id: 2 }, { name: 'Beef', id: 3 }],
       info: { pending: false, error: null },
@@ -89,7 +89,7 @@ test('<FoodList /> renders <Food /> component with search term', () => {
       search: expected,
       sortType: 'FILTER'
     })
-  const wrapper = render(
+  const wrapper = mount(
     <Provider store={mockStore}>
       <Router>
         <Route component={FoodList} />
