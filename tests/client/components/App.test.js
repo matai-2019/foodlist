@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import App from '../../../client/components/App'
 import WaitIndicator from '../../../client/components/WaitIndicator'
+import ErrorMessage from '../../../client/components/ErrorMessage'
 
 test('<App /> test setup is working correctly', () => {
   expect(true).toBeTruthy()
@@ -20,7 +21,7 @@ test('<App /> contains the router', () => {
       categories: [{ id: 1, name: 'Vegetables' }, { id: 2, name: 'Meat' }]
     })
   const wrapper = mount(<Provider store={mockStore}><App /></Provider>)
-  expect(wrapper.containsMatchingElement(BrowserRouter)).toBe(true) 
+  expect(wrapper.containsMatchingElement(BrowserRouter)).toBe(true)
 })
 
 test('<App /> renders WaitIndicator when info.pending is true', () => {
@@ -34,4 +35,16 @@ test('<App /> renders WaitIndicator when info.pending is true', () => {
   const actual = wrapper.exists(WaitIndicator)
 
   expect(actual).toBe(true)
+})
+
+test('<App/> renders error message when error prop is true', () => {
+  const mockStore = configureStore([thunk])( 
+    {
+      foods: [{ name: 'carrot', id: 2 }],
+      info: { pending: true, error: 'error 513646 testing' },
+      categories: [{ id: 1, name: 'Vegetables' }, { id: 2, name: 'Meat' }]
+    })
+  const wrapper = mount(<Provider store={mockStore}><App/></Provider>)
+  const actual = wrapper.exists(ErrorMessage)
+  expect(actual).toBeTruthy()
 })
