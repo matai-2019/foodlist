@@ -1,8 +1,10 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { Button, Form, Container, Header } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 import { addFood } from '../api/api'
+import { addFoodError } from '../actions/updateFoodErrors'
 
 const categories = [
   { id: 1, name: 'Fruits' },
@@ -13,12 +15,12 @@ const categories = [
   { id: 6, name: 'Animal byproducts' }
 ]
 
-export default class AddFood extends React.Component {
+class AddFood extends React.Component {
   state = {
     name: '',
-    category_id: null,
-    carbon_output: null,
-    water_usage: null,
+    categoryId: null,
+    carbonOutput: null,
+    waterUsage: null,
     redirect: false
   }
 
@@ -34,7 +36,7 @@ export default class AddFood extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        throw new Error(`Oh no! ${err.message}`)
+        this.props.dispatch(addFoodError(err.message))
       })
   }
 
@@ -54,7 +56,7 @@ export default class AddFood extends React.Component {
           </Form.Field>
           <Form.Field onChange={this.handleInputChange}
             label="Food group"
-            name="category_id"
+            name="categoryId"
             control="select"
           >
             <option value="">Choose a food category</option>
@@ -67,7 +69,7 @@ export default class AddFood extends React.Component {
             <label>Carbon output</label>
             <input type="number"
               onChange={this.handleInputChange}
-              name="carbon_output"
+              name="carbonOutput"
               placeholder="Enter carbon output"
             />
           </Form.Field>
@@ -75,7 +77,7 @@ export default class AddFood extends React.Component {
             <label>Water usage</label>
             <input type="number"
               onChange={this.handleInputChange}
-              name="water_usage"
+              name="waterUsage"
               placeholder="Enter water usage"
             />
           </Form.Field>
@@ -84,3 +86,5 @@ export default class AddFood extends React.Component {
       </Container>
   }
 }
+
+export default connect()(AddFood)
