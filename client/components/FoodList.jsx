@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
-import { SORT_AZ, SORT_WATER_HIGH, SORT_WATER_LOW, SORT_CARBON_HIGH } from '../actions/sort'
+import { SORT_ALPHABETICAL_ASCENDING, SORT_WATER_USAGE_DESCENDING, SORT_WATER_USAGE_ASCENDING, SORT_CARBON_OUTPUT_DESCENDING, FILTER } from '../actions/sort'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
-import { sortAZ, sortHighLowWater, sortLowHighWater, sortHighLowCarbon } from '../utils/sort'
+import { sortAlphabeticalAscending, sortWaterUsageDescending, sortWaterUsageAscending, sortCarbonDescending, searchFood } from '../utils/sort'
 import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
@@ -50,26 +50,32 @@ class FoodList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ sortType, info, foods }) => {
+const mapStateToProps = ({ sortType, info, foods, search }) => {
   switch (sortType) {
-    case SORT_AZ:
+    case FILTER:
       return {
-        foods: sortAZ(foods),
+        foods: searchFood(foods, search),
         info
       }
-    case SORT_WATER_HIGH:
+    case SORT_ALPHABETICAL_ASCENDING:
       return {
-        foods: sortHighLowWater(foods),
+        foods: sortAlphabeticalAscending(foods),
         info
       }
-    case SORT_WATER_LOW:
+    case SORT_WATER_USAGE_DESCENDING:
       return {
-        foods: sortLowHighWater(foods),
+        foods: sortWaterUsageDescending(foods),
         info
       }
-    case SORT_CARBON_HIGH:
+    case SORT_WATER_USAGE_ASCENDING:
       return {
-        foods: sortHighLowCarbon(foods),
+        foods: sortWaterUsageAscending(foods),
+        info
+      }
+
+    case SORT_CARBON_OUTPUT_DESCENDING:
+      return {
+        foods: sortCarbonDescending(foods),
         info
       }
 

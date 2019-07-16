@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom'
 
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
+import { deleteFoodError } from '../actions/updateFoodErrors'
 
 class FoodDetails extends React.Component {
   state = {
@@ -24,7 +25,7 @@ class FoodDetails extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        throw new Error(err.message)
+        this.props.deleteFoodError(err.message)
       })
   }
 
@@ -50,7 +51,7 @@ class FoodDetails extends React.Component {
                       <Icon color='grey' name='cloud' size='huge' />
                       <Statistic size='small'>
                         <Statistic.Value>
-                          {foodDetails && foodDetails.carbon_output}
+                          {foodDetails && foodDetails.carbonOutput}
                         </Statistic.Value>
                         <Statistic.Label color='grey'>
                         Carbon Output
@@ -61,7 +62,7 @@ class FoodDetails extends React.Component {
                       <Icon color="blue" name='tint' size='huge' />
                       <Statistic size='small'>
                         <Statistic.Value>
-                          {foodDetails && foodDetails.water_usage}
+                          {foodDetails && foodDetails.waterUsage}
                         </Statistic.Value>
                         <Statistic.Label color='grey'>
                         Water Usage
@@ -94,7 +95,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getFood: (id) => dispatch(getFood(id))
+    getFood: (id) => dispatch(getFood(id)),
+    deleteFoodError: (message) => dispatch(deleteFoodError(message))
   }
 }
 

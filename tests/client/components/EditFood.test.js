@@ -20,11 +20,11 @@ test('<EditFood /> handleChange changes state of the component', () => {
   const app = wrapper.instance()
   app.handleChange({
     target: {
-      carbon_output: 101
+      carbonOutput: 101
     }
   })
 
-  const actual = app.state.carbon_output
+  const actual = app.state.carbonOutput
 
   expect(actual).toBe(expected)
 })
