@@ -23,7 +23,7 @@ class SearchBar extends Component {
     this.props.dispatch(setSearchTerm(result.name))
   }
 
-  resultRenderer = ({ id, name }) => (<div key='content' className='content'>
+  resultRenderer = ({ id, name }) => (<div key={id} className='content'>
     {name && <div>{name}</div>}
   </div>)
 
@@ -31,7 +31,7 @@ class SearchBar extends Component {
     const { isLoading, value, results } = this.state
     return (
       <Search loading={isLoading} onSearchChange={this.handleChange} results={results}
-        value={value} onResultSelect={this.handleResultSelect} {...this.props} resultRenderer={this.resultRenderer} />
+        value={value} onResultSelect={this.handleResultSelect} resultRenderer={this.resultRenderer} />
     )
   }
 }
