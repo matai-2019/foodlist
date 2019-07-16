@@ -9,7 +9,6 @@ import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
 import { sortAlphabeticalAscending, sortWaterUsageDescending, sortWaterUsageAscending, sortCarbonDescending, searchFood } from '../utils/sort'
 import SearchBar from './SearchBar'
-import WaitIndicator from './WaitIndicator';
 
 class FoodList extends React.Component {
   componentDidMount () {
@@ -21,12 +20,8 @@ class FoodList extends React.Component {
   }
 
   render () {
-    const { foods, info: { pending, error } } = this.props
-
-    if (pending) {
-      return <WaitIndicator />
-    } else {
-      return (
+    const { foods, info: { error } } = this.props
+    return (
         <>
           <Grid columns={3} stackable
           >
@@ -46,8 +41,7 @@ class FoodList extends React.Component {
           {foods.map(food =>
             <Food key={food.id} food={food} />)}
         </>
-      )
-    }
+    )
   }
 }
 
