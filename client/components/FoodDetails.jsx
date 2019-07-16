@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom'
 
 import { getFood } from '../actions/foodDetails'
 import { deleteFood } from '../api/api'
+import { deleteFoodError } from '../actions/updateFoodErrors'
 
 class FoodDetails extends React.Component {
   state = {
@@ -14,7 +15,7 @@ class FoodDetails extends React.Component {
   componentDidMount () {
     const id = Number(this.props.match.params.foodId)
     this.setState({ id })
-    this.props.dispatch(getFood(id))
+    this.props.getFood(id)
   }
 
   handleDelete = (e) => {
@@ -23,7 +24,7 @@ class FoodDetails extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        throw new Error(err.message)
+        this.props.deleteFoodError(err.message)
       })
   }
 
@@ -91,4 +92,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(FoodDetails)
+const mapDispatchToProps = dispatch => {
+  return {
+    getFood: (id) => dispatch(getFood(id)),
+    deleteFoodError: (message) => dispatch(deleteFoodError(message))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FoodDetails)
