@@ -1,9 +1,9 @@
 import React from 'react'
 import { Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import Label from './Label';
+import Label from './Label'
 
-export default function Food ({ food: { name, id , carbonOutput, waterUsage} }) {
+export default function Food ({ food: { name, id, carbonOutput, waterUsage } }) {
   return (
     <>
       <Table singleLine>
