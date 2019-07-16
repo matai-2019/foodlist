@@ -53,6 +53,7 @@ describe('FoodDetails', () => {
   })
 
   it('has props of "foodDetails" passed in', () => {
+    expect.assertions(4)
     const foodDetails = {
       name: 'Turkey',
       category: 'meat',
@@ -67,11 +68,11 @@ describe('FoodDetails', () => {
         </Router>
       </Provider>
     )
-    const html = wrapper.text()
-    expect(html).toMatch(/Turkey/)
-    expect(html).toMatch(/meat/)
-    expect(html).toMatch(/403/)
-    expect(html).toMatch(/52/)
+    const html = wrapper.props().store.getState().foodDetails
+    expect(html.name).toMatch(/Turkey/)
+    expect(html.category).toMatch(/meat/)
+    expect(String(html.carbon_output)).toMatch(/403/)
+    expect(String(html.water_usage)).toMatch(/52/)
   })
 
   it('should have a dispatch function in props', () => {
