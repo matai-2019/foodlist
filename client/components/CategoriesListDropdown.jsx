@@ -38,7 +38,7 @@ class CategoriesListDropdown extends React.Component {
             </Dropdown.Item>
           )}
           <Dropdown.Item>
-            <Link onClick={() => this.props.getFoods()} to='/'>All</Link>
+            <Link to='/' onClick={() => this.props.getFoods()} style={{ color: 'black' }}>All</Link>
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
