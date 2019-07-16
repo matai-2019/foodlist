@@ -6,8 +6,8 @@ const mockDetails = {
   id: 1,
   name: 'Turkey',
   category: 'meat',
-  carbon_output: 500,
-  water_usage: 50
+  carbonOutput: 500,
+  waterUsage: 50
 }
 
 describe('jest', () => {

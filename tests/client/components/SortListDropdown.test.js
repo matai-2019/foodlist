@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'enzyme'
+import { mount } from 'enzyme'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
 import { Provider } from 'react-redux'
@@ -7,8 +7,8 @@ import { Provider } from 'react-redux'
 import SortListDropdown from '../../../client/components/SortListDropdown'
 
 test('<SortListDropdown /> renders the dropdown menu', () => {
-  const mockStore = configureStore()({ sortType: 'SORT_AZ' })
-  const wrapper = render(
+  const mockStore = configureStore()({ sortType: 'SORT_ALPHABETICAL_ASCENDING' })
+  const wrapper = mount(
     <Provider store={mockStore}>
       <Router>
         <Route component={SortListDropdown} />
