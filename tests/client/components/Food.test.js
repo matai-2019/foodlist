@@ -5,6 +5,15 @@ import { mount, shallow } from 'enzyme'
 import Food from '../../../client/components/Food'
 import Label from '../../../client/components/Label'
 
+// eslint-disable-next-line no-console
+const originalError = console.error // eslint-disable-next-line no-console
+console.error = message => {
+  if (/(Failed prop type)/.test(message)) {
+    return null
+  }
+  originalError(message)
+}
+
 test('<Food /> test setup is working correctly', () => {
   expect(true).toBeTruthy()
 })
@@ -54,7 +63,7 @@ test('<Food /> passes correct props down to <Label />', () => {
     </Router>
   )
   const carbonOutput = wrapper.children().props().food.carbonOutput
-  const waterUsage = wrapper.children().props().food.waterUsage 
+  const waterUsage = wrapper.children().props().food.waterUsage
   expect(carbonOutput).toBe(5.71)
   expect(waterUsage).toBe(322)
 })

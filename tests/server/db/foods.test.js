@@ -13,25 +13,16 @@ afterEach(() => env.cleanup(testDb))
 test('db.getFoods returns an array of 27 foods', () => {
   const foods = db.getFoods(testDb)
   return expect(foods).resolves.toHaveLength(27)
-
-  // Alternative structure (https://jestjs.io/docs/en/asynchronous.html):
-  // expect.assertions(1)
-  // const expected = 20
-  // return db.getFoods(testDb)
-  //   .then(foods => {
-  //     const actual = foods.length
-  //     expect(actual).toBe(expected)
-  //   })
 })
 
 test('db.getFood returns a specific food', () => {
   const food = db.getFood(1, testDb)
   const expected = {
-    'id': 1,
-    'name': 'Lamb',
-    'category': 'Meat',
-    'carbonOutput': 20.85,
-    'waterUsage': 8763
+    id: 1,
+    name: 'Lamb',
+    category: 'Meat',
+    carbonOutput: 20.85,
+    waterUsage: 8763
   }
   return expect(food).resolves.toEqual(expected)
     .catch(err => expect(err).toBeNull())
@@ -47,9 +38,9 @@ test('db.deleteFood runs a successful delete', () => {
 test('db.editFood updates name, category, carbonOutput & waterUsage', () => {
   const food = {
     id: 1,
-    name: 'sheep',
-    category_id: 4,
-    carbonOutput: 777,
+    name: 'Nice',
+    categoryId: 4,
+    carbonOutput: 9,
     waterUsage: 1000
   }
 

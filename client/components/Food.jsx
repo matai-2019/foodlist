@@ -34,12 +34,14 @@ class Food extends React.Component {
             <Table.Row >
               <Table.HeaderCell>
                 {name}
-                <Label value={carbonOutput} type="carbon" />
-                <Label value={waterUsage} type="water" />
-              </Table.HeaderCell>
+            </Table.HeaderCell>
+            <Table.HeaderCell textAlign='right'>
+              <Label value={carbonOutput} type="carbon" />
+              <Label value={waterUsage} type="water" />
+            </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-        </Table >
+      </Table >
       </>
     )
   }
