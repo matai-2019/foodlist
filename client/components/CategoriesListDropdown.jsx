@@ -11,14 +11,18 @@ class CategoriesListDropdown extends React.Component {
       this.props.getCategories()
     }
   }
+
   regex = /( |, )/gi;
+
   render () {
     return (
       <Dropdown text="Pick a category">
         <Dropdown.Menu>
         {this.props.categories.map(({ id, name }) =>
             <Dropdown.Item key={id}>
-              <Link to={`/category/${name.replace(this.regex, '-')}`}>{name}</Link>
+              <Link to={`/category/${name.replace(this.regex, '-')}`}
+                style={{ color: 'black' }}
+              >{name}</Link>
             </Dropdown.Item>
           )}
         </Dropdown.Menu>
