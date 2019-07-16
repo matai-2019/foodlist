@@ -1,5 +1,7 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import configureStore from 'redux-mock-store'
+import { mount } from 'enzyme'
 import { Form } from 'semantic-ui-react'
 
 import AddFood from '../../../client/components/AddFood'
@@ -11,37 +13,43 @@ test('<AddFood /> test setup is working correctly', () => {
 })
 
 test('<AddFood /> contains a form tag', () => {
-  const expected = true
-  const wrapper = mount(<AddFood />)
+  const mockStore = configureStore()({ foods: { id: 1, name: 'Bear' } })
+  const wrapper = mount(
+    <Provider store={mockStore}>
+      <AddFood />
+    </Provider>
+  )
   const actual = wrapper.containsMatchingElement(Form)
-  expect(actual).toBe(expected)
+  expect(actual).toBe(true)
 })
 
-test('<AddFood /> handleInputChange changes state of the component', () => {
-  const wrapper = mount(<AddFood />)
-  const expected = 'carrot'
-
+it('handleChange changes state of the component', () => {
+  const mockStore = configureStore()({ carbon_output: 100 })
+  const wrapper = mount(
+    <Provider store={mockStore}>
+      <AddFood />
+    </Provider>
+  )
   const app = wrapper.instance()
-  app.handleInputChange({
-    target: {
-      name: 'name',
-      value: 'carrot'
-    }
-  })
-
-  const actual = app.state.name
-
-  expect(actual).toBe(expected)
+  app.handleChange = () => {
+    app.setState({ carbon_output: 555 })
+  }
+  app.handleChange()
+  expect(app.state.carbon_output).toBe(555)
 })
 
-test('handleSubmit changes state.redirect to true', () => {
-  const wrapper = shallow(<AddFood />)
-  const expected = true
-
+test('mocks handleSubmit and sets redirect to true', () => {
+  expect.assertions(1)
+  const mockStore = configureStore()({ carbon_output: 100 })
+  const wrapper = mount(
+    <Provider store={mockStore}>
+      <AddFood />
+    </Provider>
+  )
   const app = wrapper.instance()
-  return app.handleSubmit().then(() => {
-    const actual = app.state.redirect
-
-    expect(actual).toBe(expected)
-  })
+  app.handleSubmit = () => {
+    app.setState({ redirect: true })
+  }
+  app.handleSubmit()
+  expect(app.state.redirect).toBe(true)
 })
