@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { Grid } from 'semantic-ui-react'
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
-import { SORT_AZ, SORT_WATER_HIGH, SORT_WATER_LOW, SORT_CARBON_HIGH } from '../actions/sort'
+import { SORT_AZ, SORT_WATER_HIGH, SORT_WATER_LOW, SORT_CARBON_HIGH, FILTER } from '../actions/sort'
 import Food from './Food'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
-import { sortAZ, sortHighLowWater, sortLowHighWater, sortHighLowCarbon } from '../utils/sort'
+import { sortAZ, sortHighLowWater, sortLowHighWater, sortHighLowCarbon, searchFood } from '../utils/sort'
 import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
@@ -27,9 +27,20 @@ class FoodList extends React.Component {
     } else {
       return (
         <>
-          <CategoriesListDropdown /> &nbsp;
-        <SortListDropdown /> &nbsp;
-        <SearchBar />
+          <Grid columns={3} stackable
+          >
+            <Grid.Row verticalAlign="middle">
+              <Grid.Column >
+                <CategoriesListDropdown />
+              </Grid.Column>
+              <Grid.Column>
+                <SortListDropdown />
+              </Grid.Column>
+              <Grid.Column>
+                <SearchBar />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           {error && <div>{error}</div>}
           {foods.map(food =>
             <Food key={food.id} food={food} />)}
@@ -39,8 +50,13 @@ class FoodList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ sortType, info, foods }) => {
+const mapStateToProps = ({ sortType, info, foods, search }) => {
   switch (sortType) {
+    case FILTER:
+      return {
+        foods: searchFood(foods, search),
+        info
+      }
     case SORT_AZ:
       return {
         foods: sortAZ(foods),
@@ -56,7 +72,6 @@ const mapStateToProps = ({ sortType, info, foods }) => {
         foods: sortLowHighWater(foods),
         info
       }
-
     case SORT_CARBON_HIGH:
       return {
         foods: sortHighLowCarbon(foods),

@@ -1,9 +1,13 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { Header, Form, Input, Select, Button } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+
 import { editFood } from '../api/api'
 import { connect } from 'react-redux';
 import { getFood } from '../actions/foodDetails'
+import { editFoodError } from '../actions/updateFoodErrors'
+
 
 class EditFood extends React.Component {
   state = {
@@ -35,7 +39,7 @@ class EditFood extends React.Component {
         redirect: true
       }))
       .catch(err => {
-        throw new Error(`Oh no! ${err.message}`)
+        this.props.dispatch(editFoodError(err.message))
       })
   }
 

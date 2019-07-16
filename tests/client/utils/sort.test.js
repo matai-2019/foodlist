@@ -1,4 +1,4 @@
-import { sortAZ, sortHighLowWater, sortLowHighWater, sortHighLowCarbon } from '../../../client/utils/sort'
+import { sortAZ, sortHighLowWater, sortLowHighWater, sortHighLowCarbon, searchFood } from '../../../client/utils/sort'
 
 test('sortAZ sorts an array of objects alphabetically', () => {
   const foods = [
@@ -74,6 +74,24 @@ test('sortHighLowCarbon sorts an array of objects from high to low water usage',
   ]
 
   const actual = sortHighLowCarbon(foods)
+
+  expect(actual).toStrictEqual(expected)
+})
+
+test('searchFood filters an array of objects by searchTerm', () => {
+  const searchTerm = 'apple'
+  const foods = [
+    { id: 1, name: 'orange' },
+    { id: 2, name: 'mango' },
+    { id: 3, name: 'banana' },
+    { id: 4, name: 'apple' }
+  ]
+
+  const expected = [
+    { id: 4, name: 'apple' }
+  ]
+
+  const actual = searchFood(foods, searchTerm)
 
   expect(actual).toStrictEqual(expected)
 })

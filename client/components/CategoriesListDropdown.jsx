@@ -6,19 +6,30 @@ import { Link } from 'react-router-dom'
 import { getCategories } from '../actions/categories'
 
 class CategoriesListDropdown extends React.Component {
+  state = {
+    category: null
+  }
+
   componentDidMount () {
     if (this.props.categories.length === 0) {
       this.props.getCategories()
     }
   }
+
   regex = /( |, )/gi;
+
+  handleClick = (name) => {
+    return () => this.setState({ category: name })
+  }
+
   render () {
     return (
-      <Dropdown text="Pick a category">
+      <Dropdown text={this.state.category || 'Pick a Category'}>
         <Dropdown.Menu>
+          <Dropdown.Header icon='tags' content='Filter by Category' />
           {this.props.categories.map(({ id, name }) =>
-            <Dropdown.Item key={id}>
-              <Link to={`/category/${name.replace(this.regex, '-')}`}>{name}</Link>
+            <Dropdown.Item key={id} onClick={this.handleClick(name)}>
+              <Link to={`/category/${name.replace(this.regex, '-')}`} style={{ color: 'black' }}>{name}</Link>
             </Dropdown.Item>
           )}
         </Dropdown.Menu>
