@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid, Container, Card, Statistic, Icon, Button } from 'semantic-ui-react'
+import { Grid, Container, Card, Statistic, Icon, Button, Menu } from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
 
 import { getFood } from '../actions/foodDetails'
@@ -36,18 +36,33 @@ class FoodDetails extends React.Component {
     const { foodDetails, info: { pending, error } } = this.props
     return pending ? (<div>LOADING...</div>)
       : (<>
-      {error && <div>{error}</div> }
+        {error && <div>{error}</div>}
         <div>
           <Container className='food-details'>
             <Card centered>
-              <Card.Content>
-                <Card.Header as='h2'>
+              <Menu icon borderless attached="top">
+                <Card.Header style={{ paddingLeft: '1em', margin: '0', display: 'flex', alignItems: 'center' }} as="h2">
                   {foodDetails && foodDetails.name}
                 </Card.Header>
+                <Menu.Item
+                  as={Link}
+                  to={`/edit/${this.props.match.params.foodId}`}
+                  position="right"
+                  link
+                >
+                  <Icon name="pencil"/>
+                </Menu.Item>
+                <Menu.Item
+                  onClick={this.handleDelete}
+                >
+                  <Icon name="trash" />
+                </Menu.Item>
+              </Menu>
+              <Card.Content>
                 <Card.Description>
                   <Grid columns={2} divided>
                     <Grid.Column>
-                      <Icon color='grey' name='cloud' size='huge' />
+                      <Icon color='grey' name='cloud' size='huge' style={{ display: 'flex', justifySelf: 'center' }}/>
                       <Statistic size='small'>
                         <Statistic.Value>
                           {foodDetails && foodDetails.carbonOutput}
@@ -74,13 +89,22 @@ class FoodDetails extends React.Component {
               <Card.Content extra>
               Category: {foodDetails && foodDetails.category}
               </Card.Content>
+              {/* <Card.Content
+                textAlign="center"
+                style={{ style: 'flex', flexAlign: 'center' }}
+              >
+                <Grid columns={2} divided>
+                  <Grid.Column columns>
+                    <Icon name="tint" />
+                    hi
+                  </Grid.Column>
+                  <Grid.Column>aaa</Grid.Column>
+                </Grid>
+              </Card.Content> */}
             </Card>
+
           </Container>
         </div>
-        <Button>
-          <Link to={`/edit/${this.props.match.params.foodId}`}>Edit Food</Link>
-        </Button>
-        <Button onClick={this.handleDelete}>Delete Food</Button>
       </>)
   }
 }
