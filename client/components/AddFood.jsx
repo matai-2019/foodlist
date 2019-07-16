@@ -48,7 +48,7 @@ class AddFood extends React.Component {
           </Form.Field>
           <Form.Field onChange={this.handleInputChange}
             label="Food group"
-            name="category_id"
+            name="categoryId"
             control="select"
           >
             <option value="">Choose a food category</option>
@@ -69,7 +69,7 @@ class AddFood extends React.Component {
             <label>Water usage</label>
             <input type="number"
               onChange={this.handleInputChange}
-              name="water_usage"
+              name="waterUsage"
               placeholder="Enter water usage"
             />
           </Form.Field>
