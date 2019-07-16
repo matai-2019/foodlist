@@ -11,6 +11,7 @@ import FoodDetails from './FoodDetails'
 import EditFood from './EditFood'
 import WaitIndicator from './WaitIndicator'
 import ErrorMessage from './ErrorMessage'
+import Graph from './Graph'
 
 function App({ error, pending }) {
   return (
@@ -27,6 +28,7 @@ function App({ error, pending }) {
             <Route path="/details/:foodId" component={FoodDetails} />
             <Route path="/edit/:foodId" component={EditFood} />
             <Route component={NoMatch} />
+            <Route path="/graph" component={Graph} />
           </Switch>
         </Container>
       </>
