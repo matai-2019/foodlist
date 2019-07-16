@@ -13,7 +13,7 @@ import WaitIndicator from './WaitIndicator'
 import ErrorMessage from './ErrorMessage'
 import Graph from './Graph'
 
-function App({ error, pending }) {
+function App ({ error, pending }) {
   return (
     <Router>
       <>
