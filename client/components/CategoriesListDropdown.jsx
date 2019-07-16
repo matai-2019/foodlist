@@ -3,6 +3,7 @@ import { Dropdown } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
 import { getCategories } from '../actions/categories'
 
@@ -37,7 +38,7 @@ class CategoriesListDropdown extends React.Component {
             </Dropdown.Item>
           )}
           <Dropdown.Item>
-            <Link to='/'>All</Link>
+            <Link onClick={() => this.props.getFoods()} to='/'>All</Link>
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
@@ -53,6 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    getFoods: () => dispatch(getFoods()),
     getCategories: () => dispatch(getCategories()),
     getCategory: (category) => dispatch(getCategory(category))
   }
