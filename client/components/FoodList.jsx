@@ -31,12 +31,8 @@ class FoodList extends React.Component {
   }
 
   render () {
-    const { foods, info: { pending, error } } = this.props
-
-    if (pending) {
-      return <div>LOADING...</div>
-    } else {
-      return (
+    const { foods } = this.props
+    return (
         <>
           <Grid columns={3} stackable
           >
@@ -52,48 +48,31 @@ class FoodList extends React.Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          {error && <div>{error}</div>}
           {foods.map(food =>
             <Food key={food.id} food={food} />)}
         </>
-      )
-    }
+    )
   }
 }
 
-const mapStateToProps = ({ sortType, info, foods, search }) => {
+const mapStateToProps = ({ sortType, foods, search }) => {
   switch (sortType) {
     case FILTER:
-      return {
-        foods: searchFood(foods, search),
-        info
-      }
+      return { foods: searchFood(foods, search) }
     case SORT_ALPHABETICAL_ASCENDING:
       return {
-        foods: sortAlphabeticalAscending(foods),
-        info
-      }
+        foods: sortAlphabeticalAscending(foods) }
     case SORT_WATER_USAGE_DESCENDING:
       return {
-        foods: sortWaterUsageDescending(foods),
-        info
-      }
+        foods: sortWaterUsageDescending(foods) }
     case SORT_WATER_USAGE_ASCENDING:
-      return {
-        foods: sortWaterUsageAscending(foods),
-        info
-      }
+      return { foods: sortWaterUsageAscending(foods) }
 
     case SORT_CARBON_OUTPUT_DESCENDING:
-      return {
-        foods: sortCarbonDescending(foods),
-        info
-      }
-
+      return { foods: sortCarbonDescending(foods) }
     default:
       return {
-        foods,
-        info
+        foods
       }
   }
 }
