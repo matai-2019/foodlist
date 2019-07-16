@@ -59,7 +59,7 @@ describe('Category toggle', () => {
     const actions = wrapper.state().subscription.store.getActions()[0]
     expect(actions).toStrictEqual({ type: 'GET_FOODS_PENDING' })
   })
-  it('dispatches getCategories when category exists', () => {
+  it('dispatches getFoods when category exists', () => {
     const match = { params: { id: 3 }, path: 'category', category: 'meat' }
     const mockStore = configureStore([thunk])({
       foods: [{ name: 'carrot', id: 2 }],
@@ -74,7 +74,7 @@ describe('Category toggle', () => {
       </Provider>
     )
     const actions = wrapper.state().subscription.store.getActions()[0]
-    expect(actions).toStrictEqual({ type: 'GET_CATEGORY_PENDING' })
+    expect(actions).toStrictEqual({ type: 'GET_FOODS_PENDING' })
   })
 })
 
