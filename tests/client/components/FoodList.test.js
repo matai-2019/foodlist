@@ -77,3 +77,25 @@ describe('Category toggle', () => {
     expect(actions).toStrictEqual({ type: 'GET_CATEGORY_PENDING' })
   })
 })
+
+test('<FoodList /> renders <Food /> component with search term', () => {
+  const expected = 'Lamb'
+
+  const mockStore = configureStore()(
+    {
+      foods: [{ name: 'Lamb', id: 1 }, { name: 'Chicken', id: 2 }, { name: 'Beef', id: 3 }],
+      info: { pending: false, error: null },
+      categories: [{ id: 1, name: 'Vegetables' }, { id: 2, name: 'Meat' }],
+      search: expected,
+      sortType: 'FILTER'
+    })
+  const wrapper = render(
+    <Provider store={mockStore}>
+      <Router>
+        <Route component={FoodList} />
+      </Router>
+    </Provider>
+  )
+  expect(wrapper.text()).toMatch(expected)
+  expect(wrapper.text()).not.toMatch('Beef')
+})
