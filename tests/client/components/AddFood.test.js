@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
-import { mount, shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { Form } from 'semantic-ui-react'
 
 import AddFood from '../../../client/components/AddFood'
