@@ -1,4 +1,4 @@
-export function sortAZ (arr) {
+export function sortAlphabeticalAscending (arr) {
   return arr.sort((a, b) => {
     if (a.name < b.name) return -1
     else if (a.name > b.name) return 1
@@ -6,7 +6,7 @@ export function sortAZ (arr) {
   })
 }
 
-export function sortHighLowWater (arr) {
+export function sortWaterUsageDescending (arr) {
   return arr.sort((a, b) => {
     if (a.waterUsage > b.waterUsage) return -1
     else if (a.waterUsage < b.waterUsage) return 1
@@ -14,7 +14,7 @@ export function sortHighLowWater (arr) {
   })
 }
 
-export function sortHighLowCarbon (arr) {
+export function sortCarbonDescending (arr) {
   return arr.sort((a, b) => {
     if (a.carbon_output > b.carbon_output) return -1
     else if (a.carbon_output < b.carbon_output) return 1
@@ -22,10 +22,16 @@ export function sortHighLowCarbon (arr) {
   })
 }
 
-export function sortLowHighWater (arr) {
+export function sortWaterUsageAscending (arr) {
   return arr.sort((a, b) => {
     if (a.waterUsage > b.waterUsage) return -1
     else if (a.waterUsage < b.waterUsage) return 1
     else return 0
+  })
+}
+
+export function searchFood (arr, searchTerm) {
+  return arr.filter(element => {
+    return element.name.toLowerCase().includes(searchTerm.toLowerCase())
   })
 }

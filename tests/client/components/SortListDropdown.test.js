@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import SortListDropdown from '../../../client/components/SortListDropdown'
 
 test('<SortListDropdown /> renders the dropdown menu', () => {
-  const mockStore = configureStore()({ sortType: 'SORT_AZ' })
+  const mockStore = configureStore()({ sortType: 'SORT_ALPHABETICAL_ASCENDING' })
   const wrapper = mount(
     <Provider store={mockStore}>
       <Router>

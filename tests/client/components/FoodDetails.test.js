@@ -42,7 +42,7 @@ describe('FoodDetails', () => {
     const mockStore = configureStore([thunk])({ foodDetails: { name: 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = mount(
       <Provider store={mockStore}>
- 
+
         <Router>
           <Route component={FoodDetails} />
         </Router>
