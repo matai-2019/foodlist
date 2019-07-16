@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
+
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
 import {
@@ -12,6 +13,7 @@ import {
   FILTER
 } from '../actions/sort'
 import Food from './Food'
+import SearchBar from './SearchBar'
 import SortListDropdown from './SortListDropdown'
 import CategoriesListDropdown from './CategoriesListDropdown'
 import { sortAlphabeticalAscending,
@@ -21,12 +23,11 @@ import { sortAlphabeticalAscending,
   sortCarbonAscending,
   searchFood
 } from '../utils/sort'
-import SearchBar from './SearchBar'
 
 class FoodList extends React.Component {
   componentDidMount () {
     const { match, dispatch } = this.props
-    const category = match.category
+    const category = match.params.name
     category
       ? dispatch(getCategory(category))
       : dispatch(getFoods())
