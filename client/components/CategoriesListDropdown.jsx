@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom'
 import { getCategories } from '../actions/categories'
 
 class CategoriesListDropdown extends React.Component {
+  state = {
+    category: null
+  }
+
   componentDidMount () {
     if (this.props.categories.length === 0) {
       this.props.getCategories()
@@ -13,6 +17,10 @@ class CategoriesListDropdown extends React.Component {
   }
 
   regex = /( |, )/gi;
+
+  handleClick = (name) => {
+    return () => this.setState({ category: name })
+  }
 
   render () {
     return (

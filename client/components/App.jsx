@@ -10,13 +10,15 @@ import AddFood from './AddFood'
 import FoodDetails from './FoodDetails'
 import EditFood from './EditFood'
 import WaitIndicator from './WaitIndicator'
+import ErrorMessage from './ErrorMessage'
 
-function App ({ info }) {
+function App({ error, pending }) {
   return (
     <Router>
       <>
-        <Route path="/" component={TopMenu} />
-        {info.pending && <WaitIndicator />}
+        <Route path="/" component={TopMenu}/>
+        {error && <ErrorMessage message={error} />}
+        {pending && <WaitIndicator />}
         <Container style={{ paddingTop: 75 }}>
           <Switch>
             <Route exact path="/" component={FoodList} />
@@ -32,9 +34,10 @@ function App ({ info }) {
   )
 }
 
-const mapStateToProps = ({ info }) => {
+const mapStateToProps = ({ info: { error, pending } }) => {
   return {
-    info
+    error,
+    pending
   }
 }
 
