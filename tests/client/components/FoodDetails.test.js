@@ -13,7 +13,7 @@ describe('FoodDetails test suite', () => {
 })
 
 describe('FoodDetails', () => {
-  it('has loading message if pending is true', () => {
+  it('has <WaitIndicator /> if pending is true', () => {
     const match = { params: { foodId: 1 } }
     const mockStore = configureStore([thunk])({ foodDetails: { name: 'Turkey' }, info: { pending: true, error: null } })
     const wrapper = mount(
@@ -21,7 +21,8 @@ describe('FoodDetails', () => {
         <FoodDetails match={match}/>
       </Provider>
     )
-    expect(wrapper.text()).toMatch(/LOADING.../)
+    const actual = wrapper.find('WaitIndicator').length
+    expect(actual).toBe(1)
   })
 
   it('<FoodDetails> is an instance of FoodDetails', () => {
@@ -42,7 +43,6 @@ describe('FoodDetails', () => {
     const mockStore = configureStore([thunk])({ foodDetails: { name: 'Turkey' }, info: { pending: false, error: null } })
     const wrapper = mount(
       <Provider store={mockStore}>
-
         <Router>
           <Route component={FoodDetails} />
         </Router>

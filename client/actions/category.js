@@ -27,7 +27,7 @@ export function getCategoryError (message) {
 export function getCategory (name) {
   return dispatch => {
     dispatch(getCategoryPending())
-    request.get(`/api/v1/category/${name}`)
+    request.get(`/api/v1/categories/${name}`)
       .then(res => dispatch(getCategorySuccess(res.body)))
       .catch(err => dispatch(getCategoryError(err.message)))
   }

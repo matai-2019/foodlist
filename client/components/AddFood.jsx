@@ -5,23 +5,15 @@ import { connect } from 'react-redux'
 
 import { addFood } from '../api/api'
 import { addFoodError } from '../actions/updateFoodErrors'
-
-const categories = [
-  { id: 1, name: 'Fruits' },
-  { id: 2, name: 'Vegetables' },
-  { id: 3, name: 'Grains, beans, and legumes' },
-  { id: 4, name: 'Fish' },
-  { id: 5, name: 'Meat' },
-  { id: 6, name: 'Animal byproducts' }
-]
+import { getCategories } from '../actions/categories'
 
 class AddFood extends React.Component {
   state = {
-    name: '',
-    categoryId: null,
-    carbonOutput: null,
-    waterUsage: null,
     redirect: false
+  }
+
+  componentDidMount () {
+    this.props.dispatch(getCategories())
   }
 
   handleInputChange = (e) => {
@@ -60,7 +52,7 @@ class AddFood extends React.Component {
             control="select"
           >
             <option value="">Choose a food category</option>
-            {categories.map(category =>
+            {this.props.categories.map(category =>
               <option key={category.id}
                 value={category.id}>{category.name}</option>
             )}
@@ -87,4 +79,10 @@ class AddFood extends React.Component {
   }
 }
 
-export default connect()(AddFood)
+const mapStateToProps = state => {
+  return {
+    categories: state.categories
+  }
+}
+
+export default connect(mapStateToProps)(AddFood)
