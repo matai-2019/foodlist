@@ -1,0 +1,31 @@
+:root {
+  --extreme-blue: #0a449e;
+  --high-blue: #165ccb;
+  --medium-blue: #5c8edf;
+  --low-blue: #55addc;
+}
+
+.extremeblue{
+  color: var(--extreme-blue) !important;
+  border-color: var(--extreme-blue) !important;
+  background-color: white !important
+}
+
+.highblue{
+  color: var(--high-blue) !important;
+  border-color: var(--high-blue) !important;
+  background-color: white !important
+}
+
+.mediumblue{
+  color: var(--medium-blue) !important;
+  border-color: var(--medium-blue) !important;
+  background-color: white !important
+}
+
+.lowblue{
+  color: var(--low-blue) !important;
+  border-color: var(--low-blue) !important;
+  background-color: white !important
+}
+
