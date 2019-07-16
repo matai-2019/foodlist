@@ -2,6 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 
+import Food from './Food'
+import SearchBar from './SearchBar'
+import SortListDropdown from './SortListDropdown'
+import CategoriesListDropdown from './CategoriesListDropdown'
 import { getFoods } from '../actions/foods'
 import { getCategory } from '../actions/category'
 import {
@@ -12,10 +16,6 @@ import {
   SORT_CARBON_OUTPUT_ASCENDING,
   FILTER
 } from '../actions/sort'
-import Food from './Food'
-import SearchBar from './SearchBar'
-import SortListDropdown from './SortListDropdown'
-import CategoriesListDropdown from './CategoriesListDropdown'
 import { sortAlphabeticalAscending,
   sortWaterUsageDescending,
   sortWaterUsageAscending,
