@@ -3,6 +3,7 @@ import { Dropdown } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { getCategory } from '../actions/category'
 import { getCategories } from '../actions/categories'
 
 class CategoriesListDropdown extends React.Component {
@@ -19,7 +20,10 @@ class CategoriesListDropdown extends React.Component {
   regex = /( |, )/gi;
 
   handleClick = (name) => {
-    return () => this.setState({ category: name })
+    return () => {
+      this.setState({ category: name })
+      this.props.getCategory(name)
+    }
   }
 
   render () {
@@ -49,7 +53,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCategories: () => dispatch(getCategories())
+    getCategories: () => dispatch(getCategories()),
+    getCategory: (category) => dispatch(getCategory(category))
   }
 }
 
