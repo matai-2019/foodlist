@@ -7,6 +7,15 @@ import thunk from 'redux-thunk'
 
 import FoodList from '../../../client/components/FoodList'
 
+// eslint-disable-next-line no-console
+const originalError = console.error // eslint-disable-next-line no-console
+console.error = message => {
+  if (/(Failed prop type)/.test(message)) {
+    return null
+  }
+  originalError(message)
+}
+
 test('<FoodList /> contains <Food /> component', () => {
   const mockStore = configureStore([thunk])(
     {
