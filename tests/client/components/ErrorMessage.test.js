@@ -14,7 +14,7 @@ test('<Message /> contains a single <Message.Header/>', () => {
 
 test('<Message.Header /> renders "Error"', () => {
   const wrapper = mount(<ErrorMessage/>)
-  expect(wrapper.text()).toBe('Error')
+  expect(wrapper.text()).toBe('Error not caught')
 })
 
 test('<Message /> contains an error message', () => {
