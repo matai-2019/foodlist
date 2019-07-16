@@ -13,7 +13,7 @@ import SearchBar from './SearchBar'
 class FoodList extends React.Component {
   componentDidMount () {
     const { match, dispatch } = this.props
-    const category = match.category
+    const category = match.params.name
     category
       ? dispatch(getCategory(category))
       : dispatch(getFoods())

@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.get('/:categoryName', (req, res) => {
   let category = req.params.categoryName
+  console.log(category)
   category = category[0].toUpperCase() + category.slice(1)
   db.getFoodsByCategory(category)
     .then(category => {
