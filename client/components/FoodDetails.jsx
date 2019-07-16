@@ -51,7 +51,7 @@ class FoodDetails extends React.Component {
                       <Icon color='grey' name='cloud' size='huge' />
                       <Statistic size='small'>
                         <Statistic.Value>
-                          {foodDetails && foodDetails.carbon_output}
+                          {foodDetails && foodDetails.carbonOutput}
                         </Statistic.Value>
                         <Statistic.Label color='grey'>
                         Carbon Output
@@ -62,7 +62,7 @@ class FoodDetails extends React.Component {
                       <Icon color="blue" name='tint' size='huge' />
                       <Statistic size='small'>
                         <Statistic.Value>
-                          {foodDetails && foodDetails.water_usage}
+                          {foodDetails && foodDetails.waterUsage}
                         </Statistic.Value>
                         <Statistic.Label color='grey'>
                         Water Usage
