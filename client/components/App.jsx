@@ -27,8 +27,8 @@ function App ({ error, pending }) {
             <Route path="/new" component={AddFood} />
             <Route path="/details/:foodId" component={FoodDetails} />
             <Route path="/edit/:foodId" component={EditFood} />
+            {!pending && <Route path="/graph" component={Graph} />}
             <Route component={NoMatch} />
-            <Route path="/graph" component={Graph} />
           </Switch>
         </Container>
       </>
