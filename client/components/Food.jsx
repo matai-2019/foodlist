@@ -1,27 +1,51 @@
 import React from 'react'
 import { Table } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import Label from './Label'
+import { Redirect } from 'react-router-dom'
+import Label from './Label';
 
-export default function Food ({ food: { name, id, carbonOutput, waterUsage } }) {
-  return (
-    <>
-      <Table singleLine>
-        <Table.Header>
-          <Table.Row >
-            <Table.HeaderCell>
-              <Link to={`/details/${id}`}>
+class Food extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      redirect: null
+    }
+  }
+
+  handleClick = id => {
+    return () => {
+      this.setState({ redirect: Number(id) })
+    }
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect push to={`/details/${this.state.redirect}`} />
+    }
+  }
+
+  render() {
+    const { id, name, carbonOutput, waterUsage } = this.props.food
+    return (
+      <>
+        {this.renderRedirect()}
+        < Table singleLine onClick={this.handleClick(id)} >
+          <Table.Header>
+            <Table.Row >
+              <Table.HeaderCell>
                 {name}
-              </Link>
             </Table.HeaderCell>
             <Table.HeaderCell textAlign='right'>
-                <Label value={carbonOutput} type="carbon" />
-                <Label value={waterUsage} type="water" />
+              <Label value={carbonOutput} type="carbon" />
+              <Label value={waterUsage} type="water" />
             </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+            </Table.Row>
+          </Table.Header>
+      </Table >
+      </>
+    )
+  }
 
-      </Table>
-    </>
-  )
 }
+
+export default Food

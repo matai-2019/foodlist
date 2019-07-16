@@ -33,9 +33,9 @@ class FoodDetails extends React.Component {
       return <Redirect push to="/" />
     }
 
-    const { foodDetails, info: { pending, error } } = this.props
-    return (<>
-      {error && <div>{error}</div> }
+    const { foodDetails } = this.props
+    return (
+      <>
         <div>
           <Container className='food-details'>
             <Card centered>
@@ -52,7 +52,7 @@ class FoodDetails extends React.Component {
                           {foodDetails && foodDetails.carbonOutput}
                         </Statistic.Value>
                         <Statistic.Label color='grey'>
-                        Carbon Output
+                          Carbon Output
                         </Statistic.Label>
                       </Statistic>
                     </Grid.Column>
@@ -63,7 +63,7 @@ class FoodDetails extends React.Component {
                           {foodDetails && foodDetails.waterUsage}
                         </Statistic.Value>
                         <Statistic.Label color='grey'>
-                        Water Usage
+                          Water Usage
                         </Statistic.Label>
                       </Statistic>
                     </Grid.Column>
@@ -71,7 +71,7 @@ class FoodDetails extends React.Component {
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>
-              Category: {foodDetails && foodDetails.category}
+                Category: {foodDetails && foodDetails.category}
               </Card.Content>
             </Card>
           </Container>
@@ -86,7 +86,6 @@ class FoodDetails extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    info: state.info,
     foodDetails: state.foodDetails
   }
 }
