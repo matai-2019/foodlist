@@ -40,3 +40,10 @@ test('handleSubmit changes state.redirect to true', () => {
     expect(actual).toBe(expected)
   })
 })
+
+test('state is updated on component did mount', () => {
+  const wrapper = shallow(<EditFood/>)
+  expect(wrapper.state()).toBeTruthy()
+
+
+})
