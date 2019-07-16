@@ -51,11 +51,8 @@ test('sortWaterUsageAscending sorts an array of objects from low to high water u
   const expected = [
     { id: 4, name: 'carrot', waterUsage: 30 },
     { id: 2, name: 'apple', waterUsage: 2400 },
-    // { id: 3, name: 'banana', waterUsage: 5530 },
     { id: 1, name: 'orange', waterUsage: 3000 },
     { id: 3, name: 'banana', waterUsage: 5530 }
-    // { id: 2, name: 'apple', waterUsage: 2400 },
-    // { id: 4, name: 'carrot', waterUsage: 30 }
   ]
 
   const actual = sortWaterUsageAscending(foods)
