@@ -1,5 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
 import { mount } from 'enzyme'
 import { Form } from 'semantic-ui-react'
@@ -8,12 +9,20 @@ import AddFood from '../../../client/components/AddFood'
 
 jest.mock('../../../client/api/api')
 
+const categories = [
+  {
+    id: 1,
+    name: 'Fruits'
+  }
+]
+
+const mockStore = configureStore([thunk])({ categories, carbon_output: '' })
+
 test('<AddFood /> test setup is working correctly', () => {
   expect(true).toBeTruthy()
 })
 
 test('<AddFood /> contains a form tag', () => {
-  const mockStore = configureStore()({ foods: { id: 1, name: 'Bear' } })
   const wrapper = mount(
     <Provider store={mockStore}>
       <AddFood />
@@ -24,7 +33,6 @@ test('<AddFood /> contains a form tag', () => {
 })
 
 it('handleChange changes state of the component', () => {
-  const mockStore = configureStore()({ carbon_output: 100 })
   const wrapper = mount(
     <Provider store={mockStore}>
       <AddFood />
@@ -40,7 +48,7 @@ it('handleChange changes state of the component', () => {
 
 test('mocks handleSubmit and sets redirect to true', () => {
   expect.assertions(1)
-  const mockStore = configureStore()({ carbon_output: 100 })
+
   const wrapper = mount(
     <Provider store={mockStore}>
       <AddFood />
