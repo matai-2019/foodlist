@@ -4,27 +4,18 @@ import { Header, Form, Input, Select, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 import { editFood } from '../api/api'
-import { connect } from 'react-redux';
 import { getFood } from '../actions/foodDetails'
 import { editFoodError } from '../actions/updateFoodErrors'
 
 
 class EditFood extends React.Component {
-  state = {
-    id: 1,
-    name: 'Orange',
-    food_group: 'fruits',
-    carbon_output: 101,
-    water_usage: 88,
-    redirect: false
-  }
+  state = {}
 
   componentDidMount() {
-    const { dispatch, match: { params: { foodId } } } = this.props
+    const { foodDetails, dispatch, match: { params: { foodId } } } = this.props
     Number(foodId)
-    const food = dispatch(getFood(foodId)) // HOW TO GET FOODDETAILS IN MY PROPS AFTER CALLING DISPATCH?
-    console.log('mounted', food)
-    food ? this.setState(this.props.foodDetails) : 'error'
+    dispatch(getFood(foodId))
+    this.setState(foodDetails)
   }
 
   handleChange = (e) => {
@@ -63,8 +54,8 @@ class EditFood extends React.Component {
     )
   }
 }
-const mapStateToProps = ({ foodDetails }) => {
-  return { foodDetails }
+const mapStateToProps = (state) => {
+  return state
 }
 
 export default connect(mapStateToProps)(EditFood)
