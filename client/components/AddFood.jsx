@@ -61,7 +61,7 @@ class AddFood extends React.Component {
             <label>Carbon output</label>
             <input type="number"
               onChange={this.handleInputChange}
-              name="carbon_output"
+              name="carbonOutput"
               placeholder="Enter carbon output"
             />
           </Form.Field>
