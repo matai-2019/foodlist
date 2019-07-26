@@ -7,7 +7,7 @@ import { Form } from 'semantic-ui-react'
 
 import AddFood from '../../../client/components/AddFood'
 
-jest.mock('../../../client/api/api')
+jest.mock('../../../client/api/foods')
 
 const categories = [
   {
