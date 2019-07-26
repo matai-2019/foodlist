@@ -20,3 +20,7 @@ export function editFood (food) {
 export function getFood (id) {
   return request.get(`${foodsUrl}/${id}`)
 }
+
+export function getFoods () {
+  return request.get(foodsUrl)
+}
