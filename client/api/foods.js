@@ -16,3 +16,7 @@ export function editFood (food) {
   return request.put(`${foodsUrl}/${food.id}`)
     .send(food)
 }
+
+export function getFood (id) {
+  return request.get(`${foodsUrl}/${id}`)
+}
