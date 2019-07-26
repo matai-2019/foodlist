@@ -1,4 +1,4 @@
-import request from 'superagent'
+import { getFood as getFoodAPI } from '../api/foods'
 
 export const GET_FOOD_DETAILS_PENDING = 'GET_FOOD_DETAILS_PENDING'
 export const GET_FOOD_DETAILS_SUCCESS = 'GET_FOOD_DETAILS_SUCCESS'
@@ -27,8 +27,7 @@ export function getFoodDetailsError (error) {
 export function getFood (id) {
   return dispatch => {
     dispatch(getFoodDetailsPending())
-
-    request.get(`/api/v1/foods/${id}`)
+    getFoodAPI(id)
       .then(res => dispatch(getFoodDetailsSuccess(res.body)))
       .catch(err => dispatch(getFoodDetailsError(err.message)))
   }
