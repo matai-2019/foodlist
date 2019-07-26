@@ -1,4 +1,4 @@
-import request from 'superagent'
+import { getCategories as getCategoriesAPI } from '../api/categories'
 
 export const GET_CATEGORIES_PENDING = 'GET_CATEGORIES_PENDING'
 export const GET_CATEGORIES_SUCCESS = 'GET_CATEGORIES_SUCCESS'
@@ -27,7 +27,7 @@ export function getCategoriesError (message) {
 export function getCategories () {
   return dispatch => {
     dispatch(getCategoriesPending())
-    request.get('/api/v1/categories')
+    getCategoriesAPI()
       .then(res => dispatch(getCategoriesSuccess(res.body)))
       .catch(err => dispatch(getCategoriesError(err.message)))
   }
