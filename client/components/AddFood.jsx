@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Button, Form, Container, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
-import { addFood } from '../api/api'
+import { addFood } from '../api/foods'
 import { addFoodError } from '../actions/updateFoodErrors'
 import { getCategories } from '../actions/categories'
 

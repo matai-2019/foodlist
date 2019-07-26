@@ -4,7 +4,7 @@ import { Grid, Container, Card, Statistic, Icon, Button, Menu } from 'semantic-u
 import { Link, Redirect } from 'react-router-dom'
 
 import { getFood } from '../actions/foodDetails'
-import { deleteFood } from '../api/api'
+import { deleteFood } from '../api/foods'
 import { deleteFoodError } from '../actions/updateFoodErrors'
 
 class FoodDetails extends React.Component {
