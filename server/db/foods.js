@@ -62,21 +62,21 @@ function addFood (food, db = connection) {
   return db('foods')
     .insert({
       name: food.name,
-      category_id: food.category_id
+      category_id: food.categoryId
     })
     .then((id) => {
       foodID = id[0]
       return db('carbon_outputs')
         .insert({
           food_id: foodID,
-          value: food.carbon_output
+          value: food.carbonOutput
         })
     })
     .then(() => {
       return db('water_usages')
         .insert({
           food_id: foodID,
-          value: food.water_usage
+          value: food.waterUsage
         })
     })
     .catch(err => err)
