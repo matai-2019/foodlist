@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { HorizontalBar } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 
 class Graph extends React.Component {
   data = {
@@ -33,7 +33,7 @@ class Graph extends React.Component {
     return (
       <>
       <div className="chart-container">
-        <HorizontalBar data={ this.data }/>
+        <Bar data={ this.data }/>
       </div>
       </>
     )
