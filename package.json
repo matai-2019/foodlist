@@ -71,7 +71,7 @@
     "sqlite3": "^4.0.9",
     "superagent": "^5.1.0",
     "supertest": "^4.0.2",
-    "webpack-cli": "^3.3.5",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.7.2"
   }
 }
